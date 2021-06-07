@@ -1,8 +1,7 @@
 import { css } from 'styled-components';
 
 const breakpoint = {
-  tablet: 765,
-  desktop: 1080,
+  desktop: 1920,
 };
 
 export default Object.keys(breakpoint).reduce((acc, device) => {
