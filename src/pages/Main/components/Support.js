@@ -9,6 +9,7 @@ function Support() {
 
   return (
     <Container>
+      <Img alt="main_image" src="/images/main_circle.png" />
       <Wrapper>
         <Title>
           선한 영향력을 펼치는 <br />
@@ -24,17 +25,21 @@ function Support() {
 }
 
 const Container = styled.div`
-  display: block;
-  width: 100%;
-  background-image: url('/images/main.png');
-  /* width: 100vw; */
+  ${({ theme }) => theme.flexColumnSet('flex-end', 'flex-start')};
+  position: relative;
   height: ${({ theme }) => theme.calcVh(812, 480)};
+  padding-left: 30px;
+  background-color: ${({ theme }) => theme.colors.primary_bgc};
 `;
 
 const Wrapper = styled.div`
-  ${({ theme }) => theme.flexColumnSet('flex-end', 'flex-start')};
-  height: inherit;
-  padding-left: 38px;
+  padding-left: 8px;
+`;
+
+const Img = styled.img`
+  width: ${({ theme }) => theme.calcRem(178)};
+  position: absolute;
+  top: ${({ theme }) => theme.calcRem(25)};
 `;
 
 const Title = styled.h1`
@@ -44,9 +49,9 @@ const Title = styled.h1`
   margin-bottom: ${({ theme }) => theme.calcVh(812, 11)};
 `;
 
-const SubTitle = styled.span`
+const SubTitle = styled.p`
   font-size: ${({ theme }) => theme.calcRem('14')};
-  margin-bottom: ${({ theme }) => theme.calcVh(812, 38)};
+  margin-bottom: ${({ theme }) => theme.calcVh(812, 35)};
 `;
 
 const StyledButton = styled(Button)`
