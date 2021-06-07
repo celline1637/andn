@@ -38,7 +38,13 @@ const posCenter = (type = 'absolute') => {
   `;
 };
 
-const colors = {};
+const colors = {
+  primary_bgc: '#e8e8e8',
+  secondary_bgc: '#fafafa',
+  tertiary_bgc: '#f3f3f3',
+  active: '#ff7c00',
+  black: '#252525',
+};
 
 const theme = {
   colors,
