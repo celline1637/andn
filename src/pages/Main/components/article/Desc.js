@@ -40,7 +40,6 @@ const Title = styled.dt`
 `;
 
 const Contents = styled.dd`
-  //default
   font-size: ${({ theme }) => theme.calcVw(16)};
   line-height: ${({ theme }) => theme.calcVw(24)};
   letter-spacing: ${({ theme }) => theme.calcVw(-0.4)};
@@ -59,7 +58,7 @@ const Contents = styled.dd`
       text-align: center;
     `};
 
-  //benefits & process
+  /* benefits & process */
   ${props =>
     props.details &&
     css`
