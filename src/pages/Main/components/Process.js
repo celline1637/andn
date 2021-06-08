@@ -1,7 +1,7 @@
 import React from 'react';
 import Article from './article/Article';
 import Desc from './article/Desc';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 function Process() {
   return (
@@ -9,8 +9,9 @@ function Process() {
       <Outter>
         {PROCESS.map(item => (
           <Wrapper key={item.title}>
-            <img alt={item.title} src={item.url} />
+            <Img alt={item.title} src={item.url} />
             <Desc title={item.title} contents={item.desc} center />
+            <Arrow alt="arrow" src="/images/path.png" />
           </Wrapper>
         ))}
       </Outter>
@@ -26,6 +27,14 @@ const Outter = styled.div`
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.flexColumnSet()};
+`;
+
+const Img = styled.img`
+  margin-bottom: ${({ theme }) => theme.calcVw(20.4)};
+`;
+
+const Arrow = styled.img`
+  margin: ${({ theme }) => theme.calcVw(70)} 0;
 `;
 
 export default Process;

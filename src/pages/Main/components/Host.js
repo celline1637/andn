@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Article from './article/Article';
 import Desc from './article/Desc';
 
@@ -16,15 +16,17 @@ function Host() {
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.desktop`
-    ${({ theme }) => theme.flexColumnSet()};
+    ${({ theme }) => theme.flexSet()};
 `};
 `;
 
 const Img = styled.img`
   width: 100%;
+  margin-bottom: ${({ theme }) => theme.calcVw(16)};
 
   ${({ theme }) => theme.desktop`
-    width:30.4%
+    width: ${({ theme }) => theme.calcVwL(583)};
+    margin: 0 ${({ theme }) => theme.calcVwL(65)} 0 0;
   `};
 `;
 

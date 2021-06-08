@@ -48,6 +48,7 @@ const colors = {
   secondary_bgc: '#fafafa',
   tertiary_bgc: '#f3f3f3',
   bgc: '#f7f7f7',
+  secondary_text: '#888888',
   btn: '#ff7c00',
   black: '#252525',
   white: '#fff',

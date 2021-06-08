@@ -16,14 +16,14 @@ const Wrapper = styled.header`
 `;
 
 const Title = styled.h2`
-  font-size: ${({ theme }) => theme.calcRem(24)};
+  font-size: ${({ theme }) => theme.calcVw(24)};
   font-weight: 700;
-  margin-bottom: ${({ theme }) => theme.calcRem(10)};
+  margin-bottom: ${({ theme }) => theme.calcVw(10)};
 `;
 
 const SubTitle = styled.p`
-  font-size: ${({ theme }) => theme.calcRem(15)};
-  margin-bottom: ${({ theme }) => theme.calcRem(29)};
+  font-size: ${({ theme }) => theme.calcVw(15)};
+  margin-bottom: ${({ theme }) => theme.calcVw(29)};
 `;
 
 export default Header;

@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components/macro';
 import Button from '../../../components/Button';
 
-function Apply() {
+function Apply2nd() {
   const goToForm = () => {
     window.open('https://5fkdinm7z85.typeform.com/to/TaX72LGe');
   };
@@ -10,14 +10,14 @@ function Apply() {
   return (
     <Container>
       <Inner>
-        <Img alt="main_image" src="/images/main_circle.png" />
+        <Img alt="main_image" src="/images/group.png" />
         <Wrapper>
-          <Title>
-            선한 영향력을 펼치는 <br /> 가장 쉬운 방법
-          </Title>
-          <SubTitle>가치소비 경험을 이끄는 호스트가 되어보세요</SubTitle>
+          <Title>지금 바로 지원해보세요</Title>
+          <SubTitle>
+            더 나은 내일에 닿을 <br /> 여러분의 영향력을 펼쳐주세요.
+          </SubTitle>
           <StyledButton color="btn" onClick={goToForm}>
-            지원하기
+            호스트 지원하기
           </StyledButton>
         </Wrapper>
       </Inner>
@@ -26,81 +26,80 @@ function Apply() {
 }
 
 const Container = styled.div`
-  ${({ theme }) => theme.flexColumnSet('flex-end', 'flex-start')};
-  position: relative;
-  padding-top: ${({ theme }) => theme.calcVw(25)};
-  padding-left: ${({ theme }) => theme.calcVw(30)};
+  padding: ${({ theme }) => theme.calcVw(54)} 0;
   background-color: ${({ theme }) => theme.colors.primary_bgc};
+  overflow: hidden;
   ${({ theme }) => theme.desktop`
-     //임시 height
-     height: 548px;
-     overflow : hidden;
-     padding-left: ${({ theme }) => theme.calcVwL(202)};
+    padding: ${({ theme }) => theme.calcVwL(105)} ${({ theme }) =>
+    theme.calcVwL(63)};
   `};
 `;
 
 const Inner = styled.div`
+  ${({ theme }) => theme.flexColumnSet()};
   height: inherit;
-  ${({ theme }) => theme.flexColumnSet('space-between', 'flex-start')};
   ${({ theme }) => theme.desktop`
-    flex-direction: row;
-    ${({ theme }) => theme.flexSet()};
+   flex-direction: row;
+   justify-content: flex-start;
   `};
 `;
 
 const Wrapper = styled.div`
-  padding-left: ${({ theme }) => theme.calcVw(8)};
+  ${({ theme }) => theme.flexColumnSet()};
   ${({ theme }) => theme.desktop`
-    padding-left: ${({ theme }) => theme.calcVwL(141)};
+    align-items: flex-start;
   `};
 `;
 
 const Img = styled.img`
-  width: ${({ theme }) => theme.calcVw(178)};
+  display: inline-block;
+  width: 120vw;
   margin-bottom: ${({ theme }) => theme.calcVw(32)};
   ${({ theme }) => theme.desktop`
-     width: ${({ theme }) => theme.calcVwL(677)};
-     margin: 0;
+     width: ${({ theme }) => theme.calcVwL(996)};
+     margin-right: ${({ theme }) => theme.calcVwL(117)};
+     margin-bottom: 0;
   `};
 `;
 
 const Title = styled.h1`
   font-size: ${({ theme }) => theme.calcVw(24)};
   font-weight: 700;
-  line-height: ${({ theme }) => theme.calcVw(32)};
+  /* line-height: ${({ theme }) => theme.calcVw(32)}; */
+  letter-spacing: ${({ theme }) => theme.calcVw(-0.6)};
   margin-bottom: ${({ theme }) => theme.calcVw(11)};
   ${({ theme }) => theme.desktop`
     font-size: ${({ theme }) => theme.calcVwL(40)};
-    font-weight: 700;
-    line-height: ${({ theme }) => theme.calcVwL(60)};
-    letter-spacing: ${({ theme }) => theme.calcVwL(-1)};
     margin-bottom: ${({ theme }) => theme.calcVwL(21)};
   `};
 `;
 
 const SubTitle = styled.p`
+  text-align: center;
   font-size: ${({ theme }) => theme.calcVw(14)};
   line-height: ${({ theme }) => theme.calcVw(21)};
-  margin-bottom: ${({ theme }) => theme.calcVw(35)};
+  letter-spacing: ${({ theme }) => theme.calcVw(-0.35)};
+  margin-bottom: ${({ theme }) => theme.calcVw(18)};
   ${({ theme }) => theme.desktop`
+    text-align: left;
     font-size: ${({ theme }) => theme.calcVwL(24)};
     line-height: ${({ theme }) => theme.calcVwL(34)};
-    margin-bottom: ${({ theme }) => theme.calcVwL(73)};
+    margin-bottom: ${({ theme }) => theme.calcVwL(18)};
+    
   `};
 `;
 
 const StyledButton = styled(Button)`
-  width: ${({ theme }) => theme.calcVw(119)};
+  width: ${({ theme }) => theme.calcVw(131)};
   height: ${({ theme }) => theme.calcVw(39)};
-  margin-bottom: ${({ theme }) => theme.calcVw(38)};
+  border-radius: 0;
   font-size: ${({ theme }) => theme.calcVw(14)};
   font-weight: 500;
   ${({ theme }) => theme.desktop`
-    width: ${({ theme }) => theme.calcVwL(212)};
+    width: ${({ theme }) => theme.calcVwL(232)};
     height: ${({ theme }) => theme.calcVwL(67)};
-    margin-bottom: 0;
     font-size: ${({ theme }) => theme.calcVwL(24)};
   `};
 `;
 
-export default Apply;
+export default Apply2nd;

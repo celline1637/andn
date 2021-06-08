@@ -95,10 +95,7 @@ const fullWidthStyle = css`
 const StyledButton = styled.button`
   ${({ theme }) => theme.flexSet()};
   outline: none;
-  border: 1px solid rgb(230, 230, 230);
-  border-radius: 4px;
   color: black;
-  cursor: url('/images/spoon.png') 20 20, auto;
   padding-left: 1rem;
   padding-right: 1rem;
   margin-bottom: 0.6rem;

@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 import Article from './article/Article';
 import Desc from './article/Desc';
 
@@ -22,6 +22,12 @@ function Benefits() {
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.flexColumnSet()};
+  margin-bottom: ${({ theme }) => theme.calcVw(50)};
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
   ${({ theme }) => theme.desktop`
     flex-direction : row;
 
@@ -33,9 +39,12 @@ const Wrapper = styled.div`
 
 const Img = styled.img`
   width: 80%;
-  margin-bottom: ${({ theme }) => theme.calcRem(20)};
+  margin-top: ${({ theme }) => theme.calcVw(36)};
+  margin-bottom: ${({ theme }) => theme.calcVw(20)};
+
   ${({ theme }) => theme.desktop`
-    width: 30.2%
+    width: ${({ theme }) => theme.calcVwL(580)};
+    margin: 0  ${({ theme }) => theme.calcVwL(68)} 0 0;
   `};
 `;
 
