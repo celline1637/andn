@@ -15,7 +15,7 @@ function Footer() {
 }
 
 const Wrapper = styled.div`
-  height: ${({ theme }) => theme.calcVh(812, 167)};
+  height: ${({ theme }) => theme.calcVw(167)};
   background-color: ${({ theme }) => theme.colors.black};
 
   & > p {

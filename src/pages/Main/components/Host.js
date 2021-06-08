@@ -6,14 +6,26 @@ import Desc from './article/Desc';
 function Host() {
   return (
     <Article title={HOST.title} subtitle={HOST.subtitle}>
-      <Img alt="host" src="/images/first.png" />
-      <Desc contents={HOST.desc} />
+      <Wrapper>
+        <Img alt="host" src="/images/first.png" />
+        <Desc contents={HOST.desc} />
+      </Wrapper>
     </Article>
   );
 }
 
+const Wrapper = styled.div`
+  ${({ theme }) => theme.desktop`
+    ${({ theme }) => theme.flexColumnSet()};
+`};
+`;
+
 const Img = styled.img`
   width: 100%;
+
+  ${({ theme }) => theme.desktop`
+    width:30.4%
+  `};
 `;
 
 export default Host;

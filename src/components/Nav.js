@@ -20,7 +20,7 @@ const Container = styled.nav`
   ${({ theme }) => theme.flexSet('space-between')};
   padding: 0 21px;
   position: relative;
-  height: ${({ theme }) => theme.calcVh(812, 47)};
+  height: ${({ theme }) => theme.calcVw(47)};
 `;
 
 const Menu = styled.img`

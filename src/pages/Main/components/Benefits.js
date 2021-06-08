@@ -22,11 +22,21 @@ function Benefits() {
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.flexColumnSet()};
+  ${({ theme }) => theme.desktop`
+    flex-direction : row;
+
+    &:nth-child(3) {
+      flex-direction: row-reverse;
+  }
+  `};
 `;
 
 const Img = styled.img`
   width: 80%;
-  margin-bottom: ${({ theme }) => theme.calcRem(20)}; ;
+  margin-bottom: ${({ theme }) => theme.calcRem(20)};
+  ${({ theme }) => theme.desktop`
+    width: 30.2%
+  `};
 `;
 
 export default Benefits;

@@ -22,14 +22,14 @@ const Wrapper = styled.div`
 const Title = styled.dt`
   font-size: ${({ theme }) => theme.calcRem(21)};
   font-weight: 700;
-  margin-bottom: ${({ theme }) => theme.calcVh(812, 15)};
+  margin-bottom: ${({ theme }) => theme.calcVw(15)};
 `;
 
 const Contents = styled.dd`
   font-size: ${({ theme }) => theme.calcRem(16)};
   line-height: 1.63;
   letter-spacing: -0.4px;
-  margin-bottom: ${({ theme }) => theme.calcVh(812, 15)};
+  margin-bottom: ${({ theme }) => theme.calcVw(15)};
   ${props =>
     props.center &&
     css`

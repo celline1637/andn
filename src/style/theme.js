@@ -1,9 +1,6 @@
 const calcRem = pxSize => `${pxSize / 16}rem`;
-const calcVw = (width, px) => {
-  return `${(px / width) * 100}vw`;
-};
-const calcVh = (height, px) => {
-  return `${(px / height) * 100}vh`;
+const calcVw = px => {
+  return `${(px / 375) * 100}vw`;
 };
 
 const flexSet = (just = 'center', align = 'center') => {
@@ -57,7 +54,6 @@ const colors = {
 const theme = {
   colors,
   calcRem,
-  calcVh,
   calcVw,
   flexSet,
   flexColumnSet,

@@ -6,15 +6,23 @@ import styled from 'styled-components';
 function Process() {
   return (
     <Article title="캠페인 프로세스" subtitle="어렵지 않아요">
-      {PROCESS.map(item => (
-        <Wrapper key={item.title}>
-          <img alt={item.title} src={item.url} />
-          <Desc title={item.title} contents={item.desc} center />
-        </Wrapper>
-      ))}
+      <Outter>
+        {PROCESS.map(item => (
+          <Wrapper key={item.title}>
+            <img alt={item.title} src={item.url} />
+            <Desc title={item.title} contents={item.desc} center />
+          </Wrapper>
+        ))}
+      </Outter>
     </Article>
   );
 }
+
+const Outter = styled.div`
+  ${({ theme }) => theme.desktop`
+    ${({ theme }) => theme.flexSet()};
+`};
+`;
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.flexColumnSet()};

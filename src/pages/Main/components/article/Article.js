@@ -1,20 +1,22 @@
 import React from 'react';
 import styled, { css } from 'styled-components/macro';
 
-function Article({ children, title, subtitle, color = 'white', row }) {
+function Article({ children, color = 'white', title, subtitle }) {
   return (
     <Container color={color}>
       <Wrapper>
         <Title>{title}</Title>
         <SubTitle>{subtitle}</SubTitle>
       </Wrapper>
-      <Text row={row}>{children}</Text>
+      {/* <Detail {...rest}> */}
+      {children}
+      {/* </Detail> */}
     </Container>
   );
 }
 
 const Container = styled.article`
-  padding: ${({ theme }) => theme.calcVh(4746, 636)} 0;
+  padding: ${({ theme }) => theme.calcVw(636)} 0;
   background-color: ${({ theme, color }) => theme.colors[color]};
 `;
 
@@ -34,12 +36,13 @@ const SubTitle = styled.p`
   margin-bottom: ${({ theme }) => theme.calcRem(29)};
 `;
 
-const Text = styled.div`
-  ${props =>
-    props.row &&
-    css`
-      ${({ theme }) => theme.flexSet()};
-    `};
-`;
+// const Detail = styled.div`
+//   ${({ theme }) => theme.flexColumnSet()};
+//   ${props =>
+//     props.row &&
+//     css`
+//       ${({ theme }) => theme.flexSet()};
+//     `};
+// `;
 
 export default Article;
