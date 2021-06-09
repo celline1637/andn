@@ -1,5 +1,5 @@
-const calcVw = px => {
-  return `${(px / 750) * 100}vw`;
+const calcVw = (width, px) => {
+  return `${(px / width) * 100}vw`;
 };
 const calcVwL = px => {
   return `${(px / 1920) * 100}vw`;
