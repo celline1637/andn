@@ -103,10 +103,4 @@ const LinkGroup = styled.div`
   }
 `;
 
-// const StyledProfile = styled(Profile)`
-//   &:hover {
-
-//   }
-// `;
-
 export default Nav;
