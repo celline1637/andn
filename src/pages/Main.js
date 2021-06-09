@@ -69,17 +69,22 @@ function Main() {
         onChange={handleInput}
         placeholder="비밀번호를 입력해주세요"
       />
-      <LoginBtn color="black" fullWidth>
+      <LoginBtn
+        color="black"
+        fullWidth
+        onClick={handelLogin}
+        disabled={!isValid}
+      >
         로그인
       </LoginBtn>
     </Container>
   );
 }
 
-const Container = styled.div``;
+const Container = styled.form``;
 
 const LoginBtn = styled(Button)`
-  height: ${({ theme }) => theme.calcVw(750, 48)}; ;
+  height: ${({ theme }) => theme.calcVw(750, 100)};
 `;
 
 export default Main;
