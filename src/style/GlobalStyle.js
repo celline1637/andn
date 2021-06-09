@@ -3,13 +3,6 @@ import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
-  
-  :root{
-    font-size:13px;
-    ${({ theme }) => theme.desktop`
-      font-size:16px;
-    `};
-  }
 
   html{
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';

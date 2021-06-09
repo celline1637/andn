@@ -1,4 +1,9 @@
-const calcRem = pxSize => `${pxSize / 16}rem`;
+const calcVw = px => {
+  return `${(px / 750) * 100}vw`;
+};
+const calcVwL = px => {
+  return `${(px / 1920) * 100}vw`;
+};
 
 const flexSet = (just = 'center', align = 'center') => {
   return `display: flex;
@@ -42,13 +47,19 @@ const colors = {
   primary_bgc: '#e8e8e8',
   secondary_bgc: '#fafafa',
   tertiary_bgc: '#f3f3f3',
-  active: '#ff7c00',
+  bgc: '#f7f7f7',
+  secondary_text: '#888888',
+  btn: '#ff7c00',
+  border: '#dbdbdb',
+  secondary_btn: '#999999',
   black: '#252525',
+  white: '#fff',
 };
 
 const theme = {
   colors,
-  calcRem,
+  calcVw,
+  calcVwL,
   flexSet,
   flexColumnSet,
   posCenterX,
