@@ -1,13 +1,24 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { ReactComponent as Arrow } from '../../assets/arrow.svg';
 import Button from '../../components/Button';
 import styled from 'styled-components/macro';
 
 function Mypage() {
+  const history = useHistory();
+
+  const goToMain = () => {
+    history.push('/');
+  };
+
   return (
     <Container>
-      <ExitArrow width="2.400vw" height="4.800vw" stroke="black" />
+      <ExitArrow
+        width="2.400vw"
+        height="4.800vw"
+        stroke="black"
+        onClick={goToMain}
+      />
       <Box>
         <Title>내 정보</Title>
         <LogoutBtn color="secondary_btn" outline>
