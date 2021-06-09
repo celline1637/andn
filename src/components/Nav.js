@@ -43,7 +43,8 @@ function Nav() {
 
 const Container = styled.nav`
   ${({ theme }) => theme.flexSet('space-between')};
-  padding: ${({ theme }) => theme.calcVw(34)} ${({ theme }) => theme.calcVw(42)};
+  padding: ${({ theme }) => theme.calcVw(750, 34)}
+    ${({ theme }) => theme.calcVw(750, 42)};
   position: relative;
   ${({ theme }) => theme.desktop`
     padding: ${({ theme }) => theme.calcVwL(20)} 0;
@@ -52,7 +53,7 @@ const Container = styled.nav`
 
 const Logo = styled.img`
   ${({ theme }) => theme.posCenter()};
-  height: ${({ theme }) => theme.calcVw(44)};
+  height: ${({ theme }) => theme.calcVw(750, 44)};
   ${({ theme }) => theme.desktop`
     ${({ theme }) => theme.posCenterY()};
       left: ${({ theme }) => theme.calcVwL(435)};

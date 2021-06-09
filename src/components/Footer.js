@@ -15,11 +15,12 @@ function Footer() {
 }
 
 const Wrapper = styled.div`
-  padding: ${({ theme }) => theme.calcVw(47)} ${({ theme }) => theme.calcVw(21)};
+  padding: ${({ theme }) => theme.calcVw(750, 750, 47)}
+    ${({ theme }) => theme.calcVw(750, 21)};
   background-color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.calcVw(10)};
-  line-height: ${({ theme }) => theme.calcVw(18)};
-  letter-spacing: ${({ theme }) => theme.calcVw(-0.5)};
+  font-size: ${({ theme }) => theme.calcVw(750, 10)};
+  line-height: ${({ theme }) => theme.calcVw(750, 18)};
+  letter-spacing: ${({ theme }) => theme.calcVw(750, -0.5)};
   font-weight: 200;
   color: white;
 
@@ -31,9 +32,9 @@ const Wrapper = styled.div`
 `;
 
 const Logo = styled.img`
-  width: ${({ theme }) => theme.calcVw(57.9)};
-  height: ${({ theme }) => theme.calcVw(17.7)};
-  margin-bottom: ${({ theme }) => theme.calcVw(14.8)};
+  width: ${({ theme }) => theme.calcVw(750, 57.9)};
+  height: ${({ theme }) => theme.calcVw(750, 17.7)};
+  margin-bottom: ${({ theme }) => theme.calcVw(750, 14.8)};
 `;
 
 export default Footer;
