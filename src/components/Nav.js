@@ -33,6 +33,7 @@ function Nav() {
               stroke={isHover ? '#ff7c00' : 'black'}
               onMouseEnter={handleColor}
               onMouseLeave={handleColor}
+              onMouseUp={handleColor}
             />
           </Link>
         </LinkGroup>
