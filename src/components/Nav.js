@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { Link, useHistory, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ReactComponent as Profile } from '../assets/826.svg';
 import { ReactComponent as Menu } from '../assets/828.svg';
 import styled from 'styled-components/macro';
 
 function Nav() {
-  const [isClicked, setIsClicked] = useState(false);
-  const history = useHistory();
+  const [isHover, setIsHover] = useState(false);
   const location = useLocation();
 
-  const goToMypage = () => {
-    setIsClicked(true);
-    history.push('/mypage');
+  const handleColor = () => {
+    setIsHover(preveState => !preveState);
   };
 
   const isMypage = location.pathname.includes('mypage');
@@ -26,14 +24,15 @@ function Nav() {
         <LinkGroup>
           <Link>브랜드 모집</Link>
           <Link>호스트 지원</Link>
-          <Link>
+          <Link to="/mypage">
             <span>로그인</span>
             <Profile
               className="profile"
               width="4.467vw"
               height="5.333vw"
-              stroke={isClicked ? '#ff7c00' : 'black'}
-              onClick={goToMypage}
+              stroke={isHover ? '#ff7c00' : 'black'}
+              onMouseEnter={handleColor}
+              onMouseLeave={handleColor}
             />
           </Link>
         </LinkGroup>
@@ -101,5 +100,11 @@ const LinkGroup = styled.div`
     }
   }
 `;
+
+// const StyledProfile = styled(Profile)`
+//   &:hover {
+
+//   }
+// `;
 
 export default Nav;
