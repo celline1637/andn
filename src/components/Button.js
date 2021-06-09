@@ -5,7 +5,6 @@ import { darken } from 'polished';
 function Button({
   children,
   color = 'white',
-  size = 'medium',
   fontWeight = '400',
   fullWidth,
   outline,
@@ -14,7 +13,6 @@ function Button({
   return (
     <StyledButton
       color={color}
-      size={size}
       outline={outline}
       fullWidth={fullWidth}
       fontWeight={fontWeight}
@@ -61,28 +59,6 @@ const fontWeightStyles = css`
   }}
 `;
 
-const sizes = {
-  large: {
-    height: '3rem',
-    fontSize: '1.25rem',
-  },
-  medium: {
-    height: '2.25rem',
-    fontSize: '1rem',
-  },
-  small: {
-    height: '1.75rem',
-    fontSize: '0.875rem',
-  },
-};
-
-const sizeStyles = css`
-  ${({ size }) => css`
-    height: ${sizes[size].height};
-    font-size: ${sizes[size].fontSize};
-  `}
-`;
-
 const fullWidthStyle = css`
   ${props =>
     props.fullWidth &&
@@ -98,14 +74,8 @@ const StyledButton = styled.button`
   border: 1px solid rgb(230, 230, 230);
   border-radius: 4px;
   color: black;
-  cursor: url('/images/spoon.png') 20 20, auto;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  margin-bottom: 0.6rem;
 
   ${fontWeightStyles}
-
-  ${sizeStyles}
 
   ${colorStyles}
 
