@@ -26,7 +26,7 @@ function Mypage() {
         </LogoutBtn>
       </Box>
       <Box>
-        <Link to="/">
+        <Link to="/mypage_campaign">
           <Text>참여한 캠페인</Text>
           <StyledArrow width="1.6vw" height="3.2vw" stroke="#dbdbdb" />
         </Link>
@@ -45,12 +45,13 @@ const Container = styled.div`
   width: 100vw;
   height: 100vh;
   position: relative;
-  padding-top: ${({ theme }) => theme.calcVw(115.362)};
+  padding-top: ${({ theme }) => theme.calcVw(750, 115.362)};
 `;
 
 const Box = styled.div`
   ${({ theme }) => theme.flexSet('space-between')};
-  padding: ${({ theme }) => theme.calcVw(30)} ${({ theme }) => theme.calcVw(42)};
+  padding: ${({ theme }) => theme.calcVw(750, 30)}
+    ${({ theme }) => theme.calcVw(750, 42)};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 
   & > a {
@@ -61,14 +62,14 @@ const Box = styled.div`
 `;
 
 const Text = styled.span`
-  font-size: ${({ theme }) => theme.calcVw(32)};
-  line-height: ${({ theme }) => theme.calcVw(40)};
-  letter-spacing: ${({ theme }) => theme.calcVw(-1.6)};
+  font-size: ${({ theme }) => theme.calcVw(750, 32)};
+  line-height: ${({ theme }) => theme.calcVw(750, 40)};
+  letter-spacing: ${({ theme }) => theme.calcVw(750, -1.6)};
 `;
 const ExitArrow = styled(Arrow)`
   position: absolute;
-  top: ${({ theme }) => theme.calcVw(32.7)};
-  left: ${({ theme }) => theme.calcVw(43.5)};
+  top: ${({ theme }) => theme.calcVw(750, 32.7)};
+  left: ${({ theme }) => theme.calcVw(750, 43.5)};
 `;
 
 const StyledArrow = styled(Arrow)`
@@ -76,14 +77,20 @@ const StyledArrow = styled(Arrow)`
 `;
 
 const Title = styled.h1`
-  font-size: ${({ theme }) => theme.calcVw(48)};
-  line-height: ${({ theme }) => theme.calcVw(63)};
-  letter-spacing: ${({ theme }) => theme.calcVw(-1.2)};
+  font-size: ${({ theme }) => theme.calcVw(750, 48)};
+  line-height: ${({ theme }) => theme.calcVw(750, 63)};
+  letter-spacing: ${({ theme }) => theme.calcVw(750, -1.2)};
   font-weight: 700;
 `;
 
 const LogoutBtn = styled(Button)`
-  border-radius: ${({ theme }) => theme.calcVw(24)};
+  height: auto;
+  padding: ${({ theme }) => theme.calcVw(750, 10)}
+    ${({ theme }) => theme.calcVw(750, 25)};
+  border-radius: ${({ theme }) => theme.calcVw(750, 24)};
   margin: 0;
+  font-size: ${({ theme }) => theme.calcVw(750, 20)};
+  line-height: ${({ theme }) => theme.calcVw(750, 29)};
+  letter-spacing: ${({ theme }) => theme.calcVw(750, -1)};
 `;
 export default Mypage;
