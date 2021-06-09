@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-import Header from './components/Header';
-import { API } from '../../config';
 import { useParams } from 'react-router-dom';
+import Header from './components/Header';
 import DetailCard from './components/DetailCard';
 import CardInfo from './components/CardInfo';
+// 서버 연결 시 config 사용
+// import { API } from '../../config';
 
 function More() {
   const [detail, setDetail] = useState();
   const params = useParams();
 
+  // 동적 라우팅 시 params 사용
   // ${API}/${params.id}
   const getMyCamp = () => {
     fetch(`/data/detailData.json`, {
@@ -20,7 +22,6 @@ function More() {
 
   useEffect(() => {
     getMyCamp();
-    console.log(detail);
   }, []);
 
   return (

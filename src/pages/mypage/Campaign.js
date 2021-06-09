@@ -1,24 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import ProductCard from './components/ProductCard';
-import { API } from '../../config';
+// 서버와 연결 시 config 사용
+// import { API } from '../../config';
 import styled from 'styled-components';
 
 function Campaign() {
   const [myCampList, setMyCampList] = useState();
 
-  useEffect(() => {
-    getMyCampList();
-  }, []);
-
   const getMyCampList = () => {
-    //${API.PROJECT}?myCamp
     fetch(`/data/campaignData.json`, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
       .then(myCampData => setMyCampList(myCampData.campaign));
   };
+
+  useEffect(() => {
+    getMyCampList();
+  }, []);
+
   return (
     <>
       <Header text="참여한 캠페인" />

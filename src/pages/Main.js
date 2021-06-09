@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
-import styled from 'styled-components';
 import Button from '../components/Button';
 import Input from '../components/Input';
 import { API } from '../config';
+import styled from 'styled-components/macro';
 
 function Main() {
   const history = useHistory();

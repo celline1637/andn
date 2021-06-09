@@ -1,6 +1,6 @@
 import React from 'react';
-import styled, { css } from 'styled-components';
 import { darken } from 'polished';
+import styled, { css } from 'styled-components';
 
 function Button({
   children,

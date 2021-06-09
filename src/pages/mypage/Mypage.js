@@ -11,6 +11,12 @@ function Mypage() {
     history.push('/');
   };
 
+  const handleLogout = () => {
+    alert('로그아웃 되었습니다.');
+    localStorage.clear();
+    history.push('/');
+  };
+
   return (
     <Container>
       <ExitArrow
@@ -21,7 +27,7 @@ function Mypage() {
       />
       <Box>
         <Title>내 정보</Title>
-        <LogoutBtn color="secondary_btn" outline>
+        <LogoutBtn color="secondary_btn" outline onClick={handleLogout}>
           로그아웃
         </LogoutBtn>
       </Box>

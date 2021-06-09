@@ -1,7 +1,7 @@
 import React from 'react';
 import { ReactComponent as Arrow } from '../../../assets/arrow.svg';
-import styled from 'styled-components';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import styled from 'styled-components/macro';
 
 function Header({ text }) {
   const history = useHistory();

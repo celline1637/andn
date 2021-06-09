@@ -17,8 +17,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-      font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     background-color: white;
   }
 
