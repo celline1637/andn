@@ -8,7 +8,7 @@ import styled from 'styled-components/macro';
 function Main() {
   const history = useHistory();
   const [inputs, setInputs] = useState({
-    username: '',
+    email: '',
     password: '',
   });
 
@@ -22,12 +22,12 @@ function Main() {
 
   const handelLogin = e => {
     e.preventDefault();
-    const { username, password } = inputs;
+    const { email, password } = inputs;
     if (isValid) {
       fetch(`${API.SIGNIN}`, {
         method: 'POST',
         body: JSON.stringify({
-          username,
+          email,
           password,
         }),
       })
@@ -36,10 +36,11 @@ function Main() {
           if (res.status === 'SUCCESS') {
             alert('로그인 되었습니다.');
             localStorage.setItem('token', res.data.token);
+            localStorage.setItem('refresh', res.data.refresh);
             history.push('/');
-          } else if (res.status === 'INVALID_USER_ERROR') {
+          } else if (res.status === 'INVALID_USER') {
             alert('가입되지 않은 유저입니다.');
-          } else if (res.status === 'UNAUTHORIZATION_ERROR') {
+          } else if (res.status === 'UNAUTHORIZATION') {
             alert('비밀번호가 일치하지 않습니다.');
           }
         });
@@ -48,13 +49,13 @@ function Main() {
     }
   };
 
-  const { username, password } = inputs;
-  const isValid = username.includes('@', '.') && password.length >= 8;
+  const { email, password } = inputs;
+  const isValid = 'dks';
   return (
     <Container>
       <Input
-        value={username}
-        name="username"
+        value={email}
+        name="email"
         onChange={handleInput}
         type="text"
         autocapitalize="off"
