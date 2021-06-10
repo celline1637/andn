@@ -36,7 +36,6 @@ function Main() {
           if (res.status === 'SUCCESS') {
             alert('로그인 되었습니다.');
             localStorage.setItem('token', res.data.token);
-            localStorage.setItem('refresh', res.data.refresh);
             history.push('/');
           } else if (res.status === 'INVALID_USER') {
             alert('가입되지 않은 유저입니다.');
