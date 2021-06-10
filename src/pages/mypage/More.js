@@ -9,7 +9,6 @@ import CardInfo from './components/CardInfo';
 function More() {
   const [detail, setDetail] = useState();
   const params = useParams();
-  console.log(params);
 
   // 동적 라우팅 시 params 사용
   // ${API}/${params.id}
