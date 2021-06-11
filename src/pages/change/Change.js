@@ -2,8 +2,15 @@ import React from 'react';
 import Header from '../../components/Header';
 import styled from 'styled-components/macro';
 import Button from '../../components/Button';
+import { useHistory } from 'react-router';
 
 function Change() {
+  const history = useHistory();
+
+  const goToChangePage = () => {
+    history.push('/mypage_change_password');
+  };
+
   return (
     <>
       <Header text="내 정보 수정" />
@@ -14,7 +21,7 @@ function Change() {
         </Box>
         <Box>
           <Title>비밀번호</Title>
-          <ChangeBtn color="secondary_btn" outline>
+          <ChangeBtn onClick={goToChangePage} color="secondary_btn" outline>
             변경
           </ChangeBtn>
         </Box>
