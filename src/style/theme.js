@@ -53,6 +53,7 @@ const colors = {
   btn: '#ff7c00',
   border: '#dbdbdb',
   secondary_btn: '#999999',
+  complete_btn: '#aaaaaa',
   black: '#252525',
   white: '#fff',
   red: '#F52D1E',

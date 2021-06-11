@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
+// import { API } from '../../../config';
 import { ReactComponent as Warning } from '../../assets/warning.svg';
 
 function Password(params) {
@@ -10,6 +11,8 @@ function Password(params) {
     password: '',
     secondaryPassword: '',
   });
+
+  const [isComplete, setIsComplete] = useState(false);
 
   const handleInputs = e => {
     const { name, value } = e.target;
@@ -28,11 +31,26 @@ function Password(params) {
     }
   };
 
+  const changePassword = () => {
+    if (isEqual && isValid) {
+      fetch(``, {
+        method: 'POST',
+        body: JSON.stringify({
+          password,
+        }),
+      })
+        .then(res => res.json())
+        .then(res => {
+          if (res.status === 'SUCCESS') {
+            setIsComplete(true);
+          }
+        });
+    }
+  };
+
   const { password, secondaryPassword } = inputs;
   const isValid = checkValidation();
   const isEqual = password === secondaryPassword;
-
-  console.log(isValid);
 
   return (
     <>
@@ -45,6 +63,7 @@ function Password(params) {
           type="password"
           label="비밀번호"
           placeholder="비밀번호를 입력해주세요."
+          disabled={isComplete}
         />
         <Condition>
           <Warning fill={isValid ? '#ff7c00' : '#F52D1E'} />
@@ -57,6 +76,7 @@ function Password(params) {
           type="password"
           label="비밀번호 확인"
           placeholder="비밀번호를 확인해 주세요."
+          disabled={isComplete}
         />
         {!isEqual && (
           <Condition>
@@ -66,9 +86,20 @@ function Password(params) {
             </Equality>
           </Condition>
         )}
-        <StyledButton color="btn" fullWidth>
-          수정
-        </StyledButton>
+        {!isComplete ? (
+          <ChangeBtn
+            disabled={isEqual && isValid}
+            onClick={changePassword}
+            color="btn"
+            fullWidth
+          >
+            수정
+          </ChangeBtn>
+        ) : (
+          <CompleteBtn disabled color="complete_btn" outline fullWidth>
+            수정 완료
+          </CompleteBtn>
+        )}
       </Wrapper>
     </>
   );
@@ -99,7 +130,18 @@ const Equality = styled(Validation)`
   color: ${({ isEqual }) => !isEqual && '#F52D1E'};
 `;
 
-const StyledButton = styled(Button)`
+const CompleteBtn = styled(Button)`
+  margin-top: ${({ theme }) => theme.calcVw(750, 69.6)};
+  padding: ${({ theme }) => theme.calcVw(750, 10)}
+    ${({ theme }) => theme.calcVw(750, 25)};
+  font-size: ${({ theme }) => theme.calcVw(750, 31)};
+  font-weight: 500;
+  line-height: ${({ theme }) => theme.calcVw(750, 56)};
+  letter-spacing: ${({ theme }) => theme.calcVw(750, -0.78)};
+  border-radius: 0;
+`;
+
+const ChangeBtn = styled(CompleteBtn)`
   margin-top: ${({ theme }) => theme.calcVw(750, 69.6)};
   padding: ${({ theme }) => theme.calcVw(750, 10)}
     ${({ theme }) => theme.calcVw(750, 25)};
