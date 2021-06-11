@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import styled from 'styled-components';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
+// 서버와 연결시 config 사용
 // import { API } from '../../../config';
 import { ReactComponent as Warning } from '../../assets/warning.svg';
+import styled from 'styled-components';
 
 function Password(params) {
   const [inputs, setInputs] = useState({

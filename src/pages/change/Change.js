@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from '../../components/Header';
-import styled from 'styled-components/macro';
 import Button from '../../components/Button';
 import { useHistory } from 'react-router';
+import styled from 'styled-components/macro';
 
 function Change() {
   const history = useHistory();
