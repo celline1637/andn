@@ -17,7 +17,7 @@ function Nav() {
   return (
     !isMypage && (
       <Container>
-        <Logo alt="logo" src="/images/829.svg" />
+        <Logo alt="logo" src="/images/831.svg" />
         <MenuBtn type="button">
           <Menu width="5.600vw" height="4.267vw" />
         </MenuBtn>
