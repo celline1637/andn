@@ -1,25 +1,14 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import styled from 'styled-components/macro';
 import CardInfo from './CardInfo';
 
-function DetailCard({ title, detail, subtitle }) {
-  const makeList = () => {
-    const info = Object.values(detail);
-    let infoGroup = {};
-    for (let i = 0; i < subtitle.length; i++) {
-      infoGroup[subtitle[i]] = info[i];
-    }
-    const result = Object.entries(infoGroup);
-    return result;
-  };
-
-  const list = makeList();
-
+function DetailCard({ info, subtitle }) {
+  let infoList = Object.values(info.detail);
   return (
     <Container>
-      <Title>{title}</Title>
-      {list.map(item => (
-        <CardInfo title={item[0]} cont={item[1]} />
+      <Title>{info.title}</Title>
+      {subtitle.map((item, i) => (
+        <CardInfo title={item} cont={infoList[i]} />
       ))}
     </Container>
   );

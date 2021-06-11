@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+// 동적 라우팅 시 params 사용
+// import { useParams } from 'react-router-dom';
 import Header from './components/Header';
 import DetailCard from './components/DetailCard';
 // 서버 연결 시 config 사용
@@ -26,12 +27,8 @@ function More() {
   return (
     <>
       <Header text="캠페인 자세히보기" />
-      {detail?.more.map((item, index) => (
-        <DetailCard
-          info={item}
-          subtitle={SUBTITLE[index]}
-          detail={item.detail}
-        />
+      {detail?.more.map((item, i) => (
+        <DetailCard key={item.title} info={item} subtitle={SUBTITLE[i]} />
       ))}
     </>
   );
