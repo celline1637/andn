@@ -32,6 +32,8 @@ function Password(params) {
   const isValid = checkValidation();
   const isEqual = password === secondaryPassword;
 
+  console.log(isValid);
+
   return (
     <>
       <Header text="비밀번호 수정" />
@@ -44,10 +46,10 @@ function Password(params) {
           label="비밀번호"
           placeholder="비밀번호를 입력해주세요."
         />
-        <Condition1>
+        <Condition>
           <Warning fill={isValid ? '#ff7c00' : '#F52D1E'} />
-          <span>영문, 숫자 조합, 8자 ~ 32자</span>
-        </Condition1>
+          <Validation isValid={isValid}>영문, 숫자 조합, 8자 ~ 32자</Validation>
+        </Condition>
         <Input
           onChange={handleInputs}
           value={secondaryPassword}
@@ -57,10 +59,12 @@ function Password(params) {
           placeholder="비밀번호를 확인해 주세요."
         />
         {!isEqual && (
-          <Condition2>
+          <Condition>
             <Warning fill={isEqual ? '#ff7c00' : '#F52D1E'} />
-            <span>아이디/비밀번호가 일치하지 않습니다.</span>
-          </Condition2>
+            <Equality isEqual={isEqual}>
+              아이디/비밀번호가 일치하지 않습니다.
+            </Equality>
+          </Condition>
         )}
         <StyledButton color="btn" fullWidth>
           수정
@@ -75,27 +79,24 @@ const Wrapper = styled.div`
     ${({ theme }) => theme.calcVw(750, 42)};
 `;
 
-const Condition1 = styled.div`
+const Condition = styled.div`
   ${({ theme }) => theme.flexSet('flex-start')};
   padding-top: ${({ theme }) => theme.calcVw(750, 17.2)};
   margin-bottom: ${({ theme }) => theme.calcVw(750, 38.9)};
   color: ${({ theme }) => theme.colors.secondary_btn};
   font-size: ${({ theme }) => theme.calcVw(750, 22)};
   font-weight: 500;
-
-  & > span {
-    display: inline-block;
-    margin-top: ${({ theme }) => theme.calcVw(750, 6)};
-    margin-left: ${({ theme }) => theme.calcVw(750, 9)};
-    color: ${({ isValid }) => (isValid ? '#ff7c00' : '#F52D1E')};
-    text-align: center;
-  }
 `;
 
-const Condition2 = styled(Condition1)`
-  & > span {
-    color: ${({ isEqual }) => (isEqual ? '#ff7c00' : '#F52D1E')};
-  }
+const Validation = styled.span`
+  display: inline-block;
+  margin-top: ${({ theme }) => theme.calcVw(750, 6)};
+  margin-left: ${({ theme }) => theme.calcVw(750, 9)};
+  color: ${({ isValid }) => !isValid && '#F52D1E'};
+`;
+
+const Equality = styled(Validation)`
+  color: ${({ isEqual }) => !isEqual && '#F52D1E'};
 `;
 
 const StyledButton = styled(Button)`

@@ -55,6 +55,7 @@ const colors = {
   secondary_btn: '#999999',
   black: '#252525',
   white: '#fff',
+  red: '#F52D1E',
 };
 
 const theme = {
