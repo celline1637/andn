@@ -7,7 +7,7 @@ function CardInfo({
 }) {
   const validator = cont => {
     if (typeof cont === 'number') {
-      return cont.toLocaleString();
+      return `${cont.toLocaleString()}원`;
     } else {
       return cont;
     }
