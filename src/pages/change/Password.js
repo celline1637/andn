@@ -27,7 +27,11 @@ function Password(params) {
     if (password === '') {
       return 'true';
     } else {
-      return /^[a-zA-Z0-9]{8,32}$/.test(password);
+      return (
+        /^[a-zA-Z0-9]{8,32}$/.test(password) &&
+        /[a-z]/g.test(password) &&
+        /[0-9]/g.test(password)
+      );
     }
   };
 
