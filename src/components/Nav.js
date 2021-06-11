@@ -34,6 +34,8 @@ function Nav() {
               onMouseEnter={handleColor}
               onMouseLeave={handleColor}
               onMouseUp={handleColor}
+              onTouchStart={handleColor}
+              onTouchEnd={handleColor}
             />
           </Link>
         </LinkGroup>
