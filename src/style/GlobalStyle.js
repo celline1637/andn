@@ -5,10 +5,7 @@ const GlobalStyle = createGlobalStyle`
   ${reset};
   
   :root{
-    font-size:13px;
-    ${({ theme }) => theme.desktop`
-      font-size:16px;
-    `};
+    font-size:100%;
   }
 
   html{
