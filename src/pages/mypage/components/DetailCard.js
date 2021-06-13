@@ -8,7 +8,7 @@ function DetailCard({ info, subtitle }) {
     <Container>
       <Title>{info.title}</Title>
       {subtitle.map((item, i) => (
-        <CardInfo title={item} cont={infoList[i]} />
+        <CardInfo key={item} title={item} cont={infoList[i]} />
       ))}
     </Container>
   );
