@@ -39,8 +39,8 @@ const Title = styled.span`
 `;
 
 const Cont = styled.span`
-  width: ${({ theme }) => theme.calcVw(750, 434)};
-  font-size: ${({ theme }) => theme.calcVw(750, 28)};
+  width: ${({ theme }) => theme.calcVw(750, 435)};
+  font-size: 3.8vw;
   line-height: ${({ theme }) => theme.calcVw(750, 40)};
   letter-spacing: ${({ theme }) => theme.calcVw(750, -1.4)};
   font-weight: 500;

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ReactComponent as Arrow } from '../../../assets/arrow.svg';
+import { ReactComponent as Arrow } from '../assets/arrow.svg';
 import { useHistory } from 'react-router-dom';
 import styled from 'styled-components/macro';
 
