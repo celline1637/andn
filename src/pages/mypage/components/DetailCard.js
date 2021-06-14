@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from 'styled-components/macro';
 import CardInfo from './CardInfo';
+import styled from 'styled-components/macro';
 
 function DetailCard({ info, subtitle }) {
   let infoList = Object.values(info.detail);

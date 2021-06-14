@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import Header from './components/Header';
-import ProductCard from './components/ProductCard';
+import Header from '../../components/Header';
+import ProductCard from '../../components/ProductCard';
 import { API } from '../../config';
 import styled from 'styled-components';
 
@@ -15,11 +15,8 @@ function Campaign() {
       .then(myCampData => setMyCampList(myCampData.data.campaign));
   };
 
-  console.log(myCampList);
-
   useEffect(() => {
     getMyCampList();
-    console.log('fetch : list');
   }, []);
 
   return (
@@ -34,6 +31,7 @@ function Campaign() {
               url={camp.url}
               subtitle={camp.subtitle}
               title={camp.title}
+              type="user"
             />
           ))}
       </Wrapper>

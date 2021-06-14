@@ -1,10 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-function CardInfo({
-  title = '캠페인 명',
-  cont = '채식 간식 비견, 모든 댕댕이들의 행복을 위해',
-}) {
+function CardInfo({ title, cont }) {
   const validator = cont => {
     if (typeof cont === 'number') {
       return `${cont.toLocaleString()}원`;
@@ -19,6 +16,7 @@ function CardInfo({
       return cont;
     }
   };
+
   return (
     <Container>
       <Title>{title}</Title>

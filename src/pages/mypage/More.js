@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Header from './components/Header';
+import Header from '../../components/Header';
 import DetailCard from './components/DetailCard';
 import { API } from '../../config';
 
@@ -18,10 +18,7 @@ function More() {
 
   useEffect(() => {
     getMyCamp();
-    console.log('fetch : detail', detail);
   }, []);
-
-  console.log(detail);
 
   return (
     <>

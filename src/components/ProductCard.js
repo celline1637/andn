@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import styled from 'styled-components/macro';
 
-function ProductCard({ url, subtitle, title, id }) {
+function ProductCard({ url, subtitle, title, id, type }) {
   const history = useHistory();
 
   const goToDetail = () => {
@@ -10,7 +10,7 @@ function ProductCard({ url, subtitle, title, id }) {
   };
 
   return (
-    <Container onClick={goToDetail}>
+    <Container type={type} onClick={goToDetail}>
       <Img alt="thumbnail" src={url[0]} srcset={(url[1], url[2])} />
       <SubTitle>{`${subtitle.brand} - ${subtitle.hostname}`}</SubTitle>
       <Title>{title}</Title>
