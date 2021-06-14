@@ -104,6 +104,9 @@ const Title = styled.div`
 
 const LoginBtn = styled(Button)`
   height: ${({ theme }) => theme.calcVw(750, 100)};
+  margin-top: ${({ theme }) => theme.calcVw(750, 17)};
+  border-radius: 0;
+  border: none;
 `;
 
 export default AdminMain;
