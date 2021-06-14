@@ -1,6 +1,7 @@
 const calcVw = (width, px) => {
   return `${(px / width) * 100}vw`;
 };
+
 const calcVwL = px => {
   return `${(px / 1920) * 100}vw`;
 };
@@ -54,6 +55,7 @@ const colors = {
   secondary_btn: '#999999',
   black: '#252525',
   white: '#fff',
+  th: '#555555',
 };
 
 const theme = {

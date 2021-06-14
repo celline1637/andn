@@ -31,10 +31,12 @@ const Container = styled.div`
 
 const Img = styled.img`
   width: 100%;
-  height: ${({ theme }) => theme.calcVw(750, 370.6)}; ;
+  height: ${({ theme }) => theme.calcVw(750, 370.6)};
+  margin-bottom: ${({ theme }) => theme.calcVw(750, 19.6)};
 `;
 
 const SubTitle = styled.div`
+  margin-bottom: ${({ theme }) => theme.calcVw(750, 12)};
   font-size: ${({ theme }) => theme.calcVw(750, 20)};
   font-weight: 500;
   letter-spacing: ${({ theme }) => theme.calcVw(750, -0.5)};
