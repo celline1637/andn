@@ -3,13 +3,6 @@ import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
-  
-  :root{
-    font-size:13px;
-    ${({ theme }) => theme.desktop`
-      font-size:16px;
-    `};
-  }
 
   html{
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
@@ -21,11 +14,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     font: inherit;
+    word-break: break-all;
   }
 
   body{
-    @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-      font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     background-color: white;
   }
 
