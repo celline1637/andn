@@ -5,8 +5,13 @@ import styled from 'styled-components/macro';
 function ProductCard({ url, subtitle, title, id, type }) {
   const history = useHistory();
 
-  const goToDetail = () => {
-    history.push(`/mypage_campaign_more/${id}`);
+  const goToDetail = e => {
+    if (type === 'admin') {
+      history.push(`/admin_order/${id}`);
+    }
+    if (type === 'user') {
+      history.push(`/mypage_campaign_more/${id}`);
+    }
   };
 
   return (
