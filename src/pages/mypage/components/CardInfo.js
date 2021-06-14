@@ -8,6 +8,14 @@ function CardInfo({
   const validator = cont => {
     if (typeof cont === 'number') {
       return `${cont.toLocaleString()}원`;
+    } else if (Array.isArray(cont)) {
+      let result = cont.map(item => (
+        <div>
+          {`${item.title} |
+          ${item.quantity}세트`}
+        </div>
+      ));
+      return result;
     } else {
       return cont;
     }

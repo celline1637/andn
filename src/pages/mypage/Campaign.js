@@ -1,23 +1,25 @@
 import React, { useEffect, useState } from 'react';
 import Header from './components/Header';
 import ProductCard from './components/ProductCard';
-// 서버와 연결 시 config 사용
-// import { API } from '../../config';
+import { API } from '../../config';
 import styled from 'styled-components';
 
 function Campaign() {
   const [myCampList, setMyCampList] = useState();
 
   const getMyCampList = () => {
-    fetch(`/data/campaignData.json`, {
+    fetch(`${API.CAMP_LIST}`, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(myCampData => setMyCampList(myCampData.campaign));
+      .then(myCampData => setMyCampList(myCampData.data.campaign));
   };
+
+  console.log(myCampList);
 
   useEffect(() => {
     getMyCampList();
+    console.log('fetch : list');
   }, []);
 
   return (

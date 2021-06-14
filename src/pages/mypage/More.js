@@ -1,28 +1,27 @@
 import React, { useEffect, useState } from 'react';
-// 동적 라우팅 시 params 사용
-// import { useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import Header from './components/Header';
 import DetailCard from './components/DetailCard';
-// 서버 연결 시 config 사용
-// import { API } from '../../config';
+import { API } from '../../config';
 
 function More() {
   const [detail, setDetail] = useState();
-  // 동적 라우팅 시 params 사용
-  // const params = useParams();
-  // ${API}/${params.id}
+  const params = useParams();
 
   const getMyCamp = () => {
-    fetch(`/data/detailData.json`, {
+    fetch(`${API.CAMP_DETAIL}/${params.id}`, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(detailData => setDetail(detailData));
+      .then(detailData => setDetail(detailData.data.campaign));
   };
 
   useEffect(() => {
     getMyCamp();
+    console.log('fetch : detail', detail);
   }, []);
+
+  console.log(detail);
 
   return (
     <>

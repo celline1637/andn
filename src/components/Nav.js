@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import { ReactComponent as Profile } from '../assets/826.svg';
 import { ReactComponent as Menu } from '../assets/828.svg';
 import styled from 'styled-components/macro';
 
 function Nav() {
   const location = useLocation();
+  const history = useHistory();
   const isMypage = location.pathname.includes('mypage');
+  const isLogin = localStorage.getItem('token');
+
+  const goToMypage = () => {
+    isLogin ? history.push('/mypage') : alert('로그인을 해주세요.');
+  };
 
   return (
     !isMypage && (
@@ -18,7 +24,7 @@ function Nav() {
         <LinkGroup>
           <Link>브랜드 모집</Link>
           <Link>호스트 지원</Link>
-          <Link to="/mypage">
+          <Link onClick={goToMypage}>
             <span>로그인</span>
             <Profile
               className="profile"

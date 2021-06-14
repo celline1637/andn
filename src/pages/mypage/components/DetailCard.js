@@ -4,6 +4,7 @@ import CardInfo from './CardInfo';
 
 function DetailCard({ info, subtitle }) {
   let infoList = Object.values(info.detail);
+
   return (
     <Container>
       <Title>{info.title}</Title>
