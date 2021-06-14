@@ -5,12 +5,7 @@ import { ReactComponent as Menu } from '../assets/828.svg';
 import styled from 'styled-components/macro';
 
 function Nav() {
-  const [isHover, setIsHover] = useState(false);
   const location = useLocation();
-
-  const handleColor = () => {
-    setIsHover(preveState => !preveState);
-  };
 
   const isMypage = location.pathname.includes('mypage');
 
@@ -30,12 +25,7 @@ function Nav() {
               className="profile"
               width="4.467vw"
               height="5.333vw"
-              stroke={isHover ? '#ff7c00' : 'black'}
-              onMouseEnter={handleColor}
-              onMouseLeave={handleColor}
-              onMouseUp={handleColor}
-              onTouchStart={handleColor}
-              onTouchEnd={handleColor}
+              stroke="black"
             />
           </Link>
         </LinkGroup>
@@ -78,6 +68,10 @@ const LinkGroup = styled.div`
 `};
 
   .profile {
+    &:hover {
+      stroke: ${({ theme }) => theme.colors.btn};
+    }
+
     ${({ theme }) => theme.desktop`
      display: none;
    `};
