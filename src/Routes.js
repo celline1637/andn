@@ -14,7 +14,7 @@ const Routes = () => {
         <Route exact path="/admin_main" component={AdminMain} />
         <Route exact path="/admin_login" component={AdminLogin} />
         <Route exact path="/admin_camp" component={AdminCamp} />
-        <Route exact path="/admin_order" component={AdminOrder} />
+        <Route exact path="/admin_order/:id" component={AdminOrder} />
       </Switch>
     </Router>
   );
