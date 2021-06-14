@@ -9,10 +9,9 @@ function CardInfo({
     if (typeof cont === 'number') {
       return `${cont.toLocaleString()}원`;
     } else if (Array.isArray(cont)) {
-      let result = cont.map(item => (
+      let result = cont.map(option => (
         <div>
-          {`${item.title} |
-          ${item.quantity}세트`}
+          {option.title} | {option.quantity}세트
         </div>
       ));
       return result;
