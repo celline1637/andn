@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
-// import { API } from '../../config';
+import { API } from '../../config';
 import { ReactComponent as Logo } from '../../assets/logo_circle.svg';
 import styled from 'styled-components/macro';
 
@@ -21,12 +21,11 @@ function AdminMain() {
     });
   };
 
-  //${API.SIGNIN}
   const handelLogin = e => {
     e.preventDefault();
     const { email, password } = inputs;
     if (isValid) {
-      fetch(``, {
+      fetch(`${API.SIGNIN}`, {
         method: 'POST',
         body: JSON.stringify({
           email,
@@ -38,6 +37,7 @@ function AdminMain() {
           if (res.status === 'SUCCESS') {
             alert('로그인 되었습니다.');
             localStorage.setItem('token', res.data.token);
+            //페이지 이동 여부 확인하기
             history.push('/admin_login');
           } else if (res.status === 'INVALID_USER') {
             alert('가입되지 않은 유저입니다.');
