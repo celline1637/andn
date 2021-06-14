@@ -1,8 +1,8 @@
 import React from 'react';
 import { useHistory, Link } from 'react-router-dom';
-import Button from '../../components/Button';
 import { ReactComponent as Logo } from '../../assets/logo.svg';
 import { ReactComponent as Arrow } from '../../assets/arrow.svg';
+import Button from '../../components/Button';
 import styled from 'styled-components/macro';
 
 function AdminLogin() {

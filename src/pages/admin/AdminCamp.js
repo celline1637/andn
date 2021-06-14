@@ -24,17 +24,16 @@ function AdminCamp() {
     <>
       <Header text="캠페인 관리" />
       <Wrapper>
-        {adminCampList &&
-          adminCampList.map(camp => (
-            <ProductCard
-              id={camp.id}
-              key={camp.id}
-              url={camp.url}
-              subtitle={camp.subtitle}
-              title={camp.title}
-              type="admin"
-            />
-          ))}
+        {adminCampList?.map(camp => (
+          <ProductCard
+            id={camp.id}
+            key={camp.id}
+            url={camp.url}
+            subtitle={camp.subtitle}
+            title={camp.title}
+            type="admin"
+          />
+        ))}
       </Wrapper>
     </>
   );

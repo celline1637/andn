@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
+import { ReactComponent as Logo } from '../../assets/logo_circle.svg';
 import Button from '../../components/Button';
 import Input from '../../components/Input';
 import { API } from '../../config';
-import { ReactComponent as Logo } from '../../assets/logo_circle.svg';
 import styled from 'styled-components/macro';
 
 function AdminMain() {

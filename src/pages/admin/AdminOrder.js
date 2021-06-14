@@ -1,8 +1,8 @@
 import React from 'react';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
-import styled from 'styled-components/macro';
 import Table from './Table.js/Table';
+import styled from 'styled-components/macro';
 
 function AdminOrder() {
   return (
@@ -29,8 +29,8 @@ const ScrollBox = styled.div`
 const Box = styled.div`
   ${({ theme }) => theme.flexSet('space-between')};
   padding: ${({ theme }) => theme.calcVw(750, 73)}
-    ${({ theme }) => theme.calcVw(750, 30)}
-    ${({ theme }) => theme.calcVw(750, 42)};
+    ${({ theme }) => theme.calcVw(750, 42)}
+    ${({ theme }) => theme.calcVw(750, 26.5)};
 `;
 
 const Title = styled.span`

@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 function Table() {
   const [orderData, setOrderData] = useState();
+  // 서버 연결 시, 사용
   // const params = useParams();
 
   const getOrderData = () => {
