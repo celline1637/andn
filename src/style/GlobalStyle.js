@@ -3,6 +3,10 @@ import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
   ${reset};
+  
+  :root{
+    font-size:100%;
+  }
 
   html{
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
@@ -14,7 +18,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     font: inherit;
-    word-break: break-all;
+    word-break: keep-all;
   }
 
   body{

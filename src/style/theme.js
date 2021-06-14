@@ -56,6 +56,8 @@ const colors = {
   black: '#252525',
   white: '#fff',
   th: '#555555',
+  complete_btn: '#aaaaaa',
+  red: '#F52D1E',
 };
 
 const theme = {

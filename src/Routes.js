@@ -10,6 +10,10 @@ import AdminLogin from './pages/admin/AdminLogin';
 import AdminMain from './pages/admin/AdminMain';
 import AdminOrder from './pages/admin/AdminOrder';
 // import Main from './pages/main/Main';
+// import Main from './pages/main/Main';
+// import Mypage from './pages/mypage/Mypage';
+import Change from './pages/change/Change';
+import Password from './pages/change/Password';
 
 const Routes = () => {
   return (
@@ -24,6 +28,8 @@ const Routes = () => {
         <Route exact path="/admin_login" component={AdminLogin} />
         <Route exact path="/admin_camp" component={AdminCamp} />
         <Route exact path="/admin_order/:id" component={AdminOrder} />
+        <Route exact path="/mypage_change" component={Change} />
+        <Route exact path="/mypage_change_password" component={Password} />
       </Switch>
     </Router>
   );

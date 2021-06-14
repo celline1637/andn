@@ -38,7 +38,7 @@ function Mypage() {
         </Link>
       </Box>
       <Box>
-        <Link to="/">
+        <Link to="/mypage_change">
           <Text>내 정보 수정</Text>
           <StyledArrow width="1.6vw" height="3.2vw" stroke="#dbdbdb" />
         </Link>
