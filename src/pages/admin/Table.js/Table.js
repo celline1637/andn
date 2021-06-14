@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React, { Component, useState, useEffect } from 'react';
+import ReactHTMLTableToExcel from 'react-html-table-to-excel';
 import Row from './Row';
 // import { useParams } from 'react-router';
 // import { API } from '../../../config';
