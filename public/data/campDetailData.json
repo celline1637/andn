@@ -1,0 +1,39 @@
+{
+  "result": {
+    "id": 1,
+    "title": "라지노 코스메틱, 산뜻한 일상으로 복귀",
+    "subtitle": {
+      "brand": "라지노",
+      "hostname": "헤어몬"
+    },
+    "url": [
+      "/images/thumbnail.webp",
+      "/images/832@2x.png 2x",
+      "/images/832@2x.png 3x"
+    ],
+    "summary": "라지노와 함께라면 행복합니다 하하하",
+    "option": [
+      {
+        "option_id": 1,
+        "title": "상품 옵션1",
+        "price": 1000,
+        "quantity": 0,
+        "stock": 5
+      },
+      {
+        "option_id": 2,
+        "title": "상품 옵션2",
+        "price": 2000,
+        "quantity": 0,
+        "stock": 5
+      },
+      {
+        "option_id": 3,
+        "title": "상품 옵션3",
+        "price": 3000,
+        "quantity": 0,
+        "stock": 5
+      }
+    ]
+  }
+}

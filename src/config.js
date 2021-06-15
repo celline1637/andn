@@ -1,4 +1,4 @@
-const HOST = 'http://192.168.0.57:8000';
+const HOST = 'http://3.34.245.245:8000';
 
 export const API = {
   SIGNIN: `${HOST}/users/signin`,

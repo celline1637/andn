@@ -6,11 +6,14 @@ function ProductCard({ url, subtitle, title, id, type }) {
   const history = useHistory();
 
   const goToDetail = e => {
-    if (type === 'admin') {
-      history.push(`/admin_order/${id}`);
+    if (type === 'main') {
+      history.push(`/detail/${id}`);
     }
     if (type === 'user') {
       history.push(`/mypage_campaign_more/${id}`);
+    }
+    if (type === 'admin') {
+      history.push(`/admin_order/${id}`);
     }
   };
 

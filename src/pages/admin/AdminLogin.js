@@ -17,9 +17,6 @@ function AdminLogin() {
   return (
     <>
       <Box>
-        <Logo height="5.867vw" />
-      </Box>
-      <Box>
         <Title>andn admin</Title>
         <LogoutBtn color="secondary_btn" outline onClick={handleLogout}>
           로그아웃

@@ -28,10 +28,7 @@ const Label = styled.label`
 const StyledInput = styled.input`
   width: 100%;
   height: ${({ theme }) => theme.calcVw(750, 90)};
-<<<<<<< HEAD
   margin-bottom: ${({ theme }) => theme.calcVw(750, 18)};
-=======
->>>>>>> feature/Change
   outline: none;
   border: 1px solid rgb(230, 230, 230);
   color: black;
