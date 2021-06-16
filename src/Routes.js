@@ -14,6 +14,7 @@ import AdminOrder from './pages/admin/AdminOrder';
 // import Mypage from './pages/mypage/Mypage';
 import Change from './pages/change/Change';
 import Password from './pages/change/Password';
+import Pay from './pages/main/pay/Pay';
 
 const Routes = () => {
   return (
@@ -21,6 +22,7 @@ const Routes = () => {
       <Nav />
       <Switch>
         <Route exact path="/" component={Main} />
+        <Route exact path="/pay" component={Pay} />
         <Route exact path="/mypage" component={Mypage} />
         <Route exact path="/mypage_campaign" component={Campaign} />
         <Route exact path="/mypage_campaign_more/:id" component={More} />

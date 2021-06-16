@@ -48,6 +48,7 @@ const colors = {
   primary_bgc: '#e8e8e8',
   secondary_bgc: '#fafafa',
   tertiary_bgc: '#f3f3f3',
+  payment_bgc: '#f5f5f5',
   bgc: '#f7f7f7',
   secondary_text: '#888888',
   btn: '#ff7c00',

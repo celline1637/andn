@@ -15,7 +15,7 @@ function Input({ label, ...rest }) {
 const Label = styled.label`
   margin-bottom: ${({ theme }) => theme.calcVw(750, 12)};
   font-size: ${({ theme }) => theme.calcVw(750, 24)};
-  font-weight: 700;
+  font-weight: 500;
   line-height: ${({ theme }) => theme.calcVw(750, 29)};
   letter-spacing: ${({ theme }) => theme.calcVw(750, -1.2)};
 
@@ -28,10 +28,7 @@ const Label = styled.label`
 const StyledInput = styled.input`
   width: 100%;
   height: ${({ theme }) => theme.calcVw(750, 90)};
-<<<<<<< HEAD
   margin-bottom: ${({ theme }) => theme.calcVw(750, 18)};
-=======
->>>>>>> feature/Change
   outline: none;
   border: 1px solid rgb(230, 230, 230);
   color: black;
@@ -44,7 +41,7 @@ const StyledInput = styled.input`
   letter-spacing: ${({ theme }) => theme.calcVw(750, -1.3)};
 
   &::placeholder {
-    color: ${({ theme }) => theme.colors.secondary_btn};
+    color: ${({ theme }) => theme.colors.border};
     font-size: ${({ theme }) => theme.calcVw(750, 26)};
     line-height: ${({ theme }) => theme.calcVw(750, 29)};
     letter-spacing: ${({ theme }) => theme.calcVw(750, -1.3)};

@@ -20,6 +20,7 @@ function Header({ text }) {
 const StyledHeader = styled.header`
   position: relative;
   height: ${({ theme }) => theme.calcVw(750, 95)};
+  background-color: white;
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
 `;
 

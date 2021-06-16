@@ -8,6 +8,7 @@ function Nav() {
   const location = useLocation();
   const history = useHistory();
   const isMypage = location.pathname.includes('mypage');
+  const isPaypage = location.pathname.includes('pay');
   const isLogin = localStorage.getItem('token');
 
   const goToMypage = () => {
@@ -15,7 +16,7 @@ function Nav() {
   };
 
   return (
-    !isMypage && (
+    !(isMypage || isPaypage) && (
       <Container>
         <Logo alt="logo" src="/images/831.svg" />
         <MenuBtn type="button">
