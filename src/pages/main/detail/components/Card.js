@@ -4,50 +4,19 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../../../../components/Button';
 
-function Card({ key, item, add, minus }) {
-  // const [num, setNum] = useState(0);
-  // const add = () => {
-  //   if (info.stock > num) {
-  //     setNum(num + 1);
-  //   }
-  // };
-
-  // const substract = () => {
-  //   if (num > 0) {
-  //     setNum(num - 1);
-  //   }
-  // };
-
-  // useEffect(() => {
-  //   plus(index, num);
-  //   minus(index, num);
-  //   console.log(info, index, num);
-  // }, [num]);
-
+function Card({ key, info, plus, minus, index }) {
   return (
     <Wrapper>
       <Name>
-        <p>{item.title}</p>
-        <p>{item.price}</p>
+        <p>{info.title}</p>
+        <p>{info.price}</p>
       </Name>
       <Count>
-        <Button
-          onClick={() => {
-            minus(key, item.quantity);
-          }}
-          color="black"
-          outline
-        >
+        <Button id={index} onClick={minus} color="black" outline>
           -
         </Button>
-        <div>{item.quantity}</div>
-        <Button
-          onClick={() => {
-            add(key, item.quantity);
-          }}
-          color="black"
-          outline
-        >
+        <div>{info.quantity}</div>
+        <Button id={index} onClick={plus} color="black" outline>
           +
         </Button>
       </Count>

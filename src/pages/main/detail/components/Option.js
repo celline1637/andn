@@ -5,69 +5,47 @@ import styled from 'styled-components';
 import { optionState } from './optionState';
 
 function Option({ option }) {
-  const [optionList, setOptionList] = useRecoilState(optionState);
-  const getOptionList = () => {
-    setOptionList(option);
+  const [options, setOptions] = useState(option);
+
+  const plus = e => {
+    let newOptions = [...options];
+    const { id } = e.target;
+    if (newOptions[id].stock > newOptions[id].quantity) {
+      newOptions[id].quantity += 1;
+    }
+    setOptions(newOptions);
   };
 
-  useEffect(() => {
-    getOptionList();
-  }, []);
-
-  console.log(optionList);
-
-  const add = (index, quantity) => {
-    setOptionList(
-      optionList.map((option, i) =>
-        index === i ? { ...option, quantity: quantity + 1 } : option
-      )
-    );
+  const minus = e => {
+    let newOptions = [...options];
+    const { id } = e.target;
+    if (newOptions[id].quantity > 0) {
+      newOptions[id].quantity -= 1;
+    }
+    setOptions(newOptions);
   };
 
-  const minus = (index, quantity) => {
-    setOptionList(
-      optionList.map((option, i) =>
-        index === i ? { ...option, quantity: quantity - 1 } : option
-      )
-    );
+  const calcTotal = options => {
+    const selectedPrice = options.map((el, i) => el.price * el.quantity);
+    return selectedPrice.reduce((acc, cur) => {
+      return acc + cur;
+    }, 3000);
   };
-
-  //useState사용
-  // const [total, setTotal] = useState(0);
-  // const [options, setOptions] = useState(option);
-  // const plus = (index, quantity) => {
-  //   setOptions(
-  //     options.map((option, i) =>
-  //       index === i ? { ...option, quantity: quantity + 1 } : option
-  //     )
-  //   );
-  // };
-  // const minus = (index, quantity) => {
-  //   setOptions(
-  //     options.map((option, i) =>
-  //       index === i ? { ...option, quantity: quantity - 1 } : option
-  //     )
-  //   );
-  // };
 
   return (
-    !!optionList && (
+    !!options && (
       <Wrapper>
         <div>옵션 선택하기</div>
-        {/* {option.map((item, i) => (
-        <Card
-          key={item.id}
-          quantity={item.quantity}
-          index={i}
-          info={item}
-          plus={plus}
-          minus={minus}
-        />
-      ))} */}
-        {optionList.map(item => (
-          <Card key={item.id} item={item} add={add} minus={minus} />
+        {option.map((item, i) => (
+          <Card
+            key={item.option_id}
+            index={i}
+            info={item}
+            plus={plus}
+            minus={minus}
+          />
         ))}
-        <div>총액</div>
+        <div>총{calcTotal(option)}원</div>
       </Wrapper>
     )
   );
