@@ -2,14 +2,22 @@ import React from 'react';
 import styled from 'styled-components';
 import Button from '../../../../../components/Button';
 
-function Container({ title, msg, btn, children }) {
-  console.log(btn);
+function Container({ getInfo, title, msg, btn, children }) {
+  console.log(getInfo);
   return (
     <Wrapper>
       <Header>
         <Inner>
           <Title>{title}</Title>
-          <GetBtn btn={btn} outline color="btn">
+          <GetBtn
+            onClick={() => {
+              console.log('안녕');
+            }}
+            type="button"
+            btn={btn}
+            outline
+            color="btn"
+          >
             위와 동일하게 채우기
           </GetBtn>
         </Inner>

@@ -26,7 +26,7 @@ function Pay() {
   );
 }
 
-const Wrapper = styled.form`
+const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.payment_bgc}; ;
 `;
 

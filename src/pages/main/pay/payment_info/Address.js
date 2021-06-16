@@ -4,9 +4,12 @@ import styled from 'styled-components';
 import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
 import Container from '../components/Container';
-import { useRecoilValue } from 'recoil';
+// import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
+import { ordererState } from './ordererState';
 
 function Address(params) {
+  const [inputs, setInputs] = useRecoilState(ordererState);
   const [zipcode, setZipcode] = useState(''); // 주소
   const [addressDetail, setAddressDetail] = useState(''); // 상세주소
 
@@ -37,10 +40,41 @@ function Address(params) {
     setIsOpenPost(false);
   };
 
+  const handleInput = e => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const getInfo = e => {
+    e.preventDefault();
+    setInputs({
+      ...inputs,
+      recipient: inputs.orderer,
+      recipient_contact: inputs.orderer_contact,
+    });
+  };
+
   return (
-    <Container title="배송지" msg btn>
-      <Input label="이름" />
-      <Input label="휴대전화" placeholder="01012345678 숫자만 입력해주세요" />
+    <Container getInfo={getInfo} title="배송지" msg btn>
+      <Button onClick={getInfo} color="black">
+        안녕
+      </Button>
+      <Input
+        value={inputs.recipient}
+        onChange={handleInput}
+        name="recipient"
+        label="이름"
+      />
+      <Input
+        value={inputs.recipient_contact}
+        onChange={handleInput}
+        name="recipient_contact"
+        label="휴대전화"
+        placeholder="01012345678 숫자만 입력해주세요"
+      />
       <Wrapper>
         <Button onClick={onChangeOpenPost} color="btn" outline>
           주소찾기
