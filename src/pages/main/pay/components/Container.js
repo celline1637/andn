@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import Button from '../../../../components/Button';
 
 function Container({ title, msg, btn, children }) {
-  console.log(btn);
   return (
     <Wrapper>
       <Header>
