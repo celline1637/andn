@@ -33,7 +33,7 @@ function Option({ option }) {
   };
 
   const setInfo = () => {
-    localStorage.setItem('optionData', options);
+    localStorage.setItem('optionData', JSON.stringify(options));
   };
 
   const showBtn = () => {
