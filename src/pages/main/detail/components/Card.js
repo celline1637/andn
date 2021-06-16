@@ -4,7 +4,11 @@ import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../../../../components/Button';
 
-function Card({ key, info, plus, minus, index }) {
+function Card({ key, info, plus, minus, index, showBtn }) {
+  useEffect(() => {
+    showBtn();
+  }, [info.quantity]);
+
   return (
     <Wrapper>
       <Name>

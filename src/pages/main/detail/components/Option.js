@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
-import { useRecoilState, useSetRecoilState } from 'recoil';
+import React, { useState } from 'react';
 import Card from './Card';
 import styled from 'styled-components';
-import { optionState } from './optionState';
+import Button from '../../../../components/Button';
 
 function Option({ option }) {
   const [options, setOptions] = useState(option);
+  const [isShow, setIsShow] = useState(false);
 
   const plus = e => {
     let newOptions = [...options];
@@ -32,6 +32,15 @@ function Option({ option }) {
     }, 3000);
   };
 
+  const setInfo = () => {
+    localStorage.setItem('optionData', options);
+  };
+
+  const showBtn = () => {
+    setIsShow(true);
+    console.log(isShow);
+  };
+
   return (
     !!options && (
       <Wrapper>
@@ -43,9 +52,13 @@ function Option({ option }) {
             info={item}
             plus={plus}
             minus={minus}
+            showBtn={showBtn}
           />
         ))}
         <div>총{calcTotal(option)}원</div>
+        <SelectBtn isShow={isShow} onClick={setInfo} color="btn" fullWidth>
+          선물 선택
+        </SelectBtn>
       </Wrapper>
     )
   );
@@ -57,6 +70,17 @@ const Wrapper = styled.div`
   ${({ theme }) => theme.tablet`
   width: 32%;
   `};
+`;
+
+const SelectBtn = styled(Button)`
+  padding: ${({ theme }) => theme.calcVw(750, 15)};
+  margin: ${({ theme }) => theme.calcVw(750, 10)} 0;
+  width: 98%;
+  transition: transform 0.1s ease-in 0s;
+  bottom: 4px;
+  transform: translateY(0px);
+  /* transform: ${({ isShow }) =>
+    isShow ? 'translateY(0px)' : 'translateY(68px)'}; */
 `;
 
 export default Option;
