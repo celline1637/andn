@@ -1,21 +1,53 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+// import { useRecoilState, useSetRecoilState } from 'recoil';
+// import { countState } from './count';
 import styled from 'styled-components';
 import Button from '../../../../components/Button';
 
-function Card({ key, info }) {
-  console.log(info);
+function Card({ key, item, add, minus }) {
+  // const [num, setNum] = useState(0);
+  // const add = () => {
+  //   if (info.stock > num) {
+  //     setNum(num + 1);
+  //   }
+  // };
+
+  // const substract = () => {
+  //   if (num > 0) {
+  //     setNum(num - 1);
+  //   }
+  // };
+
+  // useEffect(() => {
+  //   plus(index, num);
+  //   minus(index, num);
+  //   console.log(info, index, num);
+  // }, [num]);
+
   return (
     <Wrapper>
       <Name>
-        {/* <p>{info.title}</p> */}
-        <p>{info.price}</p>
+        <p>{item.title}</p>
+        <p>{item.price}</p>
       </Name>
       <Count>
-        <Button color="black" outline>
+        <Button
+          onClick={() => {
+            minus(key, item.quantity);
+          }}
+          color="black"
+          outline
+        >
           -
         </Button>
-        <div>{info.quantity}</div>
-        <Button color="black" outline>
+        <div>{item.quantity}</div>
+        <Button
+          onClick={() => {
+            add(key, item.quantity);
+          }}
+          color="black"
+          outline
+        >
           +
         </Button>
       </Count>
@@ -24,10 +56,9 @@ function Card({ key, info }) {
 }
 
 const Wrapper = styled.div`
-  ${({ theme }) => theme.flexSet()};
+  ${({ theme }) => theme.flexSet('space-between')};
   margin: ${({ theme }) => theme.calcVw(750, 10)} 0;
   padding: 1rem;
-  background-color: lightblue;
 `;
 
 const Name = styled.div``;

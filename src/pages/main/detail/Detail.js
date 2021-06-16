@@ -63,11 +63,9 @@ const Container = styled.div`
 
 const Desc = styled.div`
   width: 100%;
-  /* height: 400px; */
   padding: 0 ${({ theme }) => theme.calcVw(750, 10)};
   ${({ theme }) => theme.tablet`
     width: 68%;
-    background-color: gray;
   `};
 `;
 
