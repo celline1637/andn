@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
-import Button from '../components/Button';
-import Input from '../components/Input';
-import { API } from '../config';
+import { Link, useHistory } from 'react-router-dom';
+// import { ReactComponent as Arrow } from '../../assets/arrow.svg';
+import Button from '../../components/Button';
 import styled from 'styled-components/macro';
+import Container from './components/Container';
+import Input from '../../components/Input';
+import { API } from '../../config';
 
-function Main() {
+function Login() {
   const history = useHistory();
   const [inputs, setInputs] = useState({
     email: '',
@@ -49,7 +51,8 @@ function Main() {
   };
 
   const { email, password } = inputs;
-  const isValid = 'dks';
+  const isValid = email.includes('@', '.') && password.length >= 8;
+
   return (
     <Container>
       <Input
@@ -77,14 +80,14 @@ function Main() {
       >
         로그인
       </LoginBtn>
+      <Link to="/admin_main">호스트로 로그인하기</Link>
     </Container>
   );
 }
 
-const Container = styled.form``;
-
 const LoginBtn = styled(Button)`
   height: ${({ theme }) => theme.calcVw(750, 100)};
+  margin-bottom: ${({ theme }) => theme.calcVw(750, 30)};
 `;
 
-export default Main;
+export default Login;

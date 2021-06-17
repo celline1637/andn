@@ -10,31 +10,47 @@ function Nav() {
   const isMypage = location.pathname.includes('mypage');
   const isPaypage = location.pathname.includes('pay');
   const isLogin = localStorage.getItem('token');
+  const isAdminpage = location.pathname.includes('admin');
+  const isLoginpage = location.pathname.includes('login');
 
-  const goToMypage = () => {
-    isLogin ? history.push('/mypage') : alert('로그인을 해주세요.');
+  // old version :  로그인 한 경우에만 마이페이지 접근
+  // const isLogin = localStorage.getItem('token');
+  // const goToMypage = () => {
+  //   isLogin ? history.push('/mypage') : alert('로그인을 해주세요.');
+  // };
+
+  const goToMain = () => {
+    history.push('/');
+  };
+
+  const goToMypageOrLogin = () => {
+    isLogin ? history.push('/mypage') : history.push('/login');
   };
 
   return (
     !(isMypage || isPaypage) && (
       <Container>
-        <Logo alt="logo" src="/images/831.svg" />
-        <MenuBtn type="button">
-          <Menu width="5.600vw" height="4.267vw" />
-        </MenuBtn>
-        <LinkGroup>
-          <Link>브랜드 모집</Link>
-          <Link>호스트 지원</Link>
-          <Link onClick={goToMypage}>
-            <span>로그인</span>
-            <Profile
-              className="profile"
-              width="4.467vw"
-              height="5.333vw"
-              stroke="black"
-            />
-          </Link>
-        </LinkGroup>
+        <Logo alt="logo" src="/images/831.svg" onClick={goToMain} />
+        {!isLoginpage && (
+          <>
+            <MenuBtn type="button">
+              <Menu width="5.600vw" height="4.267vw" />
+            </MenuBtn>
+            <LinkGroup>
+              <Link>브랜드 모집</Link>
+              <Link>호스트 지원</Link>
+              <Link onClick={goToMypageOrLogin}>
+                <span>로그인</span>
+                <Profile
+                  className="profile"
+                  width="4.467vw"
+                  height="5.333vw"
+                  stroke={isLogin ? 'blue' : 'black'}
+                />
+              </Link>
+            </LinkGroup>
+          </>
+        )}
       </Container>
     )
   );
@@ -42,6 +58,7 @@ function Nav() {
 
 const Container = styled.nav`
   ${({ theme }) => theme.flexSet('space-between')};
+  height: ${({ theme }) => theme.calcVw(750, 100)};
   padding: ${({ theme }) => theme.calcVw(750, 34)}
     ${({ theme }) => theme.calcVw(750, 42)};
   position: relative;
@@ -53,6 +70,7 @@ const Container = styled.nav`
 const Logo = styled.img`
   ${({ theme }) => theme.posCenter()};
   height: ${({ theme }) => theme.calcVw(750, 44)};
+  cursor: pointer;
   ${({ theme }) => theme.desktop`
     ${({ theme }) => theme.posCenterY()};
       left: ${({ theme }) => theme.calcVwL(435)};
@@ -74,6 +92,7 @@ const LinkGroup = styled.div`
 `};
 
   .profile {
+    cursor: pointer;
     &:hover {
       stroke: ${({ theme }) => theme.colors.btn};
     }
