@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import Card from './Card';
 import styled from 'styled-components';
 import Button from '../../../../components/Button';
 
 function Option({ option }) {
+  const history = useHistory();
   const [options, setOptions] = useState(option);
   const [isShow, setIsShow] = useState(false);
 
@@ -34,6 +36,7 @@ function Option({ option }) {
 
   const setInfo = () => {
     localStorage.setItem('optionData', JSON.stringify(options));
+    history.push('/pay');
   };
 
   const showBtn = () => {

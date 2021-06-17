@@ -32,6 +32,7 @@ function Detail() {
         />
         <Desc>
           {campInfo.summary}
+          {/* dumy data */}
           <div>
             Lorem ipsum dolor sit, amet consectetur adipisicing elit.
             Necessitatibus officia ex quidem eos dicta totam odit praesentium

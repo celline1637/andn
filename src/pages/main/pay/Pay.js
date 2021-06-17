@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import Button from '../../../components/Button';
 import Header from '../../../components/Header';
 import Container from './components/Container';
@@ -11,6 +12,7 @@ import { orderState } from './payment_info/orderState';
 import styled from 'styled-components/macro';
 
 function Pay() {
+  const history = useHistory();
   const orderInfo = useRecoilValue(orderState);
 
   // 버튼 활성화 조건 추가하기 (ex. 필수값이 모두 입력되었을 때 만)
@@ -20,7 +22,12 @@ function Pay() {
       body: JSON.stringify(orderInfo),
     })
       .then(res => res.json())
-      .then(res => res.status === 'SUCCESS' && alert('참여 완료되었습니다.'))
+      .then(res => {
+        if (res.status === 'SUCCESS') {
+          alert('참여 완료되었습니다.');
+          history.push('/mypage_campaign');
+        }
+      })
       .catch(error => alert(error.message));
   };
 
