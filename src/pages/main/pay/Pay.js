@@ -1,5 +1,4 @@
 import React from 'react';
-import styled from 'styled-components';
 import Button from '../../../components/Button';
 import Header from '../../../components/Header';
 import Container from './components/Container';
@@ -9,10 +8,21 @@ import Payment from './payment_info/Payment';
 import Price from './payment_info/Price';
 import { useRecoilValue } from 'recoil';
 import { orderState } from './payment_info/orderState';
+import styled from 'styled-components/macro';
 
 function Pay() {
   const orderInfo = useRecoilValue(orderState);
-  console.log(orderInfo);
+
+  // 버튼 활성화 조건 추가하기 (ex. 필수값이 모두 입력되었을 때 만)
+  const sendOrderInfo = () => {
+    fetch(``, {
+      method: 'POST',
+      body: JSON.stringify(orderInfo),
+    })
+      .then(res => res.json())
+      .then(res => res.status === 'SUCCESS' && alert('참여 완료되었습니다.'))
+      .catch(error => alert(error.message));
+  };
 
   return (
     <Wrapper>
@@ -22,7 +32,7 @@ function Pay() {
       <Price />
       <Payment />
       <Container>
-        <PayBtn type="submit" color="btn" fullWidth>
+        <PayBtn onClick={sendOrderInfo} type="submit" color="btn" fullWidth>
           결제하기
         </PayBtn>
       </Container>
@@ -44,27 +54,3 @@ const PayBtn = styled(Button)`
 `;
 
 export default Pay;
-
-// const CONTENTS = [
-//   {
-//     title: '주문자',
-//     mgs: true,
-//     cont: [
-//       { label: '이름' },
-//       { label: '휴대전화', text: '01012345678 숫자만 입력해주세요' },
-//     ],
-//   },
-//   {
-//     title: '배송지',
-//     mgs: true,
-//     btn: true,
-//     cont: [
-//       { label: '이름' },
-//       { label: '휴대전화', text: '01012345678 숫자만 입력해주세요' },
-//       { label: '주소', text: '상세 주소 입력' },
-//       { label: '배송 시 요청 사항', text: '부재 시 문 앞에 놓아주세요' },
-//     ],
-//   },
-//   // { title: '결제금액', cont: ['총 캠페인 금액', '배송비', '최종결제 금액'] },
-//   // { title: '결제수단', cont: ['카드', '무통장 입금'] },
-// ];

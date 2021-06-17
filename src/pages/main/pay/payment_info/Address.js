@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import DaumPostcode from 'react-daum-postcode';
-import styled from 'styled-components';
 import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
 import Container from '../components/Container';
-// import { useRecoilValue } from 'recoil';
 import { useRecoilState } from 'recoil';
 import { orderState } from './orderState';
+import styled from 'styled-components/macro';
 
-function Address(params) {
+function Address() {
   const [inputs, setInputs] = useRecoilState(orderState);
+  // 하나의 state로 합치는 것이 좋을까?
   const [zipcode, setZipcode] = useState(''); // 우편번호
   const [address, setAddress] = useState(''); // 주소
   const [isOpenPost, setIsOpenPost] = useState(false);
@@ -48,6 +48,7 @@ function Address(params) {
     });
   };
 
+  //input 함수를 util에 넣어도 좋을 듯
   const handleInput = e => {
     const { name, value } = e.target;
     setInputs({
@@ -66,11 +67,7 @@ function Address(params) {
   };
 
   return (
-    <Container title="배송지" msg btn>
-      {/* 인풋값 복사 가능한 버튼 */}
-      <Button onClick={copyInfo} color="black">
-        안녕
-      </Button>
+    <Container copyInfo={copyInfo} title="배송지" msg btn>
       <Input
         value={inputs.recipient}
         onChange={handleInput}
@@ -84,18 +81,21 @@ function Address(params) {
         label="휴대전화"
         placeholder="01012345678 숫자만 입력해주세요"
       />
-      <Wrapper>
-        <Button onClick={onChangeOpenPost} color="btn" outline>
-          주소찾기
-        </Button>
-        <Input name="zipcode" value={zipcode} />
-      </Wrapper>
-      <Input name="address" value={address} />
-      <Input
-        onChange={getFullAddress}
-        name="addressDetail"
-        placeholder="상세 주소 입력"
-      />
+      <>
+        <Title>주소</Title>
+        <Wrapper>
+          <Button onClick={onChangeOpenPost} color="btn" outline>
+            주소찾기
+          </Button>
+          <Input name="zipcode" value={zipcode} />
+        </Wrapper>
+        <Input name="address" value={address} />
+        <Input
+          onChange={getFullAddress}
+          name="addressDetail"
+          placeholder="상세 주소 입력"
+        />
+      </>
       <Input
         onChange={handleInput}
         name="request"
@@ -137,6 +137,16 @@ const Wrapper = styled.div`
     line-height: ${({ theme }) => theme.calcVw(750, 44)};
     letter-spacing: ${({ theme }) => theme.calcVw(750, -1.3)};
   }
+`;
+
+const Title = styled.div`
+  margin-bottom: ${({ theme }) => theme.calcVw(750, 12)};
+  font-size: ${({ theme }) => theme.calcVw(750, 24)};
+  font-weight: 500;
+  line-height: ${({ theme }) => theme.calcVw(750, 29)};
+  letter-spacing: ${({ theme }) => theme.calcVw(750, -1.2)};
+  padding-left: ${({ theme }) => theme.calcVw(750, 6.1)};
+  margin-bottom: ${({ theme }) => theme.calcVw(750, 12)};
 `;
 
 export default Address;
