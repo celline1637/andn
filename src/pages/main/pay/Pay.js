@@ -5,18 +5,22 @@ import Header from '../../../components/Header';
 import Container from './components/Container';
 import Address from './payment_info/Address';
 import Orderer from './payment_info/Orderer';
+import Payment from './payment_info/Payment';
+import Price from './payment_info/Price';
+import { useRecoilValue } from 'recoil';
+import { orderState } from './payment_info/orderState';
 
 function Pay() {
+  const orderInfo = useRecoilValue(orderState);
+  console.log(orderInfo);
+
   return (
     <Wrapper>
       <Header text="주문 / 결제" />
       <Orderer />
       <Address />
-      <Container title="결제 금액"></Container>
-      <Container title="결제 수단">
-        <Button>카드</Button>
-        <Button>무통장 입금</Button>
-      </Container>
+      <Price />
+      <Payment />
       <Container>
         <PayBtn type="submit" color="btn" fullWidth>
           결제하기

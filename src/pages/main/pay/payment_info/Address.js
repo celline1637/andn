@@ -6,13 +6,12 @@ import Input from '../../../../components/Input';
 import Container from '../components/Container';
 // import { useRecoilValue } from 'recoil';
 import { useRecoilState } from 'recoil';
-import { ordererState } from './ordererState';
+import { orderState } from './orderState';
 
 function Address(params) {
-  const [inputs, setInputs] = useRecoilState(ordererState);
-  const [zipcode, setZipcode] = useState(''); // 주소
-  const [addressDetail, setAddressDetail] = useState(''); // 상세주소
-
+  const [inputs, setInputs] = useRecoilState(orderState);
+  const [zipcode, setZipcode] = useState(''); // 우편번호
+  const [address, setAddress] = useState(''); // 주소
   const [isOpenPost, setIsOpenPost] = useState(false);
 
   const onChangeOpenPost = e => {
@@ -36,8 +35,17 @@ function Address(params) {
     }
 
     setZipcode(data.zonecode);
-    setAddressDetail(fullAddress);
+    setAddress(fullAddress);
     setIsOpenPost(false);
+  };
+
+  const getFullAddress = e => {
+    const { value } = e.target;
+    let kakaoInputs = `${zipcode + address}`;
+    setInputs({
+      ...inputs,
+      address: `${kakaoInputs}${value}`,
+    });
   };
 
   const handleInput = e => {
@@ -48,7 +56,7 @@ function Address(params) {
     });
   };
 
-  const getInfo = e => {
+  const copyInfo = e => {
     e.preventDefault();
     setInputs({
       ...inputs,
@@ -58,8 +66,9 @@ function Address(params) {
   };
 
   return (
-    <Container getInfo={getInfo} title="배송지" msg btn>
-      <Button onClick={getInfo} color="black">
+    <Container title="배송지" msg btn>
+      {/* 인풋값 복사 가능한 버튼 */}
+      <Button onClick={copyInfo} color="black">
         안녕
       </Button>
       <Input
@@ -81,9 +90,15 @@ function Address(params) {
         </Button>
         <Input name="zipcode" value={zipcode} />
       </Wrapper>
-      <Input name="address" value={addressDetail} />
-      <Input placeholder="상세 주소 입력" />
+      <Input name="address" value={address} />
       <Input
+        onChange={getFullAddress}
+        name="addressDetail"
+        placeholder="상세 주소 입력"
+      />
+      <Input
+        onChange={handleInput}
+        name="request"
         label="배송 시 요청 사항"
         placeholder="부재 시 문 앞에 놓아주세요"
       />

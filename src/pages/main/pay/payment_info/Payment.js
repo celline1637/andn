@@ -1,25 +1,39 @@
 import React from 'react';
 import Button from '../../../../components/Button';
 import Container from './components/Container';
-import styled from 'styled-components/macro';
+import { useRecoilState } from 'recoil';
+import { orderState } from './orderState';
+import styled from 'styled-components';
+// import styled from 'styled-components/macro';
 
 function Payment(params) {
+  const [inputs, setInputs] = useRecoilState(orderState);
+
+  const setOrderData = e => {
+    e.preventDefault();
+    setInputs({ ...inputs, payment: e.target.innerText });
+  };
+
   return (
-    <Container>
-      <PayBtn type="submit" color="btn" fullWidth>
-        결제하기
-      </PayBtn>
+    <Container title="결제 수단">
+      <Wrapper>
+        <Button fullWidth color="black" onClick={setOrderData}>
+          카드
+        </Button>
+        <Button fullWidth color="black" onClick={setOrderData}>
+          무통장 입금
+        </Button>
+      </Wrapper>
     </Container>
   );
 }
 
-const PayBtn = styled(Button)`
-  padding: ${({ theme }) => theme.calcVw(750, 32)};
-  border: none;
-  border-radius: 0;
-  font-size: ${({ theme }) => theme.calcVw(750, 30)};
-  line-height: ${({ theme }) => theme.calcVw(750, 55)};
-  font-weight: 500;
+const Wrapper = styled.div`
+  ${({ theme }) => theme.flexSet()};
+
+  button {
+    padding: 1rem;
+  }
 `;
 
 export default Payment;

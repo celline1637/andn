@@ -2,10 +2,10 @@ import React from 'react';
 import Input from '../../../../components/Input';
 import Container from '../components/Container';
 import { useRecoilState } from 'recoil';
-import { ordererState } from './ordererState';
+import { orderState } from './orderState';
 
 function Orderer() {
-  const [inputs, setInputs] = useRecoilState(ordererState);
+  const [inputs, setInputs] = useRecoilState(orderState);
 
   const handleInput = e => {
     const { name, value } = e.target;

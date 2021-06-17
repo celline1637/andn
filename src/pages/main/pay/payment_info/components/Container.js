@@ -1,17 +1,31 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../../../../../components/Button';
+import { useRecoilState } from 'recoil';
+import { orderState } from '../orderState';
 
-function Container({ getInfo, title, msg, btn, children }) {
-  console.log(getInfo);
+function Container({ title, msg, btn, children }) {
+  const [inputs, setInputs] = useRecoilState(orderState);
+
+  const copyInfo = e => {
+    e.preventDefault();
+    setInputs({
+      ...inputs,
+      recipient: inputs.orderer,
+      recipient_contact: inputs.orderer_contact,
+    });
+  };
+
   return (
     <Wrapper>
       <Header>
         <Inner>
           <Title>{title}</Title>
+          {/* 실행 안 됨.. e.preventDefault도 안 먹힘 */}
           <GetBtn
-            onClick={() => {
-              console.log('안녕');
+            onClick={e => {
+              e.preventDefault();
+              copyInfo();
             }}
             type="button"
             btn={btn}
