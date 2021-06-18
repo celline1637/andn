@@ -41,7 +41,6 @@ function Option({ option }) {
 
   const showBtn = () => {
     setIsShow(true);
-    console.log(isShow);
   };
 
   return (

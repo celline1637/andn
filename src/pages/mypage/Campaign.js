@@ -7,12 +7,14 @@ import styled from 'styled-components';
 function Campaign() {
   const [myCampList, setMyCampList] = useState();
 
+  // ${API.CAMP_LIST}
   const getMyCampList = () => {
-    fetch(`${API.CAMP_LIST}`, {
+    fetch('/data/campaignData.json', {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(myCampData => setMyCampList(myCampData.data.campaign));
+      .then(myCampData => setMyCampList(myCampData.campaign));
+    //myCampData.data.campaign
   };
 
   useEffect(() => {
