@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import ProductCard from '../../components/ProductCard';
-// import { API } from '../../config';
+import { API } from '../../config';
 import styled from 'styled-components';
 
 function Campaign() {
@@ -10,7 +10,7 @@ function Campaign() {
   // ${API.CAMP_LIST}
   ///data/campaignData.json
   const getMyCampList = () => {
-    fetch(`http://192.168.0.57:8000/campaigns/userlist`, {
+    fetch(API.MYCAMP_LIST, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())

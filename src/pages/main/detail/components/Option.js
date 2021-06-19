@@ -3,39 +3,40 @@ import { useHistory } from 'react-router-dom';
 import Card from './Card';
 import styled, { css } from 'styled-components';
 import Button from '../../../../components/Button';
+import { useRecoilState } from 'recoil';
+import { orderState } from '../../pay/payment_info/orderState';
 
 function Option({ option, isOptionShow, showOption }) {
   const history = useHistory();
-  const [options, setOptions] = useState(option);
+  const [orderData, setOrderData] = useRecoilState(orderState);
   const [isShow, setIsShow] = useState(false);
 
   const plus = e => {
-    let newOptions = [...options];
+    let newOptions = [...option];
     const { id } = e.target;
     if (newOptions[id].stock > newOptions[id].quantity) {
       newOptions[id].quantity += 1;
     }
-    setOptions(newOptions);
+    setOrderData({ ...orderData, option: newOptions });
   };
 
   const minus = e => {
-    let newOptions = [...options];
+    let newOptions = [...option];
     const { id } = e.target;
     if (newOptions[id].quantity > 0) {
       newOptions[id].quantity -= 1;
     }
-    setOptions(newOptions);
+    setOrderData({ ...orderData, option: newOptions });
   };
 
-  const calcTotal = options => {
-    const selectedPrice = options.map((el, i) => el.price * el.quantity);
+  const calcTotal = option => {
+    const selectedPrice = option.map((el, i) => el.price * el.quantity);
     return selectedPrice.reduce((acc, cur) => {
       return acc + cur;
     }, 3000);
   };
 
-  const setInfo = () => {
-    localStorage.setItem('optionData', JSON.stringify(options));
+  const goToPay = () => {
     history.push('/pay');
   };
 
@@ -44,7 +45,7 @@ function Option({ option, isOptionShow, showOption }) {
   };
 
   return (
-    !!options && (
+    !!option && (
       <Wrapper isOptionShow={isOptionShow}>
         <Button onClick={showOption} fullWidth>
           <i class="fas fa-chevron-down"></i>
@@ -68,8 +69,8 @@ function Option({ option, isOptionShow, showOption }) {
             </span>
           </div>
         </Price>
-        <SelectBtn isShow={isShow} onClick={setInfo} color="btn" fullWidth>
-          선물 선택
+        <SelectBtn isShow={isShow} onClick={goToPay} color="btn" fullWidth>
+          결제하기
         </SelectBtn>
       </Wrapper>
     )

@@ -6,4 +6,5 @@ export const API = {
   ALLCAMP_DETAIL: `${HOST}/campaigns/detail`,
   MYCAMP_LIST: `${HOST}/campaigns/userlist`,
   MYCAMP_DETAIL: `${HOST}/campaigns/userdetail`,
+  PAY: `${HOST}/campaigns/pay`,
 };

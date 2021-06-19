@@ -1,6 +1,5 @@
 import { atom } from 'recoil';
 
-//state 분리할까 고민중
 export const orderState = atom({
   key: 'orderState',
   default: {
@@ -10,7 +9,7 @@ export const orderState = atom({
     recipient_contact: '',
     address: '',
     payment: '',
-    option: [],
+    option: '',
     request: '',
   },
 });
