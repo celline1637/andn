@@ -39,35 +39,35 @@ function Pay() {
         .catch(error => alert(error.message));
   };
 
-  const postForm = () => {
-    const post_form_data = new FormData();
-    // const checkAllValid = checkValid(form, Object.keys(form));
-    // if (!checkAllValid) return alert('모든 정보를 입력해주세요');
+  // const postForm = () => {
+  //   const post_form_data = new FormData();
+  //   // const checkAllValid = checkValid(form, Object.keys(form));
+  //   // if (!checkAllValid) return alert('모든 정보를 입력해주세요');
 
-    // const { project_img_data, profile_img_data } = form;
-    // post_form_data.append('info', JSON.stringify(form));
-    // post_form_data.append('project_img', project_img_data);
-    // post_form_data.append('profile_img', profile_img_data);
-    post_form_data.append('payment', orderData);
+  //   // const { project_img_data, profile_img_data } = form;
+  //   // post_form_data.append('info', JSON.stringify(form));
+  //   // post_form_data.append('project_img', project_img_data);
+  //   // post_form_data.append('profile_img', profile_img_data);
+  //   post_form_data.append('payment', orderData);
 
-    console.log(post_form_data);
+  //   console.log(post_form_data);
 
-    fetch(`http://192.168.0.57:8000/campaigns/pay`, {
-      method: 'POST',
-      headers: {
-        Authorization: localStorage.getItem('token'),
-      },
-      body: post_form_data,
-    })
-      .then(res => res.json())
-      .then(res => {
-        if (res.status === 'SUCCESS') {
-          alert('참여 완료되었습니다.');
-          history.push('/mypage_campaign');
-        }
-      })
-      .catch(err => console.log(err));
-  };
+  //   fetch(`http://192.168.0.57:8000/campaigns/pay`, {
+  //     method: 'POST',
+  //     headers: {
+  //       Authorization: localStorage.getItem('token'),
+  //     },
+  //     body: post_form_data,
+  //   })
+  //     .then(res => res.json())
+  //     .then(res => {
+  //       if (res.status === 'SUCCESS') {
+  //         alert('참여 완료되었습니다.');
+  //         history.push('/mypage_campaign');
+  //       }
+  //     })
+  //     .catch(err => console.log(err));
+  // };
 
   return (
     <Wrapper>

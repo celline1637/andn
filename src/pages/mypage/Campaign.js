@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import ProductCard from '../../components/ProductCard';
-import { API } from '../../config';
+// import { API } from '../../config';
 import styled from 'styled-components';
 
 function Campaign() {

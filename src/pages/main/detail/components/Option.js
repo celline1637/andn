@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Card from './Card';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Button from '../../../../components/Button';
 
 function Option({ option, isOptionShow }) {
