@@ -8,9 +8,10 @@ function More() {
   const [detail, setDetail] = useState();
   const params = useParams();
 
-  //${API.CAMP_DETAIL}/${params.id}
+  ///data/detailData.json
+  //${API.MYCAMP_DETAIL}/${params.id}
   const getMyCamp = () => {
-    fetch(`/data/detailData.json`, {
+    fetch(`${API.MYCAMP_DETAIL}/${params.id}`, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())

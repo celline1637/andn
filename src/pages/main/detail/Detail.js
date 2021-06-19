@@ -4,18 +4,23 @@ import styled from 'styled-components/macro';
 import Button from '../../../components/Button';
 import Option from './components/Option';
 import Summary from './components/Summary';
-// import { API } from '../../../config';
+import { API } from '../../../config';
 
 function Detail() {
+  const params = useParams();
   const [campInfo, setCampInfo] = useState();
-  // 서버 연결 시 params 사용
-  // const params = useParams();
-  //`${API.CAMP_DETAIL}/${params.id}`
+  const [isOptionShow, setIsOptionShow] = useState(false);
 
+  //`${API.MYCAMP_DETAIL}/${params.id}`
+  // /data/campDetailData.json
   const getCampInfo = () => {
-    fetch(`/data/campDetailData.json`)
+    fetch(`${API.ALLCAMP_DETAIL}/${params.id}`)
       .then(res => res.json())
-      .then(campInfo => setCampInfo(campInfo.result));
+      .then(campInfo => setCampInfo(campInfo.data.campaign.result));
+  };
+
+  const showOption = () => {
+    setIsOptionShow(true);
   };
 
   useEffect(() => {
@@ -29,25 +34,15 @@ function Detail() {
           url={campInfo.url}
           subtitle={campInfo.subtitle}
           title={campInfo.title}
+          showOption={showOption}
         />
         <Desc>
-          {campInfo.summary}
-          {/* dumy data */}
-          <div>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Necessitatibus officia ex quidem eos dicta totam odit praesentium
-            doloribus earum! Repellendus quia doloremque, laboriosam ipsum fugit
-            illo facere voluptate aliquid beatae.Lorem ipsum dolor sit, amet
-            consectetur adipisicing elit. Necessitatibus officia ex quidem eos
-            dicta totam odit praesentium doloribus earum! Repellendus quia
-            doloremque, laboriosam ipsum fugit illo facere voluptate aliquid
-            beatae.Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-            Necessitatibus officia ex quidem eos dicta totam odit praesentium
-            doloribus earum! Repellendus quia doloremque, laboriosam ipsum fugit
-            illo facere voluptate aliquid beatae.
-          </div>
+          <img
+            alt="캠페인 상세정보"
+            src="http://andn.co.kr/static/media/Content2.c5d41558.png"
+          />
         </Desc>
-        <Option option={campInfo.option} />
+        <Option isOptionShow={isOptionShow} option={campInfo.option} />
       </Container>
     )
   );
@@ -55,8 +50,12 @@ function Detail() {
 
 const Container = styled.div`
   ${({ theme }) => theme.flexColumnSet('flex-start', 'flex-start')};
+  overflow: hidden;
+
   ${({ theme }) => theme.tablet`
-    ${({ theme }) => theme.flexSet()};
+    // ${({ theme }) => theme.flexSet('space-between')};
+    width: 1080px;
+    margin: 0 auto;
     flex-direction: row;
     flex-wrap: wrap;
   `};
@@ -64,10 +63,14 @@ const Container = styled.div`
 
 const Desc = styled.div`
   width: 100%;
-  padding: 0 ${({ theme }) => theme.calcVw(750, 10)};
+  overflow: hidden;
   ${({ theme }) => theme.tablet`
     width: 68%;
   `};
+
+  & > img {
+    width: 100%;
+  }
 `;
 
 export default Detail;

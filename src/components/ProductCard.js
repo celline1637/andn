@@ -20,7 +20,7 @@ function ProductCard({ url, subtitle, title, id, type }) {
   return (
     <Container type={type} onClick={goToDetail}>
       <Img alt="thumbnail" src={url[0]} srcset={(url[1], url[2])} />
-      <SubTitle>{`${subtitle.brand} - ${subtitle.hostname}`}</SubTitle>
+      <SubTitle>{`${subtitle.brand} - ${subtitle.host}`}</SubTitle>
       <Title>{title}</Title>
     </Container>
   );

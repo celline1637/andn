@@ -16,10 +16,10 @@ function Payment() {
   return (
     <Container title="결제 수단">
       <Wrapper>
-        <Button fullWidth color="black" onClick={setOrderData}>
+        <Button outline fullWidth color="primary_bgc" onClick={setOrderData}>
           카드
         </Button>
-        <Button fullWidth color="black" onClick={setOrderData}>
+        <Button outline fullWidth color="primary_bgc" onClick={setOrderData}>
           무통장 입금
         </Button>
       </Wrapper>
@@ -31,7 +31,9 @@ const Wrapper = styled.div`
   ${({ theme }) => theme.flexSet()};
 
   button {
-    padding: 1rem;
+    padding: ${({ theme }) => theme.calcVw(750, 74)};
+    border-radius: 0;
+    color: ${({ theme }) => theme.colors.th};
   }
 `;
 

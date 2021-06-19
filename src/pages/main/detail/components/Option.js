@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Card from './Card';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Button from '../../../../components/Button';
 
-function Option({ option }) {
+function Option({ option, isOptionShow }) {
   const history = useHistory();
   const [options, setOptions] = useState(option);
   const [isShow, setIsShow] = useState(false);
@@ -43,10 +43,14 @@ function Option({ option }) {
     setIsShow(true);
   };
 
+  console.log(isOptionShow);
+
   return (
     !!options && (
-      <Wrapper>
-        <div>옵션 선택하기</div>
+      <Wrapper isOptionShow={isOptionShow}>
+        <Button fullWidth>
+          <i class="fas fa-chevron-down"></i>
+        </Button>
         {option.map((item, i) => (
           <Card
             key={item.option_id}
@@ -57,7 +61,15 @@ function Option({ option }) {
             showBtn={showBtn}
           />
         ))}
-        <div>총{calcTotal(option)}원</div>
+        <Price>
+          <div className="defaultPrice">(+) 배송비 3,000원</div>
+          <div className="total">
+            총
+            <span className="price">
+              {calcTotal(option).toLocaleString()}원
+            </span>
+          </div>
+        </Price>
         <SelectBtn isShow={isShow} onClick={setInfo} color="btn" fullWidth>
           선물 선택
         </SelectBtn>
@@ -66,12 +78,38 @@ function Option({ option }) {
   );
 }
 
+// const isShow = css`
+//   ${props =>
+//     props.isOptionShow &&
+//     css`
+//       background-color: red;
+//     `}
+// `;
+
 const Wrapper = styled.div`
+  background-color: white;
   width: 100%;
-  padding: 0 ${({ theme }) => theme.calcVw(750, 10)};
+  padding: ${({ theme }) => theme.calcVw(750, 10)};
+  border-radius: 4px;
+  bottom: 0px;
+  z-index: 999;
+  position: fixed;
+  transition: bottom 0.25s cubic-bezier(0.02, 0.01, 0, 1) 0s;
+  box-shadow: rgb(30 30 30 / 15%) 0px -11px 18px -1px;
+
   ${({ theme }) => theme.tablet`
-  width: 32%;
+    width: 32%;
+     position: ;
   `};
+
+  & > button:first-of-type {
+    padding: ${({ theme }) => theme.calcVw(750, 8)};
+    color: ${({ theme }) => theme.colors.secondary_btn};
+    border: none;
+    ${({ theme }) => theme.tablet`
+    display : none;
+    `};
+  }
 `;
 
 const SelectBtn = styled(Button)`
@@ -81,8 +119,40 @@ const SelectBtn = styled(Button)`
   transition: transform 0.1s ease-in 0s;
   bottom: 4px;
   transform: translateY(0px);
-  /* transform: ${({ isShow }) =>
-    isShow ? 'translateY(0px)' : 'translateY(68px)'}; */
+  transform: ${({ isShow }) =>
+    isShow ? 'translateY(0px)' : 'translateY(68px)'};
+`;
+
+const Price = styled.div`
+  ${({ theme }) => theme.flexColumnSet('center', 'flex-end')};
+  margin: 1rem;
+
+  & > .defaultPrice {
+    width: 100%;
+    margin: 4vw 0;
+    font-size: 3.333vw;
+    text-align: right;
+    color: rgb(153, 153, 153);
+  }
+
+  & > .total {
+    font-size: 4.267vw;
+    font-weight: bold;
+    height: 100%;
+    line-height: 8vw;
+    text-align: right;
+    color: rgb(255, 124, 0);
+
+    & > .price {
+      margin-left: 2vw;
+      font-size: 7.2vw;
+      font-weight: bold;
+      height: 100%;
+      line-height: 8vw;
+      text-align: right;
+      color: rgb(37, 37, 37);
+    }
+  }
 `;
 
 export default Option;

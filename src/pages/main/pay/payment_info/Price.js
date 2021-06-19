@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import Container from './components/Container';
 import { useRecoilState } from 'recoil';
 import { orderState } from './orderState';
+import styled from 'styled-components';
 
 function Price() {
   const [inputs, setInputs] = useRecoilState(orderState);
@@ -25,21 +26,57 @@ function Price() {
 
   return (
     <Container title="결제 금액">
-      <>
-        <div>총 캠페인 금액</div>
-        <div>{calcTotal(optionData) - 3000}</div>
-      </>
-      <>
-        <div>배송비</div>
-        <div>3000원</div>
-      </>
-      <hr />
-      <>
-        <div>최종 결제 금액</div>
-        <div>{`${calcTotal(optionData)}원`}</div>
-      </>
+      <Wrapper>
+        <SubPrice>총 캠페인 금액</SubPrice>
+        <SubPrice>{`${(
+          calcTotal(optionData) - 3000
+        ).toLocaleString()}원`}</SubPrice>
+      </Wrapper>
+      <Wrapper>
+        <SubPrice>배송비</SubPrice>
+        <SubPrice>3,000원</SubPrice>
+      </Wrapper>
+      <Divider />
+      <Wrapper>
+        <Total>최종 결제 금액</Total>
+        <TotalPrice>{`${calcTotal(optionData).toLocaleString()}원`}</TotalPrice>
+      </Wrapper>
     </Container>
   );
 }
+
+const Wrapper = styled.div`
+  ${({ theme }) => theme.flexSet('space-between')};
+  margin-bottom: ${({ theme }) => theme.calcVw(750, 21)};
+`;
+
+const SubPrice = styled.div`
+  color: ${({ theme }) => theme.colors.th};
+  font-size: ${({ theme }) => theme.calcVw(750, 28)};
+  font-weight: 500;
+  line-height: ${({ theme }) => theme.calcVw(750, 29)};
+  letter-spacing: ${({ theme }) => theme.calcVw(750, -1.4)};
+`;
+
+const Total = styled.div`
+  margin-top: ${({ theme }) => theme.calcVw(750, 30)};
+  color: ${({ theme }) => theme.colors.black};
+  font-size: ${({ theme }) => theme.calcVw(750, 28)};
+  font-weight: 500;
+  line-height: ${({ theme }) => theme.calcVw(750, 29)};
+  letter-spacing: ${({ theme }) => theme.calcVw(750, -1.4)};
+`;
+
+const TotalPrice = styled.div`
+  margin-top: ${({ theme }) => theme.calcVw(750, 30)};
+  color: ${({ theme }) => theme.colors.black};
+  font-size: ${({ theme }) => theme.calcVw(750, 36)};
+  font-weight: 500;
+  line-height: ${({ theme }) => theme.calcVw(750, 29)};
+`;
+
+const Divider = styled.hr`
+  margin-top: ${({ theme }) => theme.calcVw(750, 8)}; ;
+`;
 
 export default Price;
