@@ -35,9 +35,9 @@ const colorStyles = css`
       &:active {
         background: ${darken(0.1, selected)};
       }
-      &:focus {
+      /* &:focus {
         background: ${darken(0.1, selected)};
-      }
+      } */
       ${props =>
         props.outline &&
         css`

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Card from './Card';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Button from '../../../../components/Button';
 
-function Option({ option, isOptionShow }) {
+function Option({ option, isOptionShow, showOption }) {
   const history = useHistory();
   const [options, setOptions] = useState(option);
   const [isShow, setIsShow] = useState(false);
@@ -43,12 +43,10 @@ function Option({ option, isOptionShow }) {
     setIsShow(true);
   };
 
-  console.log(isOptionShow);
-
   return (
     !!options && (
       <Wrapper isOptionShow={isOptionShow}>
-        <Button fullWidth>
+        <Button onClick={showOption} fullWidth>
           <i class="fas fa-chevron-down"></i>
         </Button>
         {option.map((item, i) => (
@@ -78,34 +76,37 @@ function Option({ option, isOptionShow }) {
   );
 }
 
-// const isShow = css`
-//   ${props =>
-//     props.isOptionShow &&
-//     css`
-//       background-color: red;
-//     `}
-// `;
-
 const Wrapper = styled.div`
-  background-color: white;
   width: 100%;
   padding: ${({ theme }) => theme.calcVw(750, 10)};
-  border-radius: 4px;
-  bottom: 0px;
-  z-index: 999;
   position: fixed;
-  transition: bottom 0.25s cubic-bezier(0.02, 0.01, 0, 1) 0s;
+  bottom: -100%;
+  z-index: 999;
+  background-color: white;
   box-shadow: rgb(30 30 30 / 15%) 0px -11px 18px -1px;
+  transition: bottom 1s cubic-bezier(0.02, 0.01, 0, 1) 0s;
+  ${({ isOptionShow }) =>
+    isOptionShow &&
+    css`
+      bottom: 0px;
+      transition: bottom 0.25s cubic-bezier(0.02, 0.01, 0, 1) 0s;
+    `};
 
   ${({ theme }) => theme.tablet`
     width: 32%;
-     position: ;
+ 
   `};
 
   & > button:first-of-type {
     padding: ${({ theme }) => theme.calcVw(750, 8)};
     color: ${({ theme }) => theme.colors.secondary_btn};
     border: none;
+
+    &:hover,
+    &:active {
+      background-color: white;
+    }
+
     ${({ theme }) => theme.tablet`
     display : none;
     `};

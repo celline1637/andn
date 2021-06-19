@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 import Button from '../../../components/Button';
 import Option from './components/Option';
 import Summary from './components/Summary';
 import { API } from '../../../config';
+import ScrollTopArrow from '../../../components/ScrollArrow';
 
 function Detail() {
   const params = useParams();
   const [campInfo, setCampInfo] = useState();
+  const [isContentsShow, setIsContentsShow] = useState(false);
   const [isOptionShow, setIsOptionShow] = useState(false);
 
   //`${API.MYCAMP_DETAIL}/${params.id}`
@@ -20,11 +22,16 @@ function Detail() {
   };
 
   const showOption = () => {
-    setIsOptionShow(true);
+    setIsOptionShow(!isOptionShow);
+  };
+
+  const showContents = () => {
+    setIsContentsShow(!isContentsShow);
   };
 
   useEffect(() => {
     getCampInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
@@ -36,13 +43,23 @@ function Detail() {
           title={campInfo.title}
           showOption={showOption}
         />
-        <Desc>
+        <Contents isContentsShow={isContentsShow}>
           <img
             alt="캠페인 상세정보"
             src="http://andn.co.kr/static/media/Content2.c5d41558.png"
-          />
-        </Desc>
-        <Option isOptionShow={isOptionShow} option={campInfo.option} />
+          ></img>
+          <ScrollTopArrow />
+          <BtnWrapper>
+            <ShowMoreContentBtn color="black" onClick={showContents} fullWidth>
+              {isContentsShow ? '스토리 접기' : '스토리 더보기'}
+            </ShowMoreContentBtn>
+          </BtnWrapper>
+        </Contents>
+        <Option
+          showOption={showOption}
+          isOptionShow={isOptionShow}
+          option={campInfo.option}
+        />
       </Container>
     )
   );
@@ -61,9 +78,18 @@ const Container = styled.div`
   `};
 `;
 
-const Desc = styled.div`
+const Contents = styled.div`
   width: 100%;
-  overflow: hidden;
+  position: relative;
+
+  /* 스토리 접힐때 */
+  ${({ isContentsShow }) =>
+    !isContentsShow &&
+    css`
+      overflow: hidden;
+      height: 1050px;
+    `};
+
   ${({ theme }) => theme.tablet`
     width: 68%;
   `};
@@ -71,6 +97,21 @@ const Desc = styled.div`
   & > img {
     width: 100%;
   }
+`;
+
+const BtnWrapper = styled.div`
+  padding: 16px 18px;
+  width: 100%;
+  background: rgb(255, 255, 255);
+  position: absolute;
+  bottom: 0px;
+  box-shadow: transparent 0px 0px 0px 1px inset,
+    rgb(0 0 0 / 10%) 0px 0em 0px 0px inset;
+`;
+
+const ShowMoreContentBtn = styled(Button)`
+  padding: 16px 18px;
+  font-weight: 500;
 `;
 
 export default Detail;
