@@ -5,7 +5,7 @@ const GlobalStyle = createGlobalStyle`
   ${reset};
   
   :root{
-    font-size:100%;
+    font-size: 100%;
   }
 
   html{
