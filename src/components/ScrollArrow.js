@@ -31,8 +31,9 @@ const ScrollTopArrow = () => {
   return (
     <Wrapper>
       <StyledButton
-        className="top"
+        // className="top"
         color="black"
+        outline
         onClick={scrollTop}
         showScroll={showScroll}
       >
@@ -41,6 +42,7 @@ const ScrollTopArrow = () => {
       <StyledButton
         className="bottom"
         color="black"
+        outline
         onClick={scrollBottom}
         showScroll={showScroll}
       >
@@ -57,21 +59,21 @@ const Wrapper = styled.div`
   flex-wrap: wrap;
 
   & > .bottom {
-    bottom: ${({ theme }) => theme.calcVw(750, 140)};
+    bottom: ${({ theme }) => theme.calcVw(750, 148)};
   }
 `;
 
 const StyledButton = styled(Button)`
   display: ${({ showScroll }) => (showScroll ? 'flex' : 'none')};
-  width: ${({ theme }) => theme.calcVw(750, 55)};
-  height: ${({ theme }) => theme.calcVw(750, 55)};
+  width: ${({ theme }) => theme.calcVw(750, 46)};
+  height: ${({ theme }) => theme.calcVw(750, 46)};
   position: fixed;
   right: 20px;
   bottom: ${({ theme }) => theme.calcVw(750, 200)};
   z-index: 999;
-  border-radius: 50%;
-  border: none;
-  font-size: ${({ theme }) => theme.calcVw(750, 50)};
+  border-radius: 0;
+  /* border: none; */
+  font-size: ${({ theme }) => theme.calcVw(750, 30)};
   animation: fadeIn 0.3s;
   transition: opacity 0.4s;
   opacity: 0.5;
