@@ -1,8 +1,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-function Container({ children }) {
-  return <StyledContainer>{children}</StyledContainer>;
+function Container({ title, children }) {
+  return (
+    <StyledContainer>
+      {/* <Title>{title}</Title> */}
+      {children}
+    </StyledContainer>
+  );
 }
 
 const StyledContainer = styled.main`
@@ -23,5 +28,14 @@ const StyledContainer = styled.main`
     text-decoration: underline;
   }
 `;
+
+// const Title = styled.h1`
+//   margin: 0px 0px 32px;
+//   font-size: 24px;
+//   font-weight: 700;
+//   line-height: 36px;
+//   letter-spacing: -0.025em;
+//   text-align: left;
+// `;
 
 export default Container;

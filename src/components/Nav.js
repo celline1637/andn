@@ -10,7 +10,7 @@ function Nav() {
   const isMypage = location.pathname.includes('mypage');
   const isPaypage = location.pathname.includes('pay');
   const isLogin = localStorage.getItem('token');
-  // const isAdminpage = location.pathname.includes('admin');
+  const isAdminpage = location.pathname.includes('admin');
   const isLoginpage = location.pathname.includes('login');
 
   // old version :  로그인 한 경우에만 마이페이지 접근
@@ -28,7 +28,7 @@ function Nav() {
   };
 
   return (
-    !(isMypage || isPaypage) && (
+    !(isMypage || isPaypage || isAdminpage) && (
       <Container>
         <Logo alt="logo" src="/images/831.svg" onClick={goToMain} />
         {!isLoginpage && (

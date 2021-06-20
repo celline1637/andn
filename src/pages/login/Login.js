@@ -6,6 +6,8 @@ import styled from 'styled-components/macro';
 import Container from './components/Container';
 import Input from '../../components/Input';
 import { API } from '../../config';
+import SocialBtnGroup from './components/SocialLoginGroup';
+import Divider from './components/Divider';
 
 function Login() {
   const history = useHistory();
@@ -25,36 +27,36 @@ function Login() {
   const handelLogin = e => {
     e.preventDefault();
     const { email, password } = inputs;
-    if (isValid) {
-      fetch(`${API.SIGNIN}`, {
-        method: 'POST',
-        body: JSON.stringify({
-          email,
-          password,
-        }),
-      })
-        .then(res => res.json())
-        .then(res => {
-          if (res.status === 'SUCCESS') {
-            alert('로그인 되었습니다.');
-            localStorage.setItem('token', res.data.token);
-            history.push('/');
-          } else if (res.status === 'INVALID_USER') {
-            alert('가입되지 않은 유저입니다.');
-          } else if (res.status === 'UNAUTHORIZATION') {
-            alert('비밀번호가 일치하지 않습니다.');
-          }
-        });
-    } else {
-      alert('이메일 주소 또는 비밀번호를 확인해주세요.');
-    }
+    const isValid = email.includes('@', '.') && password.length >= 8;
+
+    if (!isValid) return alert('이메일 주소 또는 비밀번호를 확인해주세요.');
+
+    fetch(`${API.SIGNIN}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    })
+      .then(res => res.json())
+      .then(res => {
+        if (res.status === 'SUCCESS') {
+          alert('로그인 되었습니다.');
+          localStorage.setItem('token', res.data.token);
+          history.push('/');
+        } else if (res.status === 'INVALID_USER') {
+          alert('가입되지 않은 유저입니다.');
+        } else if (res.status === 'UNAUTHORIZATION') {
+          alert('비밀번호가 일치하지 않습니다.');
+        }
+      });
   };
 
   const { email, password } = inputs;
-  const isValid = email.includes('@', '.') && password.length >= 8;
-
   return (
-    <Container>
+    <Container title="로그인하기">
+      <SocialBtnGroup />
+      <Divider />
       <Input
         value={email}
         name="email"
@@ -76,7 +78,7 @@ function Login() {
         color="black"
         fullWidth
         onClick={handelLogin}
-        disabled={!isValid}
+        // disabled={!isValid}
       >
         로그인
       </LoginBtn>
