@@ -21,7 +21,6 @@ function Container({ title, msg, btn, children }) {
       <Header>
         <Inner>
           <Title>{title}</Title>
-          {/* 실행 안 됨.. e.preventDefault도 안 먹힘 */}
           <GetBtn
             onClick={e => {
               e.preventDefault();

@@ -1,8 +1,8 @@
 import React from 'react';
-import Button from '../../../../components/Button';
-import Container from './components/Container';
 import { useRecoilState } from 'recoil';
 import { orderState } from './orderState';
+import Button from '../../../../components/Button';
+import Container from './components/Container';
 import styled from 'styled-components/macro';
 
 function Payment() {

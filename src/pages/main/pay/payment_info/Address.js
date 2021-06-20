@@ -1,19 +1,16 @@
 import React, { useState } from 'react';
+import { useRecoilState } from 'recoil';
+import { orderState } from './orderState';
 import DaumPostcode from 'react-daum-postcode';
 import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
 import Container from '../components/Container';
-import { useRecoilState } from 'recoil';
-import { orderState } from './orderState';
 import styled from 'styled-components/macro';
 
 function Address() {
   const [inputs, setInputs] = useRecoilState(orderState);
-  // 하나의 state로 합치는 것이 좋을까?
   const [zipcode, setZipcode] = useState(''); // 우편번호
-  const [address, setAddress] = useState({
-    address: '',
-  }); // 주소
+  const [address, setAddress] = useState(''); // 주소
   const [isOpenPost, setIsOpenPost] = useState(false);
 
   const onChangeOpenPost = e => {

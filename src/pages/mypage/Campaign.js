@@ -2,20 +2,17 @@ import React, { useEffect, useState } from 'react';
 import Header from '../../components/Header';
 import ProductCard from '../../components/ProductCard';
 import { API } from '../../config';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 function Campaign() {
   const [myCampList, setMyCampList] = useState();
-
-  // ${API.CAMP_LIST}
-  ///data/campaignData.json
+  //토근이 만료되면 자동 로그아웃 또는 연장할 수 있게 수정하기
   const getMyCampList = () => {
     fetch(API.MYCAMP_LIST, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
       .then(myCampData => setMyCampList(myCampData.data.campaign));
-    //myCampData.data.campaign
   };
 
   useEffect(() => {

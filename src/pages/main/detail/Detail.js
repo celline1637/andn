@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
-import styled, { css } from 'styled-components/macro';
 import Button from '../../../components/Button';
 import Option from './components/Option';
 import Summary from './components/Summary';
 import { API } from '../../../config';
 import ScrollTopArrow from '../../../components/ScrollArrow';
+import styled, { css } from 'styled-components/macro';
 
 function Detail() {
   const params = useParams();
@@ -13,8 +13,6 @@ function Detail() {
   const [isContentsShow, setIsContentsShow] = useState(false);
   const [isOptionShow, setIsOptionShow] = useState(false);
 
-  //`${API.MYCAMP_DETAIL}/${params.id}`
-  // /data/campDetailData.json
   const getCampInfo = () => {
     fetch(`${API.ALLCAMP_DETAIL}/${params.id}`)
       .then(res => res.json())

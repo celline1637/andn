@@ -1,8 +1,8 @@
 import React from 'react';
-import Input from '../../../../components/Input';
-import Container from '../components/Container';
 import { useRecoilState } from 'recoil';
 import { orderState } from './orderState';
+import Input from '../../../../components/Input';
+import Container from '../components/Container';
 
 function Orderer() {
   const [inputs, setInputs] = useRecoilState(orderState);

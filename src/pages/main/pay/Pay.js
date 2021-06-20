@@ -1,5 +1,7 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
+import { useRecoilValue } from 'recoil';
+import { orderState } from './payment_info/orderState';
 import Button from '../../../components/Button';
 import Header from '../../../components/Header';
 import Container from './components/Container';
@@ -7,19 +9,18 @@ import Address from './payment_info/Address';
 import Orderer from './payment_info/Orderer';
 import Payment from './payment_info/Payment';
 import Price from './payment_info/Price';
-import { useRecoilState } from 'recoil';
-import { orderState } from './payment_info/orderState';
 import { API } from '../../../config';
+import checkValid from '../../../utils/checkValid';
 import styled from 'styled-components/macro';
 
 function Pay() {
   const history = useHistory();
-  const [orderData, setOrderData] = useRecoilState(orderState);
+  const orderData = useRecoilValue(orderState);
 
-  console.log(orderData.option);
-
-  // 버튼 활성화 조건 추가하기 (ex. 필수값이 모두 입력되었을 때 만)
   const sendOrderInfo = () => {
+    const isAllValid = checkValid(orderData, Object.keys(orderData));
+    if (!isAllValid) return alert('필수 입력란을 확인해주세요');
+
     fetch(API.PAY, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('token') },

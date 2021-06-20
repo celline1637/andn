@@ -37,6 +37,11 @@ function Option({ option, isOptionShow, showOption }) {
   };
 
   const goToPay = () => {
+    const isLogin = localStorage.getItem('token');
+    if (!isLogin) return alert('로그인을 해주세요');
+
+    if (calcTotal(option) === 3000) return alert('수량을 선택해주세요');
+
     history.push('/pay');
   };
 
