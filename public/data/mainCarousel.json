@@ -1,0 +1,19 @@
+{
+  "courses": [
+    {
+      "id": 1,
+      "main_description": "자연이 만들어낸 천연 스펀지, 히어메이드",
+      "thumbnail": "https://cdn.imweb.me/thumbnail/20201027/6078a00da0c0e.jpg"
+    },
+    {
+      "id": 2,
+      "main_description": "산뜻한 일상으로의 복귀, 라지노 코스메틱",
+      "thumbnail": "http://3.36.135.9:8000/media/images/andn-campaign-thumb-pc.png"
+    },
+    {
+      "id": 3,
+      "main_description": "편안한 일상으로의 복귀, 저스트크래프트",
+      "thumbnail": "https://img.29cm.co.kr/next-product/2020/09/04/f4eb533344ec425986ccd448f41d924a_20200904145844.jpg?width=300"
+    }
+  ]
+}

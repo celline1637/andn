@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components/macro';
 import ProductCard from '../../components/ProductCard';
 import { API } from '../../config';
+import Carousel from './components/Carousel';
 
 function Main() {
   const [allCampList, setAllCampList] = useState();
@@ -18,6 +19,7 @@ function Main() {
 
   return (
     <Wrapper>
+      <Carousel />
       {allCampList?.map(camp => (
         <ProductCard
           id={camp.id}
