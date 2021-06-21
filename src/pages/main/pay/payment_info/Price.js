@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from './components/Container';
-import { useRecoilValue } from 'recoil';
+import { useRecoilState } from 'recoil';
 import { orderState } from './orderState';
+import calcTotal from '../../../../utils/calcTotal';
 import styled from 'styled-components/macro';
 
 function Price() {
-  const inputs = useRecoilValue(orderState);
+  const [orderData, setOrderData] = useRecoilState(orderState);
+  const optionData = JSON.parse(localStorage.getItem('orderData'));
 
-  const calcTotal = options => {
-    const selectedPrice = options.map((el, i) => el.price * el.quantity);
-    return selectedPrice.reduce((acc, cur) => {
-      return acc + cur;
-    }, 3000);
-  };
+  useEffect(() => {
+    setOrderData({ ...orderData, option: optionData.option });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   return (
     <Container title="결제 금액">
       <Wrapper>
         <SubPrice>총 캠페인 금액</SubPrice>
         <SubPrice>{`${(
-          calcTotal(inputs.option) - 3000
+          calcTotal(optionData.option) - 3000
         ).toLocaleString()}원`}</SubPrice>
       </Wrapper>
       <Wrapper>
@@ -30,7 +30,7 @@ function Price() {
       <Wrapper>
         <Total>최종 결제 금액</Total>
         <TotalPrice>{`${calcTotal(
-          inputs.option
+          optionData.option
         ).toLocaleString()}원`}</TotalPrice>
       </Wrapper>
     </Container>

@@ -3,21 +3,24 @@ import { useHistory } from 'react-router-dom';
 import Card from './Card';
 import styled, { css } from 'styled-components';
 import Button from '../../../../components/Button';
+import calcTotal from '../../../../utils/calcTotal';
 import { useRecoilState } from 'recoil';
 import { orderState } from '../../pay/payment_info/orderState';
 
 function Option({ option, isOptionShow, showOption }) {
   const history = useHistory();
-  const [orderData, setOrderData] = useRecoilState(orderState);
+  const [options, setOptions] = useState('');
+  // const [orderData, setOrderData] = useRecoilState(orderState);
   const [isShow, setIsShow] = useState(false);
 
   const plus = e => {
     let newOptions = [...option];
+    console.log(newOptions);
     const { id } = e.target;
     if (newOptions[id].stock > newOptions[id].quantity) {
       newOptions[id].quantity += 1;
     }
-    setOrderData({ ...orderData, option: newOptions });
+    setOptions({ ...options, option: newOptions });
   };
 
   const minus = e => {
@@ -26,14 +29,7 @@ function Option({ option, isOptionShow, showOption }) {
     if (newOptions[id].quantity > 0) {
       newOptions[id].quantity -= 1;
     }
-    setOrderData({ ...orderData, option: newOptions });
-  };
-
-  const calcTotal = option => {
-    const selectedPrice = option.map((el, i) => el.price * el.quantity);
-    return selectedPrice.reduce((acc, cur) => {
-      return acc + cur;
-    }, 3000);
+    setOptions({ ...options, option: newOptions });
   };
 
   const goToPay = () => {
@@ -41,7 +37,7 @@ function Option({ option, isOptionShow, showOption }) {
     if (!isLogin) return alert('로그인을 해주세요');
 
     if (calcTotal(option) === 3000) return alert('수량을 선택해주세요');
-
+    localStorage.setItem('orderData', JSON.stringify(options));
     history.push('/pay');
   };
 
