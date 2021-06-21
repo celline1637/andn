@@ -1,21 +1,18 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Card from './Card';
-import styled, { css } from 'styled-components';
 import Button from '../../../../components/Button';
 import calcTotal from '../../../../utils/calcTotal';
-import { useRecoilState } from 'recoil';
-import { orderState } from '../../pay/payment_info/orderState';
+import styled, { css } from 'styled-components';
 
 function Option({ option, isOptionShow, showOption }) {
   const history = useHistory();
   const [options, setOptions] = useState('');
-  // const [orderData, setOrderData] = useRecoilState(orderState);
   const [isShow, setIsShow] = useState(false);
 
   const plus = e => {
     let newOptions = [...option];
-    console.log(newOptions);
+
     const { id } = e.target;
     if (newOptions[id].stock > newOptions[id].quantity) {
       newOptions[id].quantity += 1;

@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
-// import { useRecoilState, useSetRecoilState } from 'recoil';
-// import { countState } from './count';
-import styled from 'styled-components';
 import Button from '../../../../components/Button';
+import styled from 'styled-components';
 
 function Card({ key, info, plus, minus, index, showBtn }) {
   useEffect(() => {

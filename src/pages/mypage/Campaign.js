@@ -6,7 +6,7 @@ import styled from 'styled-components/macro';
 
 function Campaign() {
   const [myCampList, setMyCampList] = useState();
-  //토근이 만료되면 자동 로그아웃 또는 연장할 수 있게 수정하기
+  //TODO : 토근이 만료되면 자동 로그아웃 또는 연장할 수 있게 수정하기
   const getMyCampList = () => {
     fetch(API.MYCAMP_LIST, {
       headers: { Authorization: localStorage.getItem('token') },

@@ -48,7 +48,6 @@ function Address() {
     });
   };
 
-  //input 함수를 util에 넣어도 좋을 듯
   const handleInput = e => {
     const { name, value } = e.target;
     setInputs({
@@ -70,13 +69,13 @@ function Address() {
     <Container copyInfo={copyInfo} title="배송지" msg btn>
       <Input
         value={inputs.recipient}
-        onChange={debounce(handleInput, 500)}
+        onChange={handleInput}
         name="recipient"
         label="이름"
       />
       <Input
         value={inputs.recipient_contact}
-        onChange={debounce(handleInput, 500)}
+        onChange={handleInput}
         name="recipient_contact"
         label="휴대전화"
         placeholder="01012345678 숫자만 입력해주세요"

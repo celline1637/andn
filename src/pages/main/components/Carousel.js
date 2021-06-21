@@ -82,7 +82,7 @@ function Carousel() {
             <div className="ArrowIcons">
               <ArrowLeftBtn
                 className="fas fa-chevron-left"
-                // type="button"
+                type="button"
                 onClick={() => {
                   index === 0
                     ? setIndex(mainCarouselDatas.length - 1)
@@ -93,7 +93,7 @@ function Carousel() {
               </ArrowLeftBtn>
               <ArrowRightBtn
                 className="fas fa-chevron-right"
-                // type="button"
+                type="button"
                 onClick={() => {
                   index === mainCarouselDatas.length - 1
                     ? setIndex(0)
