@@ -18,8 +18,8 @@ const Password = lazy(() => import('./pages/change/Password'));
 const Routes = () => {
   return (
     <Router>
-      <Nav />
       <Suspense fallback={<div>Loading...</div>}>
+        <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route exact path="/pay" component={Pay} />
