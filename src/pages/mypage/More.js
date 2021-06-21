@@ -13,7 +13,7 @@ function More() {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(detailData => setDetail(detailData.data.campaign));
+      .then(detailData => setDetail(detailData));
   };
 
   useEffect(() => {
