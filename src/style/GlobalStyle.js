@@ -5,10 +5,7 @@ const GlobalStyle = createGlobalStyle`
   ${reset};
   
   :root{
-    font-size:13px;
-    ${({ theme }) => theme.desktop`
-      font-size:16px;
-    `};
+    font-size: 100%;
   }
 
   html{
@@ -21,11 +18,11 @@ const GlobalStyle = createGlobalStyle`
     box-sizing:border-box;
     font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     font: inherit;
+    word-break: keep-all;
   }
 
   body{
-    @import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
-      font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+    font-family: 'Spoqa Han Sans Neo', 'sans-serif';
     background-color: white;
   }
 

@@ -1,42 +1,56 @@
-import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
+import { Link, useLocation, useHistory } from 'react-router-dom';
 import { ReactComponent as Profile } from '../assets/826.svg';
 import { ReactComponent as Menu } from '../assets/828.svg';
 import styled from 'styled-components/macro';
 
 function Nav() {
-  const [isHover, setIsHover] = useState(false);
   const location = useLocation();
+  const history = useHistory();
+  const isMypage = location.pathname.includes('mypage');
+  const isPaypage = location.pathname.includes('pay');
+  const isLogin = localStorage.getItem('token');
+  const isAdminpage = location.pathname.includes('admin');
+  const isLoginpage = location.pathname.includes('login');
 
-  const handleColor = () => {
-    setIsHover(preveState => !preveState);
+  // old version :  로그인 한 경우에만 마이페이지 접근
+  // const isLogin = localStorage.getItem('token');
+  // const goToMypage = () => {
+  //   isLogin ? history.push('/mypage') : alert('로그인을 해주세요.');
+  // };
+
+  const goToMain = () => {
+    history.push('/');
   };
 
-  const isMypage = location.pathname.includes('mypage');
+  const goToMypageOrLogin = () => {
+    isLogin ? history.push('/mypage') : history.push('/login');
+  };
 
   return (
-    !isMypage && (
+    !(isMypage || isPaypage || isAdminpage) && (
       <Container>
-        <Logo alt="logo" src="/images/829.svg" />
-        <MenuBtn type="button">
-          <Menu width="5.600vw" height="4.267vw" />
-        </MenuBtn>
-        <LinkGroup>
-          <Link>브랜드 모집</Link>
-          <Link>호스트 지원</Link>
-          <Link to="/mypage">
-            <span>로그인</span>
-            <Profile
-              className="profile"
-              width="4.467vw"
-              height="5.333vw"
-              stroke={isHover ? '#ff7c00' : 'black'}
-              onMouseEnter={handleColor}
-              onMouseLeave={handleColor}
-              onMouseUp={handleColor}
-            />
-          </Link>
-        </LinkGroup>
+        <Logo alt="logo" src="/images/831.svg" onClick={goToMain} />
+        {!isLoginpage && (
+          <>
+            <MenuBtn type="button">
+              <Menu width="5.600vw" height="4.267vw" />
+            </MenuBtn>
+            <LinkGroup>
+              <Link>브랜드 모집</Link>
+              <Link>호스트 지원</Link>
+              <Link onClick={goToMypageOrLogin}>
+                <span>로그인</span>
+                <Profile
+                  className="profile"
+                  width="4.467vw"
+                  height="5.333vw"
+                  stroke={isLogin ? 'blue' : 'black'}
+                />
+              </Link>
+            </LinkGroup>
+          </>
+        )}
       </Container>
     )
   );
@@ -44,6 +58,7 @@ function Nav() {
 
 const Container = styled.nav`
   ${({ theme }) => theme.flexSet('space-between')};
+  height: ${({ theme }) => theme.calcVw(750, 100)};
   padding: ${({ theme }) => theme.calcVw(750, 34)}
     ${({ theme }) => theme.calcVw(750, 42)};
   position: relative;
@@ -55,6 +70,7 @@ const Container = styled.nav`
 const Logo = styled.img`
   ${({ theme }) => theme.posCenter()};
   height: ${({ theme }) => theme.calcVw(750, 44)};
+  cursor: pointer;
   ${({ theme }) => theme.desktop`
     ${({ theme }) => theme.posCenterY()};
       left: ${({ theme }) => theme.calcVwL(435)};
@@ -76,6 +92,11 @@ const LinkGroup = styled.div`
 `};
 
   .profile {
+    cursor: pointer;
+    &:hover {
+      stroke: ${({ theme }) => theme.colors.btn};
+    }
+
     ${({ theme }) => theme.desktop`
      display: none;
    `};

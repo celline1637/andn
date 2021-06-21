@@ -1,70 +1,30 @@
-# Getting Started with Create React App
+## 구현 사항
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- 전체 마이페이지 레이아웃 구현
+- 네브바 상단의 프로필 클릭 시 My page로 이동
+- My page에서 '참여한 캠페인'클릭 시 My page-campaign로 이동
+- 동적 라우팅 연결 : 클릭한 캠페인 세부 정보 페이지로 이동
+- 로그아웃 버튼 기능 활성화
 
-## Available Scripts
+## 기타
 
-In the project directory, you can run:
+- Main.js에 임시로 사용할 로그인 기능 구현
 
-### `npm start`
+- 전체 비밀번호 페이지 레이아웃
+- 비밀번호 유효성 검사
+- 비밀번호 더블 체크 검사
+- POST 요청 후 SUCCESS일때, 버튼 및 인풋 비활성화 / 버튼 스타일 변경
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## 건의 사항
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+### 1 .수정 완료 후 상태
 
-### `npm test`
+- 임의적으로 비밀번호 수정 완료 후 버튼과 인풋이 비활성화되도록 만들었습니다.
+- 이때, 현재 디자인 시안으로는 인풋창에 별도의 스타일이 적용되지 않지만, 비활성화 조건에서 배경색을 조금 다르게 주어 유저가 차이를 인식할 수 있도록 해주는 것이 좋을 것 같습니다.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### 2 .비밀번호 수정 로직 추가
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+- 현재는 로그인 후 별다른 확인 과정없이 비밀번호 수정이 가능합니다.
+- 아래의 이미지와 같이 현재 비밀번호를 먼저 확인하는 과정이 필요하다 생각됩니다.
+- 또한 비밀번호 수정 페이지 뿐만아니라 비밀번호 찾기 페이지가 추가되어야 할 것 같습니다.
+  <img width="484" alt="스크린샷 2021-06-09 오후 11 25 25" src="https://user-images.githubusercontent.com/77728308/121641448-294c4180-caca-11eb-8ce1-78431c8927ff.png">

@@ -1,15 +1,12 @@
 import React from 'react';
-import { Link, useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
+import { ReactComponent as Logo } from '../../assets/logo.svg';
 import { ReactComponent as Arrow } from '../../assets/arrow.svg';
 import Button from '../../components/Button';
 import styled from 'styled-components/macro';
 
-function Mypage() {
+function AdminLogin() {
   const history = useHistory();
-
-  const goToMain = () => {
-    history.push('/');
-  };
 
   const handleLogout = () => {
     alert('로그아웃 되었습니다.');
@@ -18,48 +15,28 @@ function Mypage() {
   };
 
   return (
-    <Container>
-      <ExitArrow
-        width="2.400vw"
-        height="4.800vw"
-        stroke="black"
-        onClick={goToMain}
-      />
+    <>
       <Box>
-        <Title>내 정보</Title>
+        <Title>andn admin</Title>
         <LogoutBtn color="secondary_btn" outline onClick={handleLogout}>
           로그아웃
         </LogoutBtn>
       </Box>
       <Box>
-        <Link to="/mypage_campaign">
-          <Text>참여한 캠페인</Text>
+        <Link to="/admin_camp">
+          <Text>캠페인 관리</Text>
           <StyledArrow width="1.6vw" height="3.2vw" stroke="#dbdbdb" />
         </Link>
       </Box>
-      <Box>
-        <Link to="/mypage_change">
-          <Text>내 정보 수정</Text>
-          <StyledArrow width="1.6vw" height="3.2vw" stroke="#dbdbdb" />
-        </Link>
-      </Box>
-    </Container>
+    </>
   );
 }
-
-const Container = styled.div`
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  padding-top: ${({ theme }) => theme.calcVw(750, 115.362)};
-`;
 
 const Box = styled.div`
   ${({ theme }) => theme.flexSet('space-between')};
   padding: ${({ theme }) => theme.calcVw(750, 30)}
     ${({ theme }) => theme.calcVw(750, 42)};
   border-bottom: 1px solid ${({ theme }) => theme.colors.border};
-
   & > a {
     width: 100%;
     ${({ theme }) => theme.flexSet('space-between')};
@@ -67,26 +44,21 @@ const Box = styled.div`
   }
 `;
 
+const Title = styled.span`
+  font-size: ${({ theme }) => theme.calcVw(750, 54)};
+  font-weight: 800;
+  line-height: ${({ theme }) => theme.calcVw(750, 63)};
+  letter-spacing: ${({ theme }) => theme.calcVw(750, -1.35)};
+`;
+
 const Text = styled.span`
   font-size: ${({ theme }) => theme.calcVw(750, 32)};
   line-height: ${({ theme }) => theme.calcVw(750, 40)};
   letter-spacing: ${({ theme }) => theme.calcVw(750, -1.6)};
 `;
-const ExitArrow = styled(Arrow)`
-  position: absolute;
-  top: ${({ theme }) => theme.calcVw(750, 32.7)};
-  left: ${({ theme }) => theme.calcVw(750, 43.5)};
-`;
 
 const StyledArrow = styled(Arrow)`
   transform: rotate(180deg);
-`;
-
-const Title = styled.h1`
-  font-size: ${({ theme }) => theme.calcVw(750, 48)};
-  line-height: ${({ theme }) => theme.calcVw(750, 63)};
-  letter-spacing: ${({ theme }) => theme.calcVw(750, -1.2)};
-  font-weight: 700;
 `;
 
 const LogoutBtn = styled(Button)`
@@ -99,4 +71,5 @@ const LogoutBtn = styled(Button)`
   line-height: ${({ theme }) => theme.calcVw(750, 29)};
   letter-spacing: ${({ theme }) => theme.calcVw(750, -1)};
 `;
-export default Mypage;
+
+export default AdminLogin;

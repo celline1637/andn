@@ -1,0 +1,108 @@
+{
+  "campaign": [
+    {
+      "id": 1,
+      "title": "라지노 코스메틱, 산뜻한 일상으로 복귀",
+      "subtitle": {
+        "brand": "라지노",
+        "hostname": "헤어몬"
+      },
+      "url": [
+        "/images/832.png",
+        "/images/832@2x.png 2x",
+        "/images/832@2x.png 3x"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "채식 간식 비견, 모든 댕댕이들의 행복을 위해",
+      "subtitle": {
+        "brand": "비견",
+        "hostname": "하송송"
+      },
+      "url": [
+        "/images/832.png",
+        "/images/832@2x.png 2x",
+        "/images/832@2x.png 3x"
+      ]
+    },
+    {
+      "id": 3,
+      "title": "라지노 코스메틱, 산뜻한 일상으로 복귀",
+      "subtitle": {
+        "brand": "라지노",
+        "hostname": "헤어몬"
+      },
+      "url": [
+        "/images/832.png",
+        "/images/832@2x.png 2x",
+        "/images/832@2x.png 3x"
+      ]
+    },
+    {
+      "id": 4,
+      "title": "채식 간식 비견, 모든 댕댕이들의 행복을 위해",
+      "subtitle": {
+        "brand": "비견",
+        "hostname": "하송송"
+      },
+      "url": [
+        "/images/832.png",
+        "/images/832@2x.png 2x",
+        "/images/832@2x.png 3x"
+      ]
+    },
+    {
+      "id": 5,
+      "title": "라지노 코스메틱, 산뜻한 일상으로 복귀",
+      "subtitle": {
+        "brand": "라지노",
+        "hostname": "헤어몬"
+      },
+      "url": [
+        "/images/832.png",
+        "/images/832@2x.png 2x",
+        "/images/832@2x.png 3x"
+      ]
+    },
+    {
+      "id": 6,
+      "title": "채식 간식 비견, 모든 댕댕이들의 행복을 위해",
+      "subtitle": {
+        "brand": "비견",
+        "hostname": "하송송"
+      },
+      "url": [
+        "/images/832.png",
+        "/images/832@2x.png 2x",
+        "/images/832@2x.png 3x"
+      ]
+    },
+    {
+      "id": 7,
+      "title": "라지노 코스메틱, 산뜻한 일상으로 복귀",
+      "subtitle": {
+        "brand": "라지노",
+        "hostname": "헤어몬"
+      },
+      "url": [
+        "/images/832.png",
+        "/images/832@2x.png 2x",
+        "/images/832@2x.png 3x"
+      ]
+    },
+    {
+      "id": 8,
+      "title": "채식 간식 비견, 모든 댕댕이들의 행복을 위해",
+      "subtitle": {
+        "brand": "비견",
+        "hostname": "하송송"
+      },
+      "url": [
+        "/images/832.png",
+        "/images/832@2x.png 2x",
+        "/images/832@2x.png 3x"
+      ]
+    }
+  ]
+}
