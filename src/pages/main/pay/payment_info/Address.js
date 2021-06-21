@@ -5,6 +5,7 @@ import DaumPostcode from 'react-daum-postcode';
 import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
 import Container from '../components/Container';
+import { debounce } from 'lodash';
 import styled from 'styled-components/macro';
 
 function Address() {
@@ -69,13 +70,13 @@ function Address() {
     <Container copyInfo={copyInfo} title="배송지" msg btn>
       <Input
         value={inputs.recipient}
-        onChange={handleInput}
+        onChange={debounce(handleInput, 500)}
         name="recipient"
         label="이름"
       />
       <Input
         value={inputs.recipient_contact}
-        onChange={handleInput}
+        onChange={debounce(handleInput, 500)}
         name="recipient_contact"
         label="휴대전화"
         placeholder="01012345678 숫자만 입력해주세요"
@@ -90,13 +91,13 @@ function Address() {
         </Wrapper>
         <Input name="address" value={address} />
         <Input
-          onChange={getFullAddress}
+          onChange={debounce(getFullAddress, 500)}
           name="addressDetail"
           placeholder="상세 주소 입력"
         />
       </>
       <Input
-        onChange={handleInput}
+        onChange={debounce(handleInput, 500)}
         name="request"
         label="배송 시 요청 사항"
         placeholder="부재 시 문 앞에 놓아주세요"

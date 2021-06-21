@@ -3,6 +3,7 @@ import { useRecoilState } from 'recoil';
 import { orderState } from './orderState';
 import Input from '../../../../components/Input';
 import Container from '../components/Container';
+import { debounce } from 'lodash';
 
 function Orderer() {
   const [inputs, setInputs] = useRecoilState(orderState);
@@ -17,9 +18,13 @@ function Orderer() {
 
   return (
     <Container title="주문자" msg bt>
-      <Input onChange={handleInput} name="orderer" label="이름" />
       <Input
-        onChange={handleInput}
+        onChange={debounce(handleInput, 500)}
+        name="orderer"
+        label="이름"
+      />
+      <Input
+        onChange={debounce(handleInput, 500)}
         name="orderer_contact"
         label="휴대전화"
         placeholder="01012345678 숫자만 입력해주세요"
