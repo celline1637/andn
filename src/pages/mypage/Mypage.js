@@ -31,18 +31,14 @@ function Mypage() {
           로그아웃
         </LogoutBtn>
       </Box>
-      <Box>
-        <Link to="/mypage_campaign">
-          <Text>참여한 캠페인</Text>
-          <StyledArrow width="1.6vw" height="3.2vw" stroke="#dbdbdb" />
-        </Link>
-      </Box>
-      <Box>
-        <Link to="/mypage_change">
-          <Text>내 정보 수정</Text>
-          <StyledArrow width="1.6vw" height="3.2vw" stroke="#dbdbdb" />
-        </Link>
-      </Box>
+      {LINKS.map(link => (
+        <Box>
+          <Link to={link.link}>
+            <Text>{link.title}</Text>
+            <StyledArrow width="1.6vw" height="3.2vw" stroke="#dbdbdb" />
+          </Link>
+        </Box>
+      ))}
     </Container>
   );
 }
@@ -100,3 +96,9 @@ const LogoutBtn = styled(Button)`
   letter-spacing: ${({ theme }) => theme.calcVw(750, -1)};
 `;
 export default Mypage;
+
+const LINKS = [
+  { title: '참여한 캠페인', link: '/mypage_campaign' },
+  { title: '내 정보 수정', link: '/mypage_change' },
+  { title: '좋아한 캠페인', link: '/mypage_like' },
+];
