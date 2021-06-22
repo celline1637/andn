@@ -5,7 +5,7 @@ import styled from 'styled-components/macro';
 function Summary({ url, subtitle, title, showOption }) {
   return (
     <Wrapper>
-      <Img alt="캠페인 상세 이미지" src={url[0]} />
+      <Img alt="캠페인 상세 이미지" src={url} />
       <Title>
         <div className="title">{title}</div>
         <div className="subtitle">

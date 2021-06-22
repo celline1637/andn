@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy } from 'react';
 import { useParams } from 'react-router';
-import Button from '../../../components/Button';
-import Option from './components/Option';
-import Summary from './components/Summary';
 import { API } from '../../../config';
+import Button from '../../../components/Button';
 import ScrollTopArrow from '../../../components/ScrollArrow';
 import styled, { css } from 'styled-components/macro';
+
+const Summary = lazy(() => import('./components/Summary'));
+const Option = lazy(() => import('./components/Option'));
 
 function Detail() {
   const params = useParams();
