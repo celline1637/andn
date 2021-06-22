@@ -3,9 +3,11 @@ import Row from './Row';
 // import { useParams } from 'react-router';
 // import { API } from '../../../config';
 import styled from 'styled-components';
+import { useHistory } from 'react-router';
 
 function Table() {
   const [orderData, setOrderData] = useState();
+  const history = useHistory();
   // 서버 연결 시, 사용
   // const params = useParams();
 
@@ -14,11 +16,20 @@ function Table() {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(orderData => setOrderData(orderData));
+      .then(orderData => {
+        if (orderData.message === 'EXPIRED_TOKEN') {
+          alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
+          localStorage.clear();
+          history.push('/');
+        } else if (orderData.message === 'SUCCESS') {
+          setOrderData(orderData);
+        }
+      });
   };
 
   useEffect(() => {
     getOrderData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
