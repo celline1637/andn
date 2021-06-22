@@ -31,7 +31,7 @@ function SocialBtnGroup({ text = '로그인하기' }) {
             ) {
               alert(
                 '카카오 계정으로 로그인 중 문제가 발생했습니다.',
-                res.message
+                res.status
               );
             }
           });

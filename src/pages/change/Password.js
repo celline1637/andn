@@ -54,9 +54,9 @@ function Password() {
         if (res.status === 'SUCCESS') {
           setIsCurrentPassword(true);
           alert('비밀번호가 일치합니다.');
-        } else if (res.message === 'FAILE') {
+        } else if (res.status === 'FAILE') {
           return alert('현재 비밀번호와 일치하지않습니다. ');
-        } else if (res.message === 'EXPIRED_TOKEN') {
+        } else if (res.status === 'EXPIRED_TOKEN') {
           alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
           localStorage.clear();
           history.push('/');
@@ -79,7 +79,7 @@ function Password() {
           if (res.status === 'SUCCESS') {
             setIsComplete(true);
             alert('비밀번호 수정 완료되었습니다.');
-          } else if (res.message === 'EXPIRED_TOKEN') {
+          } else if (res.status === 'EXPIRED_TOKEN') {
             alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
             localStorage.clear();
             history.push('/');

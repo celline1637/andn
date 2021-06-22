@@ -3,7 +3,7 @@ import { useHistory } from 'react-router';
 import Header from '../../components/Header';
 import ProductCard from '../../components/ProductCard';
 // 서버와 연결 시 config 사용
-// import { API } from '../../config';
+import { API } from '../../config';
 import styled from 'styled-components/macro';
 
 function AdminCamp() {
@@ -11,17 +11,17 @@ function AdminCamp() {
   const history = useHistory();
 
   const getAdminCampList = () => {
-    fetch(`/data/adminData.json`, {
+    fetch(API.ADMIN_LIST, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
       .then(res => {
-        if (res.message === 'EXPIRED_TOKEN') {
+        if (res.status === 'EXPIRED_TOKEN') {
           alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
           localStorage.clear();
           history.push('/');
         } else if (res.status === 'SUCCESS') {
-          setAdminCampList(res.campaign);
+          setAdminCampList(res.data.campaign);
         }
       });
   };
@@ -50,7 +50,7 @@ function AdminCamp() {
 }
 
 const Wrapper = styled.div`
-  ${({ theme }) => theme.flexSet()};
+  ${({ theme }) => theme.flexSet('flex-start')};
   flex-wrap: wrap;
   padding: ${({ theme }) => theme.calcVw(750, 40)}
     ${({ theme }) => theme.calcVw(750, 27)};

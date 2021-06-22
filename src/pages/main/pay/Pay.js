@@ -28,10 +28,10 @@ function Pay() {
     })
       .then(res => res.json())
       .then(res => {
-        if (res.message === 'SUCCESS') {
+        if (res.status === 'SUCCESS') {
           alert('참여 완료되었습니다.');
           history.push('/mypage_campaign');
-        } else if (res.message === 'EXPRIED_TOKEN') {
+        } else if (res.status === 'EXPRIED_TOKEN') {
           alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
           localStorage.clear();
           history.push('/');
