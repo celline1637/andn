@@ -20,7 +20,7 @@ function Pay() {
   const sendOrderInfo = () => {
     const isAllValid = checkValid(orderData, Object.keys(orderData));
     if (!isAllValid) return alert('필수 입력란을 확인해주세요');
-
+    console.log(orderData);
     fetch(API.PAY, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('token') },
@@ -31,6 +31,10 @@ function Pay() {
         if (res.message === 'SUCCESS') {
           alert('참여 완료되었습니다.');
           history.push('/mypage_campaign');
+        } else if (res.message === 'EXPRIED_TOKEN') {
+          alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
+          localStorage.clear();
+          history.push('/');
         }
       })
       .catch(error => alert(error.message));

@@ -3,16 +3,26 @@ import Header from '../../components/Header';
 import ProductCard from '../../components/ProductCard';
 import { API } from '../../config';
 import styled from 'styled-components/macro';
+import { useHistory } from 'react-router';
 
 function Campaign() {
   const [myCampList, setMyCampList] = useState();
-  //TODO : 토근이 만료되면 자동 로그아웃 또는 연장할 수 있게 수정하기
+  const history = useHistory();
+
   const getMyCampList = () => {
     fetch(API.MYCAMP_LIST, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(myCampData => setMyCampList(myCampData.data.campaign));
+      .then(myCampData => {
+        if (myCampData.message === 'SUCCESS') {
+          setMyCampList(myCampData.data.campaign);
+        } else if (myCampData.message === 'EXPIRE_TOKEN') {
+          alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
+          localStorage.clear();
+          history.push('/');
+        }
+      });
   };
 
   useEffect(() => {

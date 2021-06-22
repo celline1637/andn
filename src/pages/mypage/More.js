@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import Header from '../../components/Header';
 import DetailCard from './components/DetailCard';
 import { API } from '../../config';
@@ -7,13 +7,22 @@ import { API } from '../../config';
 function More() {
   const [detail, setDetail] = useState();
   const params = useParams();
+  const history = useHistory();
 
   const getMyCamp = () => {
     fetch(`${API.MYCAMP_DETAIL}/${params.id}`, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(detailData => setDetail(detailData.data.campaign));
+      .then(detailData => {
+        if (detailData.message === 'SUCCESS') {
+          setDetail(detailData.data.campaign);
+        } else if (detailData.message === 'EXPIRED_TOKEN') {
+          alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
+          localStorage.clear();
+          history.push('/');
+        }
+      });
   };
 
   useEffect(() => {

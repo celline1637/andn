@@ -3,16 +3,17 @@ import Button from '../../components/Button';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
 // 서버와 연결시 config 사용
-// import { API } from '../../../config';
+import { API } from '../../config';
 import { ReactComponent as Warning } from '../../assets/warning.svg';
 import styled from 'styled-components';
+import { useHistory } from 'react-router';
 
 function Password(params) {
   const [inputs, setInputs] = useState({
     password: '',
     secondaryPassword: '',
   });
-
+  const history = useHistory();
   const [isComplete, setIsComplete] = useState(false);
 
   const handleInputs = e => {
@@ -38,8 +39,10 @@ function Password(params) {
 
   const changePassword = () => {
     if (isEqual && isValid) {
-      fetch(``, {
+      console.log('clicked');
+      fetch(API.CHANGE, {
         method: 'POST',
+        headers: { Authorization: localStorage.getItem('token') },
         body: JSON.stringify({
           password,
         }),
@@ -48,6 +51,11 @@ function Password(params) {
         .then(res => {
           if (res.status === 'SUCCESS') {
             setIsComplete(true);
+            alert('비밀번호 수정 완료되었습니다.');
+          } else if (res.message === 'EXPIRED_TOKEN') {
+            alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
+            localStorage.clear();
+            history.push('/');
           }
         });
     }
@@ -93,7 +101,7 @@ function Password(params) {
         )}
         {!isComplete ? (
           <ChangeBtn
-            disabled={isEqual && isValid}
+            // disabled={isEqual && isValid}
             onClick={changePassword}
             color="btn"
             fullWidth
