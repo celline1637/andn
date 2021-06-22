@@ -1,15 +1,28 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Header from '../../components/Header';
 import Button from '../../components/Button';
 import { useHistory } from 'react-router';
+import { API } from '../../config';
 import styled from 'styled-components/macro';
+import { useEffect } from 'react/cjs/react.development';
 
 function Change() {
   const history = useHistory();
+  const [userInfo, setUserInfo] = useState('');
 
   const goToChangePage = () => {
     history.push('/mypage_change_password');
   };
+
+  const getUserInfo = () => {
+    fetch(API.USERINFO)
+      .then(res => res.json())
+      .then(res => setUserInfo(res.data));
+  };
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
 
   return (
     <>
@@ -17,7 +30,7 @@ function Change() {
       <ul>
         <Box>
           <Title>이메일</Title>
-          <Cont>eong@wyerz.co.kr</Cont>
+          <Cont>{userInfo}</Cont>
         </Box>
         <Box>
           <Title>비밀번호</Title>
