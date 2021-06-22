@@ -10,7 +10,11 @@ function Price() {
   const optionData = JSON.parse(localStorage.getItem('orderData'));
 
   useEffect(() => {
-    setOrderData({ ...orderData, option: optionData.option });
+    setOrderData({
+      ...orderData,
+      option: optionData.option,
+      total: calcTotal(optionData.option),
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
