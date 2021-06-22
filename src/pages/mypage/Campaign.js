@@ -15,9 +15,9 @@ function Campaign() {
     })
       .then(res => res.json())
       .then(myCampData => {
-        if (myCampData.message === 'SUCCESS') {
+        if (myCampData.status === 'SUCCESS') {
           setMyCampList(myCampData.data.campaign);
-        } else if (myCampData.message === 'EXPIRE_TOKEN') {
+        } else if (myCampData.status === 'EXPIRE_TOKEN') {
           alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
           localStorage.clear();
           history.push('/');
