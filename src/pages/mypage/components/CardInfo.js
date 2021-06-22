@@ -6,12 +6,14 @@ function CardInfo({ title, cont }) {
     if (typeof cont === 'number') {
       return `${cont.toLocaleString()}원`;
     } else if (Array.isArray(cont)) {
-      let result = cont.map(option => (
-        <div>
-          {option.title} | {option.quantity}세트
-        </div>
-      ));
-      return result;
+      return cont.map(
+        item =>
+          item.quantity > 0 && (
+            <div>
+              {item.title} | {item.quantity}세트
+            </div>
+          )
+      );
     } else {
       return cont;
     }
