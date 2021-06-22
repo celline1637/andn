@@ -3,7 +3,7 @@ import { useRecoilState } from 'recoil';
 import { orderState } from './orderState';
 import Button from '../../../../components/Button';
 import Container from './components/Container';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
 
 function Payment() {
   const [inputs, setInputs] = useRecoilState(orderState);
@@ -24,12 +24,12 @@ function Payment() {
     }
   };
 
-  console.log(isSelected);
+  console.log(isSelected.card, isSelected.account);
 
   return (
     <Container title="결제 수단">
       <Wrapper>
-        <Button
+        <PaymentBtn
           name="card"
           isSelected={isSelected.card}
           outline
@@ -38,8 +38,8 @@ function Payment() {
           onClick={setOrderData}
         >
           카드
-        </Button>
-        <Button
+        </PaymentBtn>
+        <PaymentBtn
           name="account"
           isSelected={isSelected.account}
           outline
@@ -48,7 +48,7 @@ function Payment() {
           onClick={setOrderData}
         >
           무통장 입금
-        </Button>
+        </PaymentBtn>
       </Wrapper>
     </Container>
   );
@@ -56,18 +56,18 @@ function Payment() {
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.flexSet()};
+`;
 
-  button {
-    padding: ${({ theme }) => theme.calcVw(750, 74)};
-    border-radius: 0;
-    color: ${({ theme }) => theme.colors.th};
-    background-color: ${({ isSelected }) =>
-      isSelected ? 'secondary_btn' : 'none'};
-
-    &:focus {
-      background-color: red;
-    }
-  }
+const PaymentBtn = styled(Button)`
+  padding: ${({ theme }) => theme.calcVw(750, 74)};
+  border-radius: 0;
+  color: ${({ theme }) => theme.colors.th};
+  ${({ isSelected }) =>
+    isSelected &&
+    css`
+      background-color: gray;
+      color: white;
+    `};
 `;
 
 export default Payment;
