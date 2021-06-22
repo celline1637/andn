@@ -6,11 +6,8 @@
       "brand": "라지노",
       "hostname": "헤어몬"
     },
-    "url": [
-      "/images/thumbnail.webp",
-      "/images/832@2x.png 2x",
-      "/images/832@2x.png 3x"
-    ],
+    "url": "/images/thumbnail.webp",
+
     "summary": "라지노와 함께라면 행복합니다 하하하",
     "option": [
       {

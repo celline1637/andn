@@ -51,7 +51,7 @@ function ProductCard({ url, subtitle, title, id, type }) {
       <Thumbnail>
         <UnLikeIcon onClick={toggleLike} className="far fa-heart" />
         <LikeIcon status={likeStatus} className="fas fa-heart" />
-        <img alt="thumbnail" src={url[0]} srcset={(url[1], url[2])} />
+        <img alt="thumbnail" src={url} />
       </Thumbnail>
       <SubTitle>{`${subtitle.brand} - ${subtitle.host}`}</SubTitle>
       <Title>{title}</Title>
