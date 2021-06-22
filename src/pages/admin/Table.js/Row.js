@@ -13,12 +13,15 @@ function Row({ info, order }) {
         <p>{info.address}</p>
       </td>
       <td>
-        {info.option.map(option => (
-          <>
-            <div>{option.title}</div>
-            <div>{option.quantity}세트</div>
-          </>
-        ))}
+        {info.option.map(
+          option =>
+            option.quantity > 0 && (
+              <>
+                <div>{option.title}</div>
+                <div>{option.quantity}세트</div>
+              </>
+            )
+        )}
       </td>
       <td>
         <p>{info.payment}</p>

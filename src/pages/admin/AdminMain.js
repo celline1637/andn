@@ -25,7 +25,7 @@ function AdminMain() {
     e.preventDefault();
     const { email, password } = inputs;
     if (isValid) {
-      fetch(`${API.SIGNIN}`, {
+      fetch(API.ADMIN_SIGNIN, {
         method: 'POST',
         body: JSON.stringify({
           email,

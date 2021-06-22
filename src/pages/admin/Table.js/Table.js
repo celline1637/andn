@@ -1,28 +1,27 @@
 import React, { useState, useEffect } from 'react';
 import Row from './Row';
-// import { useParams } from 'react-router';
-// import { API } from '../../../config';
+import { useParams } from 'react-router';
+import { API } from '../../../config';
 import styled from 'styled-components';
 import { useHistory } from 'react-router';
 
 function Table() {
   const [orderData, setOrderData] = useState();
   const history = useHistory();
-  // 서버 연결 시, 사용
-  // const params = useParams();
+  const params = useParams();
 
   const getOrderData = () => {
-    fetch('/data/adminOrder.json', {
+    fetch(`${API.ADMIN_DETAIL}/${params.id}`, {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(orderData => {
-        if (orderData.message === 'EXPIRED_TOKEN') {
+      .then(res => {
+        if (res.status === 'EXPIRED_TOKEN') {
           alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
           localStorage.clear();
           history.push('/');
-        } else if (orderData.message === 'SUCCESS') {
-          setOrderData(orderData);
+        } else if (res.status === 'SUCCESS') {
+          setOrderData(res.data.campaign);
         }
       });
   };
