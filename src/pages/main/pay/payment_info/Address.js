@@ -102,11 +102,15 @@ function Address() {
         placeholder="부재 시 문 앞에 놓아주세요"
       />
       {isOpenPost ? (
-        <DaumPostcode
-          style={postCodeStyle}
-          autoClose
-          onComplete={onCompletePost}
-        />
+        <Back onClick={onChangeOpenPost}>
+          <Modal>
+            <DaumPostcode
+              style={postCodeStyle}
+              autoClose
+              onComplete={onCompletePost}
+            />
+          </Modal>
+        </Back>
       ) : null}
     </Container>
   );
@@ -120,6 +124,22 @@ const postCodeStyle = {
   height: '400px',
   padding: '7px',
 };
+
+const Back = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.6);
+`;
+
+const Modal = styled.div`
+  ${({ theme }) => theme.posCenter('fixed')};
+  ${({ theme }) => theme.flexSet()};
+  background-color: ${({ theme }) => theme.colors.black};
+  padding: ${({ theme }) => theme.calcVw(750, 4)};
+`;
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.flexSet('center', 'flex-start')};
