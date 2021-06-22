@@ -46,10 +46,10 @@ const StyledInput = styled.input`
     line-height: ${({ theme }) => theme.calcVw(750, 29)};
     letter-spacing: ${({ theme }) => theme.calcVw(750, -1.3)};
   }
-
+  /* 
   &:disabled {
     background-color: white;
-  }
+  } */
 `;
 
 export default Input;
