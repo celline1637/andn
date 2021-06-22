@@ -14,6 +14,7 @@ const AdminMain = lazy(() => import('./pages/admin/AdminMain'));
 const AdminOrder = lazy(() => import('./pages/admin/AdminOrder'));
 const Change = lazy(() => import('./pages/change/Change'));
 const Password = lazy(() => import('./pages/change/Password'));
+const Graph = lazy(() => import('./pages/graph/Graph'));
 
 const Routes = () => {
   return (
@@ -34,6 +35,7 @@ const Routes = () => {
           <Route exact path="/admin_login" component={AdminLogin} />
           <Route exact path="/admin_camp" component={AdminCamp} />
           <Route exact path="/admin_order/:id" component={AdminOrder} />
+          <Route exact path="/test" component={Graph} />
         </Switch>
       </Suspense>
     </Router>

@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import styled from 'styled-components/macro';
-import ProductCard from '../../components/ProductCard';
+// import ProductCard from '../../components/ProductCard';
 import { API } from '../../config';
 import Carousel from './components/Carousel';
+
+const ProductCard = lazy(() => import('../../components/ProductCard'));
 
 function Main() {
   const [allCampList, setAllCampList] = useState();
@@ -19,17 +21,19 @@ function Main() {
 
   return (
     <Wrapper>
-      <Carousel />
-      {allCampList?.map(camp => (
-        <ProductCard
-          id={camp.id}
-          key={camp.id}
-          url={camp.url}
-          subtitle={camp.subtitle}
-          title={camp.title}
-          type="main"
-        />
-      ))}
+      {/* <Carousel /> */}
+      <Suspense fallback={<div>Loading...</div>}>
+        {allCampList?.map(camp => (
+          <ProductCard
+            id={camp.id}
+            key={camp.id}
+            url={camp.url}
+            subtitle={camp.subtitle}
+            title={camp.title}
+            type="main"
+          />
+        ))}
+      </Suspense>
     </Wrapper>
   );
 }
