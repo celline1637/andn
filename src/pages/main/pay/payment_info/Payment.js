@@ -24,8 +24,6 @@ function Payment() {
     }
   };
 
-  console.log(isSelected.card, isSelected.account);
-
   return (
     <Container title="결제 수단">
       <Wrapper>

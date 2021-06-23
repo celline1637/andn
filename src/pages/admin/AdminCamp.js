@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import Header from '../../components/Header';
 import ProductCard from '../../components/ProductCard';
-// 서버와 연결 시 config 사용
 import { API } from '../../config';
 import styled from 'styled-components/macro';
 import CampGraph from '../graph/CampGraph';
