@@ -10,7 +10,7 @@ function SocialBtnGroup({ text = '로그인하기' }) {
   const handleKakaoLogin = () => {
     const { Kakao } = window;
     Kakao.Auth.login({
-      scope: 'profile, age_range, account_email, gender, birthday',
+      scope: 'age_range, account_email, gender',
       success: res => {
         fetch(`${API.KAKAO}`, {
           method: 'POST',
