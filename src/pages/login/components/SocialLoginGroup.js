@@ -48,7 +48,7 @@ function SocialBtnGroup({ text = '로그인하기' }) {
         <i className="fab fa-facebook"></i>
         페이스북 아이디로 {text}
       </AccountButton>
-      <AccountButton fullWidth onClick={handleKakaoLogin}>
+      <AccountButton className="kakao" fullWidth onClick={handleKakaoLogin}>
         <i className="fas fa-comment-dots"></i>
         카카오 아이디로 {text}
       </AccountButton>
@@ -65,6 +65,10 @@ const SocialLogin = styled.div`
   i {
     font-size: 1.4rem;
     margin-right: 6px;
+  }
+
+  .kakao {
+    background-color: #fce500;
   }
 
   [class$='facebook'] {

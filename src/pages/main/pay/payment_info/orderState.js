@@ -1,4 +1,4 @@
-import { atom } from 'recoil';
+import { atom, selector } from 'recoil';
 
 export const orderState = atom({
   key: 'orderState',
@@ -11,5 +11,12 @@ export const orderState = atom({
     payment: '',
     option: '',
     request: '',
+  },
+});
+
+export const optionState = selector({
+  key: 'optionState',
+  set: ({ set }, newValue) => {
+    set(orderState.option, newValue);
   },
 });
