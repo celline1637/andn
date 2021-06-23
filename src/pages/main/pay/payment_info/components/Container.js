@@ -22,10 +22,7 @@ function Container({ title, msg, btn, children }) {
         <Inner>
           <Title>{title}</Title>
           <GetBtn
-            onClick={e => {
-              e.preventDefault();
-              copyInfo();
-            }}
+            onClick={copyInfo}
             type="button"
             btn={btn}
             outline

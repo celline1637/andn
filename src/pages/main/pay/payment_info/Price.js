@@ -10,6 +10,7 @@ function Price() {
   const optionData = JSON.parse(localStorage.getItem('orderData'));
 
   useEffect(() => {
+    const optionData = JSON.parse(localStorage.getItem('orderData'));
     setOrderData({
       ...orderData,
       option: optionData.option,
