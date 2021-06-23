@@ -15,7 +15,9 @@ function Change() {
   };
 
   const getUserInfo = () => {
-    fetch(API.USERINFO)
+    fetch(API.GET_USERINFO, {
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then(res => res.json())
       .then(res => setUserInfo(res.data));
   };
@@ -30,7 +32,7 @@ function Change() {
       <ul>
         <Box>
           <Title>이메일</Title>
-          <Cont>{userInfo}</Cont>
+          <Cont>{userInfo.email}</Cont>
         </Box>
         <Box>
           <Title>비밀번호</Title>

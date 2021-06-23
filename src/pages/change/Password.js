@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Button from '../../components/Button';
 import Header from '../../components/Header';
 import Input from '../../components/Input';
-// 서버와 연결시 config 사용
 import { API } from '../../config';
 import { ReactComponent as Warning } from '../../assets/warning.svg';
 import styled from 'styled-components';
@@ -42,11 +41,11 @@ function Password() {
   const checkCurrentPassword = () => {
     const { currentPassword } = inputs;
     if (currentPassword === '') return alert('비밀번호를 입력해주세요.');
-    fetch(API.CHANGE, {
+    fetch(API.CHECK_PASSWORD, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('token') },
       body: JSON.stringify({
-        currentPassword,
+        currentpassword: currentPassword,
       }),
     })
       .then(res => res.json())
@@ -54,10 +53,12 @@ function Password() {
         if (res.status === 'SUCCESS') {
           setIsCurrentPassword(true);
           alert('비밀번호가 일치합니다.');
-        } else if (res.status === 'FAILE') {
-          return alert('현재 비밀번호와 일치하지않습니다. ');
+        } else if (res.status === 'INCORRECT_PASSWORD') {
+          alert('현재 비밀번호와 일치하지않습니다. ');
+          setIsCurrentPassword(false);
         } else if (res.status === 'EXPIRED_TOKEN') {
           alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
+          setIsCurrentPassword(false);
           localStorage.clear();
           history.push('/');
         }
@@ -88,13 +89,10 @@ function Password() {
     }
   };
 
-  const { password, secondaryPassword, currentPassword } = inputs;
+  const { password, secondaryPassword } = inputs;
   const isValid = checkValidation();
   const isEqual = password === secondaryPassword;
-
   const disabled = isCurrentPassword || (isCurrentPassword && isComplete);
-
-  console.log(true || (true && false));
 
   return (
     <>
