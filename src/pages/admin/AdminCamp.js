@@ -4,7 +4,7 @@ import Header from '../../components/Header';
 import ProductCard from '../../components/ProductCard';
 import { API } from '../../config';
 import styled from 'styled-components/macro';
-import CampGraph from '../graph/CampGraph';
+import CampGraph from './graph/CampGraph';
 
 function AdminCamp() {
   const [adminCampList, setAdminCampList] = useState();

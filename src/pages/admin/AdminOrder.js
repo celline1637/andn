@@ -3,16 +3,15 @@ import Header from '../../components/Header';
 import Table from './Table.js/Table';
 import ExportBtn from 'react-html-table-to-excel';
 import styled, { css } from 'styled-components/macro';
-import Graph from '../graph/Graph';
+import DetailGraph from './graph/DetailGraph';
 
 function AdminOrder() {
   return (
     <>
       <Header text="결제 승인 내역" />
-      <Box direction="column">
-        <Title>날짜별 승인 정보</Title>
-        <Graph />
-      </Box>
+
+      <DetailGraph />
+
       <Box direction="row">
         <Title>캠페인 참여 정보</Title>
         <ExportBtn
