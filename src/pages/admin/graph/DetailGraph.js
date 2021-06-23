@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
-import styled from 'styled-components/macro';
 
 function Graph() {
   const [chartData, setChartData] = useState();

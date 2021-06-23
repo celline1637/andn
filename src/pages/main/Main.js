@@ -2,7 +2,7 @@ import React, { useState, useEffect, lazy, Suspense } from 'react';
 import styled from 'styled-components/macro';
 // import ProductCard from '../../components/ProductCard';
 import { API } from '../../config';
-import Carousel from './components/Carousel';
+import SlickCarousel from './components/SlickCarousel';
 
 const ProductCard = lazy(() => import('../../components/ProductCard'));
 
@@ -22,6 +22,7 @@ function Main() {
   return (
     <Wrapper>
       {/* <Carousel /> */}
+      <SlickCarousel />
       <Suspense fallback={<div>Loading...</div>}>
         {allCampList?.map(camp => (
           <ProductCard
