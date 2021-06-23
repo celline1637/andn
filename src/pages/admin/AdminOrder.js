@@ -2,13 +2,18 @@ import React from 'react';
 import Header from '../../components/Header';
 import Table from './Table.js/Table';
 import ExportBtn from 'react-html-table-to-excel';
-import styled from 'styled-components/macro';
+import styled, { css } from 'styled-components/macro';
+import Graph from '../graph/Graph';
 
 function AdminOrder() {
   return (
     <>
       <Header text="결제 승인 내역" />
-      <Box>
+      <Box direction="column">
+        <Title>날짜별 승인 정보</Title>
+        <Graph />
+      </Box>
+      <Box direction="row">
         <Title>캠페인 참여 정보</Title>
         <ExportBtn
           id="test-table-xls-button"
@@ -32,7 +37,17 @@ const ScrollBox = styled.div`
 `;
 
 const Box = styled.div`
-  ${({ theme }) => theme.flexSet('space-between')};
+  ${({ direction }) => {
+    if (direction === 'row')
+      return css`
+        ${({ theme }) => theme.flexSet('space-between')}
+      `;
+    if (direction === 'column')
+      return css`
+        ${({ theme }) => theme.flexColumnSet('center', 'flex-start')}
+      `;
+  }};
+  /* ${({ theme }) => theme.flexSet('space-between')}; */
   padding: ${({ theme }) => theme.calcVw(750, 73)}
     ${({ theme }) => theme.calcVw(750, 42)}
     ${({ theme }) => theme.calcVw(750, 26.5)};

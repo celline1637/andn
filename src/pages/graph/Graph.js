@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Chart from 'react-apexcharts';
+import styled from 'styled-components/macro';
 
 function Graph() {
   const [chartData, SetChartData] = useState({
@@ -20,13 +21,19 @@ function Graph() {
   });
 
   return (
-    <Chart
-      options={chartData.options}
-      series={chartData.series}
-      type="bar"
-      width="500"
-    />
+    <Wrapper>
+      <Chart
+        options={chartData.options}
+        series={chartData.series}
+        type="bar"
+        width="500"
+      />
+    </Wrapper>
   );
 }
+
+const Wrapper = styled.div`
+  ${({ theme }) => theme.flexSet()};
+`;
 
 export default Graph;

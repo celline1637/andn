@@ -5,6 +5,7 @@ import ProductCard from '../../components/ProductCard';
 // 서버와 연결 시 config 사용
 import { API } from '../../config';
 import styled from 'styled-components/macro';
+import CampGraph from '../graph/CampGraph';
 
 function AdminCamp() {
   const [adminCampList, setAdminCampList] = useState();
@@ -28,11 +29,13 @@ function AdminCamp() {
 
   useEffect(() => {
     getAdminCampList();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
     <>
       <Header text="캠페인 관리" />
+      <CampGraph />
       <Wrapper>
         {adminCampList?.map(camp => (
           <ProductCard
