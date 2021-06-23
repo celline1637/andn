@@ -14,7 +14,6 @@ function Graph() {
         setChartData({ series: [i] });
       });
   };
-  console.log(chartData);
 
   useEffect(() => {
     getChartData();

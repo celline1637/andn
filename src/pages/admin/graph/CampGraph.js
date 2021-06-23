@@ -21,8 +21,6 @@ function CampGraph() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(chartData);
-
   return chartData ? (
     <Chart
       options={STYLE.options}

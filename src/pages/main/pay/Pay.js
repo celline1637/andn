@@ -4,7 +4,7 @@ import { useRecoilValue } from 'recoil';
 import { orderState } from './payment_info/orderState';
 import Button from '../../../components/Button';
 import Header from '../../../components/Header';
-import Container from './components/Container';
+import Container from '../pay/payment_info/components/Container';
 import Address from './payment_info/Address';
 import Orderer from './payment_info/Orderer';
 import Payment from './payment_info/Payment';

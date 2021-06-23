@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
 import { orderState } from './orderState';
 import Input from '../../../../components/Input';
-import Container from '../components/Container';
+import Container from './components/Container';
 import { API } from '../../../../config';
 
 function Orderer() {

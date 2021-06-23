@@ -4,7 +4,7 @@ import { orderState } from './orderState';
 import DaumPostcode from 'react-daum-postcode';
 import Button from '../../../../components/Button';
 import Input from '../../../../components/Input';
-import Container from '../components/Container';
+import Container from './components/Container';
 import { debounce } from 'lodash';
 import styled from 'styled-components/macro';
 
