@@ -9,13 +9,16 @@ function Price() {
   const [orderData, setOrderData] = useRecoilState(orderState);
   const optionData = JSON.parse(localStorage.getItem('orderData'));
 
-  useEffect(() => {
-    const optionData = JSON.parse(localStorage.getItem('orderData'));
+  const getInfo = () => {
     setOrderData({
       ...orderData,
       option: optionData.option,
       total: calcTotal(optionData.option),
     });
+  };
+
+  useEffect(() => {
+    getInfo();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
