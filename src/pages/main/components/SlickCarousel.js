@@ -3,9 +3,15 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import Slider from 'react-slick';
 import styled from 'styled-components';
+import { useHistory } from 'react-router';
 
 function SlickCarousel() {
   const [mainCarouselDatas, setMainCarouselDatas] = useState();
+  const history = useHistory();
+
+  const goToDetail = id => {
+    history.push(`/detail/${id}`);
+  };
 
   useEffect(() => {
     fetch('/data/mainCarousel.json')
@@ -13,20 +19,17 @@ function SlickCarousel() {
       .then(carouselDatas => setMainCarouselDatas(carouselDatas.courses));
   }, []);
 
-  const settings = {
-    dots: true,
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    autoplay: true,
-    autoplaySpeed: 6500,
-  };
-
   return mainCarouselDatas ? (
     <Wrapper>
-      <StyledSlider {...settings}>
+      <StyledSlider {...SETTINGS}>
         {mainCarouselDatas.map((mainCarouselData, i) => {
           return (
-            <Slide>
+            <Slide
+              id={mainCarouselData.id}
+              onClick={e => {
+                goToDetail(e.currentTarget.getAttribute('id'));
+              }}
+            >
               <img key={i} alt="메인이미지" src={mainCarouselData.thumbnail} />
               <Text>
                 <div>{mainCarouselData.main_description.split(',')[0]}</div>
@@ -48,6 +51,7 @@ const Wrapper = styled.div`
 
 const Slide = styled.div`
   position: relative;
+
   & > img {
     width: 100%;
     transform: translateY(-20%);
@@ -88,3 +92,11 @@ const StyledSlider = styled(Slider)`
 `;
 
 export default SlickCarousel;
+
+const SETTINGS = {
+  dots: true,
+  slidesToShow: 1,
+  slidesToScroll: 1,
+  autoplay: true,
+  autoplaySpeed: 6500,
+};
