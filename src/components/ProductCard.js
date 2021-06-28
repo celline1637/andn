@@ -20,35 +20,31 @@ function ProductCard({ url, subtitle, title, id, type }) {
     }
   };
 
-  const toggleLike = e => {
-    e.stopPropagation();
-    setLikeStatus(!likeStatus);
-  };
+  // const toggleLike = e => {
+  //   e.stopPropagation();
+  //   setLikeStatus(!likeStatus);
+  // };
 
   // 실제 서버와 통신할때 사용할 좋아요 버튼 이벤트
-  // const patchLikeProject = e => {
-  //   e.stopPropagation();
-  //   fetch(`${API.MYCAMP_LIKED}/${id}`, {
-  //     method: 'PATCH',
-  //     headers: { Authorization: localStorage.getItem('token') },
-  //   })
-  //     .then(res => {
-  //       if (res.ok) {
-  //         return res.json();
-  //       } else {
-  //         throw new Error();
-  //       }
-  //     })
-  //     .then(res => {
-  //       res['is_liked'] ? setLikeStatus(true) : setLikeStatus(false);
-  //     })
-  //     .catch(err => alert('로그인을 먼저 해주세요.'));
-  // };
+  const patchLikeProject = e => {
+    e.stopPropagation();
+    fetch(`${API.MYCAMP_LIKED}/${id}`, {
+      method: 'PATCH',
+      headers: { Authorization: localStorage.getItem('token') },
+    })
+      .then(res => res.json())
+      .then(res => {
+        res.status === 'SUCCESS' && res['is_liked']
+          ? setLikeStatus(true)
+          : setLikeStatus(false);
+      })
+      .catch(err => alert(err));
+  };
 
   return (
     <Container type={type} onClick={goToDetail}>
       <Thumbnail>
-        <UnLikeIcon onClick={toggleLike} className="far fa-heart" />
+        <UnLikeIcon onClick={patchLikeProject} className="far fa-heart" />
         <LikeIcon status={likeStatus} className="fas fa-heart" />
         <img alt="thumbnail" src={url} />
       </Thumbnail>
