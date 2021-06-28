@@ -18,7 +18,8 @@ function Nav() {
   };
 
   const goToMypageOrLogin = () => {
-    isLogin ? history.push('/mypage') : history.push('/login');
+    const url = isLogin ? '/mypage' : '/login';
+    return url;
   };
 
   return (
@@ -33,7 +34,7 @@ function Nav() {
             <LinkGroup>
               <Link to="/">브랜드 모집</Link>
               <Link to="/">호스트 지원</Link>
-              <Link to="/login" onClick={goToMypageOrLogin}>
+              <Link to={goToMypageOrLogin}>
                 <span>로그인</span>
                 <Profile
                   className="profile"
