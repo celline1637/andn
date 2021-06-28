@@ -16,6 +16,7 @@ function Graph() {
 
   useEffect(() => {
     getChartData();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return chartData ? (
     <Chart options={STYLE.options} series={chartData.series} type="line" />

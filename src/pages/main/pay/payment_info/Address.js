@@ -86,9 +86,9 @@ function Address() {
           <Button onClick={onChangeOpenPost} color="btn" outline>
             주소찾기
           </Button>
-          <Input name="zipcode" value={zipcode} />
+          <Input name="zipcode" value={zipcode} readOnly />
         </Wrapper>
-        <Input name="address" value={address} />
+        <Input name="address" value={address} readOnly />
         <Input
           onChange={debounce(getFullAddress, 500)}
           name="addressDetail"

@@ -1,8 +1,10 @@
-// const HOST = 'http://192.168.0.57:8000';
-const HOST = 'http://3.34.245.245:8000';
+const HOST = 'http://192.168.0.57:8000';
+// const HOST = 'http://3.34.245.245:8000';
+// const HOST = 'http://10.58.7.185:8000';
 
 export const API = {
   SIGNIN: `${HOST}/users/signin`,
+  KAKAO: `${HOST}/users/signin/kakao`,
   CHECK_PASSWORD: `${HOST}/users/checkpassword`,
   GET_USERINFO: `${HOST}/users/info`,
   ADMIN_SIGNIN: `${HOST}/users/admin`,

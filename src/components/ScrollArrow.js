@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
 import Button from './Button';
+import styled from 'styled-components';
 
 const ScrollTopArrow = () => {
   const [showScroll, setShowScroll] = useState(false);
@@ -31,13 +31,12 @@ const ScrollTopArrow = () => {
   return (
     <Wrapper>
       <StyledButton
-        // className="top"
         color="black"
         outline
         onClick={scrollTop}
         showScroll={showScroll}
       >
-        <i class="fas fa-chevron-up"></i>
+        <i className="fas fa-chevron-up"></i>
       </StyledButton>
       <StyledButton
         className="bottom"
@@ -46,7 +45,7 @@ const ScrollTopArrow = () => {
         onClick={scrollBottom}
         showScroll={showScroll}
       >
-        <i class="fas fa-chevron-down"></i>
+        <i className="fas fa-chevron-down"></i>
       </StyledButton>
     </Wrapper>
   );

@@ -17,6 +17,7 @@ function SlickCarousel() {
     fetch('/data/mainCarousel.json')
       .then(res => res.json())
       .then(carouselDatas => setMainCarouselDatas(carouselDatas.courses));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return mainCarouselDatas ? (
@@ -25,6 +26,7 @@ function SlickCarousel() {
         {mainCarouselDatas.map((mainCarouselData, i) => {
           return (
             <Slide
+              key={mainCarouselData.id}
               id={mainCarouselData.id}
               onClick={e => {
                 goToDetail(e.currentTarget.getAttribute('id'));

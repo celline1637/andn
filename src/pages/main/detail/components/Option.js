@@ -46,7 +46,7 @@ function Option({ option, isOptionShow, showOption }) {
     !!option && (
       <Wrapper isOptionShow={isOptionShow}>
         <Button onClick={showOption} fullWidth>
-          <i class="fas fa-chevron-down"></i>
+          <i className="fas fa-chevron-down"></i>
         </Button>
         {option.map((item, i) => (
           <Card

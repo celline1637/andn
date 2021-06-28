@@ -39,11 +39,12 @@ function Orderer() {
 
   return (
     <Container title="주문자" msg>
-      <Input value={inputs.orderer} label="이름" />
+      <Input value={inputs.orderer} label="이름" readOnly />
       <Input
         value={inputs.orderer_contact}
         label="휴대전화"
         placeholder="01012345678 숫자만 입력해주세요"
+        readOnly
       />
     </Container>
   );

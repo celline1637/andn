@@ -1,20 +1,23 @@
 import React from 'react';
 import Button from '../../../components/Button';
-import styled from 'styled-components';
 import { useHistory } from 'react-router-dom';
 import { API } from '../../../config';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 function SocialBtnGroup({ text = '로그인하기' }) {
   const history = useHistory();
 
   const handleKakaoLogin = () => {
     const { Kakao } = window;
-    Kakao.Auth.login({
+    Kakao.Auth.authorize({
       scope: 'age_range, account_email, gender',
       success: res => {
         fetch(`${API.KAKAO}`, {
           method: 'POST',
-          body: JSON.stringify({ access_token: res.access_token }),
+          body: JSON.stringify({
+            access_token: res.access_token,
+          }),
         })
           .then(res => res.json())
           .then(res => {
@@ -23,15 +26,15 @@ function SocialBtnGroup({ text = '로그인하기' }) {
               Kakao.Auth.logout();
               history.push('/');
               alert('카카오톡으로 로그인 성공했습니다.');
-            } else if (res.status === 'DUPLICATED_ENTRY_ERROR') {
-              alert('이미 가입된 이메일입니다.');
+            } else if (res.status === 'KEY_ERROR') {
+              alert('key error');
             } else if (
               res.status === 'TIMEOUT_ERROR' ||
               res.status === 'CONNECTION_ERROR'
             ) {
               alert(
                 '카카오 계정으로 로그인 중 문제가 발생했습니다.',
-                res.status
+                res.message
               );
             }
           });
@@ -59,6 +62,10 @@ function SocialBtnGroup({ text = '로그인하기' }) {
     </SocialLogin>
   );
 }
+
+SocialBtnGroup.propTypes = {
+  text: PropTypes.oneOf(['로그인하기', '회원가입하기']),
+};
 
 const SocialLogin = styled.div`
   ${({ theme }) => theme.flexColumnSet};

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 
 function Input({ label, ...rest }) {
@@ -11,6 +12,10 @@ function Input({ label, ...rest }) {
     </Label>
   );
 }
+
+Input.propTypes = {
+  label: PropTypes.string,
+};
 
 const Label = styled.label`
   margin-bottom: ${({ theme }) => theme.calcVw(750, 12)};

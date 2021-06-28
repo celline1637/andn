@@ -1,6 +1,7 @@
 import React from 'react';
 import { ReactComponent as Arrow } from '../assets/arrow.svg';
 import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 
 function Header({ text }) {
@@ -16,6 +17,10 @@ function Header({ text }) {
     </StyledHeader>
   );
 }
+
+Header.propTypes = {
+  text: PropTypes.string,
+};
 
 const StyledHeader = styled.header`
   position: relative;

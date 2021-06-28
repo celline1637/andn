@@ -33,10 +33,10 @@ function Summary({ url, subtitle, title, showOption }) {
             캠페인 참여하기
           </JoinButton>
           <Button color="border" outline className="option">
-            <i class="far fa-heart"></i>
+            <i className="far fa-heart"></i>
           </Button>
           <Button color="border" outline className="option">
-            <i class="fas fa-share-alt"></i>
+            <i className="fas fa-share-alt"></i>
           </Button>
         </BtnGroup>
       </Cont>

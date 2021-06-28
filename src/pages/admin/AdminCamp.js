@@ -3,15 +3,18 @@ import { useHistory } from 'react-router';
 import Header from '../../components/Header';
 import ProductCard from '../../components/ProductCard';
 import { API } from '../../config';
-import styled from 'styled-components/macro';
 import CampGraph from './graph/CampGraph';
+import styled from 'styled-components/macro';
 
 function AdminCamp() {
   const [adminCampList, setAdminCampList] = useState();
   const history = useHistory();
 
   const getAdminCampList = () => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
     fetch(API.ADMIN_LIST, {
+      signal: signal,
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())

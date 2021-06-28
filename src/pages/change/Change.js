@@ -19,11 +19,20 @@ function Change() {
       headers: { Authorization: localStorage.getItem('token') },
     })
       .then(res => res.json())
-      .then(res => setUserInfo(res.data));
+      .then(res => {
+        if (res.status === 'SUCCESS') {
+          setUserInfo(res.data);
+        } else if (res.status === 'EXPRIED_TOKEN') {
+          alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
+          localStorage.clear();
+          history.push('/');
+        }
+      });
   };
 
   useEffect(() => {
     getUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

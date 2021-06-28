@@ -14,11 +14,11 @@ function Detail() {
   const [isContentsShow, setIsContentsShow] = useState(false);
   const [isOptionShow, setIsOptionShow] = useState(false);
 
-  const getCampInfo = () => {
-    fetch(`${API.ALLCAMP_DETAIL}/${params.id}`)
-      .then(res => res.json())
-      .then(campInfo => setCampInfo(campInfo.data.campaign.result));
-  };
+  // const getCampInfo = () => {
+  //   fetch(`${API.ALLCAMP_DETAIL}/${params.id}`)
+  //     .then(res => res.json())
+  //     .then(campInfo => setCampInfo(campInfo.data.campaign.result));
+  // };
 
   const showOption = () => {
     setIsOptionShow(!isOptionShow);
@@ -29,7 +29,16 @@ function Detail() {
   };
 
   useEffect(() => {
-    getCampInfo();
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    fetch(`${API.ALLCAMP_DETAIL}/${params.id}`, { signal: signal })
+      .then(res => res.json())
+      .then(campInfo => setCampInfo(campInfo.data.campaign.result));
+
+    return function cleanup() {
+      abortController.abort();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

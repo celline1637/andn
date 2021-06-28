@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import Button from '../../../../components/Button';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import styled from 'styled-components/macro';
 
-function Card({ key, info, plus, minus, index, showBtn }) {
+function Card({ info, plus, minus, index, showBtn }) {
   useEffect(() => {
     showBtn();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -28,6 +29,14 @@ function Card({ key, info, plus, minus, index, showBtn }) {
     </Wrapper>
   );
 }
+
+Card.propTypes = {
+  info: PropTypes.shape({ title: PropTypes.string, price: PropTypes.number }),
+  plus: PropTypes.func,
+  minus: PropTypes.func,
+  index: PropTypes.number,
+  showBtn: PropTypes.func,
+};
 
 const Wrapper = styled.div`
   ${({ theme }) => theme.flexSet('space-between', 'flex-end')};

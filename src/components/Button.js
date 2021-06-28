@@ -1,5 +1,6 @@
 import React from 'react';
 import { darken } from 'polished';
+import PropTypes from 'prop-types';
 import styled, { css } from 'styled-components';
 
 function Button({
@@ -22,6 +23,14 @@ function Button({
     </StyledButton>
   );
 }
+
+Button.propTypes = {
+  children: PropTypes.node,
+  color: PropTypes.string,
+  fontWeight: PropTypes.number,
+  fullWidth: PropTypes.bool,
+  outline: PropTypes.bool,
+};
 
 const colorStyles = css`
   ${({ theme, color }) => {

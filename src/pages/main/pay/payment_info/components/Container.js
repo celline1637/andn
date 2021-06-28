@@ -1,8 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 import Button from '../../../../../components/Button';
 import { useRecoilState } from 'recoil';
 import { orderState } from '../orderState';
+import PropTypes from 'prop-types';
+import styled from 'styled-components';
 
 function Container({ title, msg, btn, children }) {
   const [inputs, setInputs] = useRecoilState(orderState);
@@ -37,6 +38,13 @@ function Container({ title, msg, btn, children }) {
     </Wrapper>
   );
 }
+
+Container.propTypes = {
+  title: PropTypes.string,
+  msg: PropTypes.bool,
+  btn: PropTypes.bool,
+  children: PropTypes.node,
+};
 
 const Wrapper = styled.section`
   padding: ${({ theme }) => theme.calcVw(750, 90)}

@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 
 function Row({ info, order }) {
@@ -16,10 +17,10 @@ function Row({ info, order }) {
         {info.option.map(
           option =>
             option.quantity > 0 && (
-              <>
+              <Fragment key={option.id}>
                 <div>{option.title}</div>
                 <div>{option.quantity}세트</div>
-              </>
+              </Fragment>
             )
         )}
       </td>
@@ -32,6 +33,23 @@ function Row({ info, order }) {
     </Wrapper>
   );
 }
+
+Row.propTypes = {
+  info: PropTypes.shape({
+    orderer: PropTypes.string.isRequired,
+    orderer_contact: PropTypes.string.isRequired,
+    recipient: PropTypes.string.isRequired,
+    recipient_contact: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    option: PropTypes.arrayOf(
+      PropTypes.shape({
+        title: PropTypes.string.isRequired,
+        quantity: PropTypes.number.isRequired,
+      })
+    ).isRequired,
+  }),
+  order: PropTypes.number.isRequired,
+};
 
 const Wrapper = styled.tr`
   & > td {

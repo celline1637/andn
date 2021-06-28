@@ -1,14 +1,20 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
 function Container({ title, children }) {
   return (
     <StyledContainer>
-      {/* <Title>{title}</Title> */}
+      <Title>{title}</Title>
       {children}
     </StyledContainer>
   );
 }
+
+Container.propTypes = {
+  title: PropTypes.string,
+  children: PropTypes.node,
+};
 
 const StyledContainer = styled.main`
   text-align: center;
@@ -29,13 +35,13 @@ const StyledContainer = styled.main`
   }
 `;
 
-// const Title = styled.h1`
-//   margin: 0px 0px 32px;
-//   font-size: 24px;
-//   font-weight: 700;
-//   line-height: 36px;
-//   letter-spacing: -0.025em;
-//   text-align: left;
-// `;
+const Title = styled.h1`
+  margin: 0px 0px 32px;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+  letter-spacing: -0.025em;
+  text-align: left;
+`;
 
 export default Container;

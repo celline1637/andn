@@ -13,12 +13,6 @@ function Nav() {
   const isAdminpage = location.pathname.includes('admin');
   const isLoginpage = location.pathname.includes('login');
 
-  // old version :  로그인 한 경우에만 마이페이지 접근
-  // const isLogin = localStorage.getItem('token');
-  // const goToMypage = () => {
-  //   isLogin ? history.push('/mypage') : alert('로그인을 해주세요.');
-  // };
-
   const goToMain = () => {
     history.push('/');
   };
@@ -37,9 +31,9 @@ function Nav() {
               <Menu width="5.600vw" height="4.267vw" />
             </MenuBtn>
             <LinkGroup>
-              <Link>브랜드 모집</Link>
-              <Link>호스트 지원</Link>
-              <Link onClick={goToMypageOrLogin}>
+              <Link to="/">브랜드 모집</Link>
+              <Link to="/">호스트 지원</Link>
+              <Link to="/login" onClick={goToMypageOrLogin}>
                 <span>로그인</span>
                 <Profile
                   className="profile"

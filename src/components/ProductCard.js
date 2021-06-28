@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
+import PropTypes from 'prop-types';
 import styled from 'styled-components/macro';
 
 function ProductCard({ url, subtitle, title, id, type }) {
@@ -58,6 +59,14 @@ function ProductCard({ url, subtitle, title, id, type }) {
     </Container>
   );
 }
+
+ProductCard.propTypes = {
+  url: PropTypes.string.isRequired,
+  subtitle: PropTypes.objectOf(PropTypes.string).isRequired,
+  title: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  type: PropTypes.oneOf(['user', 'admin', 'main']).isRequired,
+};
 
 const Container = styled.div`
   width: ${({ theme }) => theme.calcVw(750, 318)};

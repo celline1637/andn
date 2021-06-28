@@ -1,22 +1,25 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
-import styled from 'styled-components/macro';
-// import ProductCard from '../../components/ProductCard';
 import { API } from '../../config';
 import SlickCarousel from './components/SlickCarousel';
+import styled from 'styled-components/macro';
 
 const ProductCard = lazy(() => import('../../components/ProductCard'));
 
 function Main() {
   const [allCampList, setAllCampList] = useState();
 
-  const getAllCampList = () => {
-    fetch(API.ALLCAMP_LIST)
+  //fetch중에 언마운트 시 fetch중단 : AbortController의 역할
+  useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+    fetch(API.ALLCAMP_LIST, { signal: signal })
       .then(res => res.json())
       .then(adminCampData => setAllCampList(adminCampData.data.campaign));
-  };
 
-  useEffect(() => {
-    getAllCampList();
+    return function cleanup() {
+      abortController.abort();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (

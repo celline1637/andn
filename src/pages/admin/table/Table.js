@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import Row from './Row';
 import { useParams } from 'react-router';
 import { API } from '../../../config';
-import styled from 'styled-components';
 import { useHistory } from 'react-router';
+import styled from 'styled-components';
 
 function Table() {
   const [orderData, setOrderData] = useState();
@@ -36,7 +36,7 @@ function Table() {
       <thead>
         <tr>
           {HEADER.map(title => (
-            <th>{title}</th>
+            <th key={title}>{title}</th>
           ))}
         </tr>
       </thead>

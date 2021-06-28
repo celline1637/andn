@@ -9,7 +9,7 @@ function CardInfo({ title, cont }) {
       return cont.map(
         item =>
           item.quantity > 0 && (
-            <div>
+            <div key={item.title}>
               {item.title} | {item.quantity}세트
             </div>
           )

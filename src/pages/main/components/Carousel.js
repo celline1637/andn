@@ -10,6 +10,7 @@ function Carousel() {
     fetch('/data/mainCarousel.json')
       .then(res => res.json())
       .then(carouselDatas => setMainCarouselDatas(carouselDatas.courses));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {

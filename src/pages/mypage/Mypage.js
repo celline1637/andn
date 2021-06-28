@@ -32,7 +32,7 @@ function Mypage() {
         </LogoutBtn>
       </Box>
       {LINKS.map(link => (
-        <Box>
+        <Box key={link.title}>
           <Link to={link.link}>
             <Text>{link.title}</Text>
             <StyledArrow width="1.6vw" height="3.2vw" stroke="#dbdbdb" />

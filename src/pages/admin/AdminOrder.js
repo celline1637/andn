@@ -9,9 +9,7 @@ function AdminOrder() {
   return (
     <>
       <Header text="결제 승인 내역" />
-
       <DetailGraph />
-
       <Box direction="row">
         <Title>캠페인 참여 정보</Title>
         <ExportBtn
