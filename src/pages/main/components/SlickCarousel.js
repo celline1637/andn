@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router';
+import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
-import styled from 'styled-components';
-import { useHistory } from 'react-router';
+import styled from 'styled-components/macro';
 
 function SlickCarousel() {
   const [mainCarouselDatas, setMainCarouselDatas] = useState();
@@ -82,7 +82,13 @@ const Text = styled.div`
 `;
 
 const StyledSlider = styled(Slider)`
-  height: 45vh;
+  height: ${({ theme }) => theme.calcVw(750, 400)};
+  position: relative;
+
+  .slick-dots {
+    position: absolute;
+    bottom: ${({ theme }) => theme.calcVw(750, 10)};
+  }
   .slick-prev:before {
     opacity: 1;
     color: lightgray;
@@ -98,6 +104,21 @@ const StyledSlider = styled(Slider)`
   }
   .slick-slide {
     margin: 0 4px;
+  }
+
+  .slick-arrow {
+    position: absolute;
+    z-index: 999;
+
+    &::before {
+      color: white;
+    }
+  }
+  .slick-prev {
+    left: ${({ theme }) => theme.calcVw(750, 16)};
+  }
+  .slick-next {
+    right: ${({ theme }) => theme.calcVw(750, 16)};
   }
 `;
 
