@@ -35,16 +35,18 @@ function Table() {
     <Container id="table-to-xls">
       <thead>
         <tr>
-          {HEADER.map(title => (
-            <th key={title}>{title}</th>
-          ))}
+          <th>순서</th>
+          <th colspan="2">결제정보</th>
+          <th colspan="2">옵션</th>
+          <th colspan="2">결제</th>
+          <th>결제 시각</th>
+          <th>결제 상태</th>
         </tr>
       </thead>
-      <tbody>
-        {orderData?.map((info, i) => (
-          <Row key={info.id} order={i + 1} info={info.info} />
-        ))}
-      </tbody>
+
+      {orderData?.map((info, i) => (
+        <Row key={info.id} order={i + 1} info={info.info} />
+      ))}
     </Container>
   );
 }
