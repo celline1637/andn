@@ -8,13 +8,15 @@ const ProductCard = lazy(() => import('../../components/ProductCard'));
 function Main() {
   const [allCampList, setAllCampList] = useState();
 
-  //fetch중에 언마운트 시 fetch중단 : AbortController의 역할
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
     fetch(API.ALLCAMP_LIST, { signal: signal })
       .then(res => res.json())
-      .then(adminCampData => setAllCampList(adminCampData.data.campaign));
+      .then(adminCampData => setAllCampList(adminCampData.data.campaign))
+      .catch(err => {
+        console.log(err);
+      });
 
     return function cleanup() {
       abortController.abort();

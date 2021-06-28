@@ -20,10 +20,15 @@ function Pay() {
   const sendOrderInfo = () => {
     const isAllValid = checkValid(orderData, Object.keys(orderData));
     if (!isAllValid) return alert('필수 입력란을 확인해주세요');
+
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     fetch(API.PAY, {
       method: 'POST',
       headers: { Authorization: localStorage.getItem('token') },
       body: JSON.stringify(orderData),
+      signal,
     })
       .then(res => res.json())
       .then(res => {

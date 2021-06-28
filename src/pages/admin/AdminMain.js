@@ -37,19 +37,20 @@ function AdminMain() {
           if (res.status === 'SUCCESS') {
             alert('로그인 되었습니다.');
             localStorage.setItem('token', res.data.token);
-            //페이지 이동 여부 확인하기
             history.push('/admin_login');
           } else if (res.status === 'INVALID_USER') {
             alert('가입되지 않은 유저입니다.');
           } else if (res.status === 'UNAUTHORIZATION') {
             alert('비밀번호가 일치하지 않습니다.');
+          } else if (res.status === 'NOT_ADMIN') {
+            alert('일반 계정입니다.');
+          } else {
+            alert('이메일 주소 또는 비밀번호를 확인해주세요.');
           }
-        });
-    } else {
-      alert('이메일 주소 또는 비밀번호를 확인해주세요.');
+        })
+        .catch(error => console.log(error));
     }
   };
-
   const { email, password } = inputs;
   const isValid = 'dks';
   return (

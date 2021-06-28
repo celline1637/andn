@@ -9,9 +9,10 @@ function Campaign() {
   const [myCampList, setMyCampList] = useState();
   const history = useHistory();
 
-  const getMyCampList = () => {
+  const getMyCampList = signal => {
     fetch(API.MYCAMP_LIST, {
       headers: { Authorization: localStorage.getItem('token') },
+      signal,
     })
       .then(res => res.json())
       .then(myCampData => {
@@ -22,11 +23,21 @@ function Campaign() {
           localStorage.clear();
           history.push('/');
         }
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 
   useEffect(() => {
-    getMyCampList();
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    getMyCampList(signal);
+
+    return function cleanup() {
+      abortController.abort();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

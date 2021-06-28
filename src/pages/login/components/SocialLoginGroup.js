@@ -10,10 +10,11 @@ function SocialBtnGroup({ text = '로그인하기' }) {
 
   const handleKakaoLogin = () => {
     const { Kakao } = window;
-    Kakao.Auth.authorize({
+    Kakao.Auth.login({
       scope: 'age_range, account_email, gender',
       success: res => {
-        fetch(`${API.KAKAO}`, {
+        alert(JSON.stringify(res));
+        fetch(API.KAKAO, {
           method: 'POST',
           body: JSON.stringify({
             access_token: res.access_token,

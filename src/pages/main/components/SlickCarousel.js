@@ -14,9 +14,17 @@ function SlickCarousel() {
   };
 
   useEffect(() => {
-    fetch('/data/mainCarousel.json')
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
+    fetch('/data/mainCarousel.json', { signal })
       .then(res => res.json())
-      .then(carouselDatas => setMainCarouselDatas(carouselDatas.courses));
+      .then(carouselDatas => setMainCarouselDatas(carouselDatas.courses))
+      .catch(error => alert(error.message));
+
+    return function cleanup() {
+      abortController.abort();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

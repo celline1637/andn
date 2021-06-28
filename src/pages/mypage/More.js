@@ -9,9 +9,33 @@ function More() {
   const params = useParams();
   const history = useHistory();
 
-  const getMyCamp = () => {
+  // const getMyCamp = signal => {
+  //   fetch(
+  //     `${API.MYCAMP_DETAIL}/${params.id}`,
+  //     {
+  //       headers: { Authorization: localStorage.getItem('token') },
+  //     },
+  //     { signal: signal }
+  //   )
+  //     .then(res => res.json())
+  //     .then(detailData => {
+  //       if (detailData.status === 'SUCCESS') {
+  //         setDetail(detailData.data.campaign);
+  //       } else if (detailData.status === 'EXPIRED_TOKEN') {
+  //         alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
+  //         localStorage.clear();
+  //         history.push('/');
+  //       }
+  //     });
+  // };
+
+  useEffect(() => {
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+
     fetch(`${API.MYCAMP_DETAIL}/${params.id}`, {
       headers: { Authorization: localStorage.getItem('token') },
+      signal: signal,
     })
       .then(res => res.json())
       .then(detailData => {
@@ -22,11 +46,14 @@ function More() {
           localStorage.clear();
           history.push('/');
         }
+      })
+      .catch(err => {
+        console.log(err);
       });
-  };
 
-  useEffect(() => {
-    getMyCamp();
+    return function cleanup() {
+      abortController.abort();
+    };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

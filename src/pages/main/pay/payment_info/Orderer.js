@@ -10,9 +10,18 @@ function Orderer() {
   const [inputs, setInputs] = useRecoilState(orderState);
   const history = useHistory();
 
-  const getUserInfo = () => {
+  const handleInput = e => {
+    const { name, value } = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value,
+    });
+  };
+
+  const getUserInfo = signal => {
     fetch(API.GET_USERINFO, {
       headers: { Authorization: localStorage.getItem('token') },
+      signal,
     })
       .then(res => res.json())
       .then(res => {
@@ -29,11 +38,16 @@ function Orderer() {
           localStorage.clear();
           history.push('/');
         }
+      })
+      .catch(err => {
+        console.log(err);
       });
   };
 
   useEffect(() => {
-    getUserInfo();
+    const abortController = new AbortController();
+    const signal = abortController.signal;
+    getUserInfo(signal);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -41,10 +55,11 @@ function Orderer() {
     <Container title="주문자" msg>
       <Input value={inputs.orderer} label="이름" readOnly />
       <Input
+        name="orderer_contact"
         value={inputs.orderer_contact}
         label="휴대전화"
         placeholder="01012345678 숫자만 입력해주세요"
-        readOnly
+        onChange={handleInput}
       />
     </Container>
   );
