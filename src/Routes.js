@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Loader from './components/Loader';
 const Nav = lazy(() => import('./components/Nav'));
 const Home = lazy(() => import('./pages/main/Main'));
 const Pay = lazy(() => import('./pages/main/pay/Pay'));
@@ -14,11 +15,12 @@ const AdminMain = lazy(() => import('./pages/admin/AdminMain'));
 const AdminOrder = lazy(() => import('./pages/admin/AdminOrder'));
 const Change = lazy(() => import('./pages/change/Change'));
 const Password = lazy(() => import('./pages/change/Password'));
+const Like = lazy(() => import('./pages/mypage/Like'));
 
 const Routes = () => {
   return (
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loader />}>
         <Nav />
         <Switch>
           <Route exact path="/" component={Home} />
@@ -28,6 +30,7 @@ const Routes = () => {
           <Route exact path="/mypage" component={Mypage} />
           <Route exact path="/mypage_campaign" component={Campaign} />
           <Route exact path="/mypage_campaign_more/:id" component={More} />
+          <Route exact path="/mypage_like" component={Like} />
           <Route exact path="/mypage_change" component={Change} />
           <Route exact path="/mypage_change_password" component={Password} />
           <Route exact path="/admin_main" component={AdminMain} />
