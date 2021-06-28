@@ -1,18 +1,30 @@
 import React, { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
+import { useHistory } from 'react-router';
+import { API } from '../../../config';
 
 function CampGraph() {
   const [chartData, setChartData] = useState();
+  const history = useHistory();
 
   const getChartData = () => {
-    fetch('/data/campGraphData.json')
+    fetch(API.ADMIN_LIST_GRAPH, {
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then(res => res.json())
       .then(res => {
-        let data = [...res.result];
-        for (let i of data) {
-          i.data = Object.values(i.data);
+        if (res.status === 'EXPIRED_TOKEN') {
+          alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
+          localStorage.clear();
+          history.push('/');
         }
-        setChartData({ series: data });
+        if (res.status === 'SUCCESS') {
+          let data = [...res.data.result];
+          for (let i of data) {
+            i.data = Object.values(i.data);
+          }
+          setChartData({ series: data });
+        }
       });
   };
 

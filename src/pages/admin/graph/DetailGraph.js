@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react';
 import Chart from 'react-apexcharts';
+import { useParams } from 'react-router';
+import { API } from '../../../config';
 
 function Graph() {
   const [chartData, setChartData] = useState();
+  const params = useParams();
 
   const getChartData = () => {
-    fetch('/data/detailGraphData.json')
+    fetch(`${API.ADMIN_DETAIL_GRAPH}/${params.id}`, {
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then(res => res.json())
       .then(res => {
-        let i = { ...res.result };
-        i.data = Object.values(res.result.data);
+        let i = { ...res.data.result };
+        i.data = Object.values(res.data.result.data);
+        console.log(i);
         setChartData({ series: [i] });
       });
   };
