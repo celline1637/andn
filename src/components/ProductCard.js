@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
+import { API } from '../config';
 import styled from 'styled-components/macro';
 
 function ProductCard({ url, subtitle, title, id, type }) {
   const history = useHistory();
   const [likeStatus, setLikeStatus] = useState(false);
 
-  //data['is_liked']
-
-  const goToDetail = e => {
+  const goToDetail = () => {
     if (type === 'main') {
       history.push(`/detail/${id}`);
     }
@@ -27,10 +26,9 @@ function ProductCard({ url, subtitle, title, id, type }) {
   };
 
   // 실제 서버와 통신할때 사용할 좋아요 버튼 이벤트
-  // ${API.PROJECT}/${id}
-  // const patchLikeProject = (e) => {
-  // e.stopPropagation();
-  //   fetch(``, {
+  // const patchLikeProject = e => {
+  //   e.stopPropagation();
+  //   fetch(`${API.MYCAMP_LIKED}/${id}`, {
   //     method: 'PATCH',
   //     headers: { Authorization: localStorage.getItem('token') },
   //   })

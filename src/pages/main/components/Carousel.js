@@ -143,11 +143,6 @@ const CarouselContents = styled.div`
   bottom: 180px;
   width: 90%;
   margin-bottom: -180px;
-
-  /* ${({ theme }) => theme.tablet`
-    width: fit-content;
-    margin-bottom: -320px;
-  `}; */
 `;
 
 const ImageShow = styled.div`
@@ -184,12 +179,6 @@ const DescriptionShow = styled.div`
   position: absolute;
   top: -50px;
   width: 355px;
-
-  /* @media ${({ theme }) => theme.mobile} {
-    position: absolute;
-    top: -50px;
-    width: 355px;
-  } */
 `;
 
 const SlidingDescriptions = styled.div`

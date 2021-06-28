@@ -1,6 +1,7 @@
 import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { API } from '../../config';
 import SlickCarousel from './components/SlickCarousel';
+import Loader from '../../components/Loader';
 import styled from 'styled-components/macro';
 
 const ProductCard = lazy(() => import('../../components/ProductCard'));
@@ -26,10 +27,9 @@ function Main() {
 
   return (
     <Wrapper>
-      {/* <Carousel /> */}
       <SlickCarousel />
-      <Suspense fallback={<div>Loading...</div>}>
-        {allCampList?.map(camp => (
+      {allCampList?.map(camp => (
+        <Suspense fallback={<Loader />}>
           <ProductCard
             id={camp.id}
             key={camp.id}
@@ -38,8 +38,8 @@ function Main() {
             title={camp.title}
             type="main"
           />
-        ))}
-      </Suspense>
+        </Suspense>
+      ))}
     </Wrapper>
   );
 }

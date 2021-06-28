@@ -1,8 +1,9 @@
-import React, { useState, useEffect, lazy } from 'react';
+import React, { useState, useEffect, lazy, Suspense } from 'react';
 import { useParams } from 'react-router';
 import { API } from '../../../config';
 import Button from '../../../components/Button';
 import ScrollTopArrow from '../../../components/ScrollArrow';
+import Loader from '../../../components/Loader';
 import styled, { css } from 'styled-components/macro';
 
 const Summary = lazy(() => import('./components/Summary'));
@@ -42,29 +43,35 @@ function Detail() {
   return (
     !!campInfo && (
       <Container>
-        <Summary
-          url={campInfo.url}
-          subtitle={campInfo.subtitle}
-          title={campInfo.title}
-          showOption={showOption}
-        />
-        <Contents isContentsShow={isContentsShow}>
-          <img
-            alt="캠페인 상세정보"
-            src="http://andn.co.kr/static/media/Content2.c5d41558.png"
-          ></img>
-          <ScrollTopArrow />
-          <BtnWrapper>
-            <ShowMoreContentBtn color="black" onClick={showContents} fullWidth>
-              {isContentsShow ? '스토리 접기' : '스토리 더보기'}
-            </ShowMoreContentBtn>
-          </BtnWrapper>
-        </Contents>
-        <Option
-          showOption={showOption}
-          isOptionShow={isOptionShow}
-          option={campInfo.option}
-        />
+        <Suspense fallback={<Loader />}>
+          <Summary
+            url={campInfo.url}
+            subtitle={campInfo.subtitle}
+            title={campInfo.title}
+            showOption={showOption}
+          />
+          <Contents isContentsShow={isContentsShow}>
+            <img
+              alt="캠페인 상세정보"
+              src="http://andn.co.kr/static/media/Content2.c5d41558.png"
+            ></img>
+            <ScrollTopArrow />
+            <BtnWrapper>
+              <ShowMoreContentBtn
+                color="black"
+                onClick={showContents}
+                fullWidth
+              >
+                {isContentsShow ? '스토리 접기' : '스토리 더보기'}
+              </ShowMoreContentBtn>
+            </BtnWrapper>
+          </Contents>
+          <Option
+            showOption={showOption}
+            isOptionShow={isOptionShow}
+            option={campInfo.option}
+          />
+        </Suspense>
       </Container>
     )
   );

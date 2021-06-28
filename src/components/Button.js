@@ -1,6 +1,6 @@
 import React from 'react';
-import { darken } from 'polished';
 import PropTypes from 'prop-types';
+import { darken } from 'polished';
 import styled, { css } from 'styled-components';
 
 function Button({
@@ -44,9 +44,7 @@ const colorStyles = css`
       &:active {
         background: ${darken(0.1, selected)};
       }
-      /* &:focus {
-        background: ${darken(0.1, selected)};
-      } */
+
       ${props =>
         props.outline &&
         css`

@@ -9,26 +9,6 @@ function More() {
   const params = useParams();
   const history = useHistory();
 
-  // const getMyCamp = signal => {
-  //   fetch(
-  //     `${API.MYCAMP_DETAIL}/${params.id}`,
-  //     {
-  //       headers: { Authorization: localStorage.getItem('token') },
-  //     },
-  //     { signal: signal }
-  //   )
-  //     .then(res => res.json())
-  //     .then(detailData => {
-  //       if (detailData.status === 'SUCCESS') {
-  //         setDetail(detailData.data.campaign);
-  //       } else if (detailData.status === 'EXPIRED_TOKEN') {
-  //         alert('로그인 권한이 만료되었습니다. 다시 로그인해주세요.');
-  //         localStorage.clear();
-  //         history.push('/');
-  //       }
-  //     });
-  // };
-
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;

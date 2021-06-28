@@ -1,7 +1,7 @@
 import React from 'react';
-import { ReactComponent as Arrow } from '../assets/arrow.svg';
 import { useHistory } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import { ReactComponent as Arrow } from '../assets/arrow.svg';
 import styled from 'styled-components/macro';
 
 function Header({ text }) {

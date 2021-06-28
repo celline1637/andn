@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Button from './Button';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const ScrollTopArrow = () => {
   const [showScroll, setShowScroll] = useState(false);

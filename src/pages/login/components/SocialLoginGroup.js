@@ -13,7 +13,6 @@ function SocialBtnGroup({ text = '로그인하기' }) {
     Kakao.Auth.login({
       scope: 'age_range, account_email, gender',
       success: res => {
-        alert(JSON.stringify(res));
         fetch(API.KAKAO, {
           method: 'POST',
           body: JSON.stringify({
