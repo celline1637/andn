@@ -1,43 +1,31 @@
 import React, { useEffect, useState } from 'react';
-import Chart from 'react-apexcharts';
 import { useParams } from 'react-router';
-import { API } from '../../../config';
+import Chart from 'react-apexcharts';
 
-function Graph() {
-  const [chartData, setChartData] = useState();
-  const params = useParams();
-
-  const getChartData = () => {
-    fetch(`${API.ADMIN_DETAIL_GRAPH}/${params.id}`, {
-      headers: { Authorization: localStorage.getItem('token') },
-    })
-      .then(res => res.json())
-      .then(res => {
-        let data = [...res.data.result];
-        for (let i of data) {
-          i.data = Object.values(i.data);
-        }
-        setChartData({ series: data });
-      });
-  };
-
-  console.log(chartData);
-
-  useEffect(() => {
-    getChartData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
-  return chartData ? (
+function Test() {
+  const [chartData, setChartData] = useState({
+    series: [
+      {
+        name: 'Session Duration',
+        data: [45, 52, 38],
+      },
+      {
+        name: 'Page Views',
+        data: [35, 41, 62],
+      },
+    ],
+  });
+  return (
     <Chart
       series={chartData.series}
       options={STYLE.options}
       type="line"
       height={350}
     />
-  ) : null;
+  );
 }
 
-export default Graph;
+export default Test;
 
 const STYLE = {
   options: {
@@ -45,7 +33,7 @@ const STYLE = {
       height: 350,
       type: 'line',
       zoom: {
-        enabled: true,
+        enabled: false,
       },
     },
     dataLabels: {
@@ -57,7 +45,7 @@ const STYLE = {
       dashArray: [0, 8, 5],
     },
     title: {
-      text: '옵션 별 판매량',
+      text: 'Page Statistics',
       align: 'left',
     },
     legend: {
@@ -77,14 +65,34 @@ const STYLE = {
       },
     },
     xaxis: {
-      categories: ['지지난달', '지난달', '이번 달'],
+      categories: [
+        '01 Jan',
+        '02 Jan',
+        '03 Jan',
+        '04 Jan',
+        '05 Jan',
+        '06 Jan',
+        '07 Jan',
+        '08 Jan',
+        '09 Jan',
+        '10 Jan',
+        '11 Jan',
+        '12 Jan',
+      ],
     },
     tooltip: {
       y: [
         {
           title: {
             formatter: function (val) {
-              return val;
+              return val + ' (mins)';
+            },
+          },
+        },
+        {
+          title: {
+            formatter: function (val) {
+              return val + ' per session';
             },
           },
         },
@@ -95,13 +103,6 @@ const STYLE = {
             },
           },
         },
-        // {
-        //   title: {
-        //     formatter: function (val) {
-        //       return val;
-        //     },
-        //   },
-        // },
       ],
     },
     grid: {

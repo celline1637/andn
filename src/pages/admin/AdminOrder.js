@@ -4,6 +4,7 @@ import Table from './table/Table';
 import ExportBtn from 'react-html-table-to-excel';
 import styled, { css } from 'styled-components/macro';
 import DetailGraph from './graph/DetailGraph';
+import Test from './graph/test';
 
 function AdminOrder() {
   return (
