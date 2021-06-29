@@ -12,7 +12,10 @@ function Main() {
   useEffect(() => {
     const abortController = new AbortController();
     const signal = abortController.signal;
-    fetch(API.ALLCAMP_LIST, { signal: signal })
+    fetch(API.ALLCAMP_LIST, {
+      signal,
+      headers: { Authorization: localStorage.getItem('token') },
+    })
       .then(res => res.json())
       .then(adminCampData => setAllCampList(adminCampData.data.campaign))
       .catch(err => {
@@ -30,14 +33,7 @@ function Main() {
       <SlickCarousel />
       {allCampList?.map(camp => (
         <Suspense fallback={<Loader />}>
-          <ProductCard
-            id={camp.id}
-            key={camp.id}
-            url={camp.url}
-            subtitle={camp.subtitle}
-            title={camp.title}
-            type="main"
-          />
+          <ProductCard id={camp.id} key={camp.id} data={camp} type="main" />
         </Suspense>
       ))}
     </Wrapper>

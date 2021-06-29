@@ -40,14 +40,7 @@ function AdminCamp() {
       <CampGraph />
       <Wrapper>
         {adminCampList?.map(camp => (
-          <ProductCard
-            id={camp.id}
-            key={camp.id}
-            url={camp.url}
-            subtitle={camp.subtitle}
-            title={camp.title}
-            type="admin"
-          />
+          <ProductCard id={camp.id} key={camp.id} data={camp} type="admin" />
         ))}
       </Wrapper>
     </>

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+import { useHistory, useLocation } from 'react-router';
 import PropTypes from 'prop-types';
 import { API } from '../config';
 import styled from 'styled-components/macro';
-
-function ProductCard({ url, subtitle, title, id, type }) {
+function ProductCard({ id, type, data }) {
   const history = useHistory();
-  const [likeStatus, setLikeStatus] = useState(false);
+  const location = useLocation();
+  const isAdminpage = location.pathname.includes('admin');
+  const [likeStatus, setLikeStatus] = useState(data['is_liked']);
 
   const goToDetail = () => {
     if (type === 'main') {
@@ -20,15 +21,9 @@ function ProductCard({ url, subtitle, title, id, type }) {
     }
   };
 
-  // const toggleLike = e => {
-  //   e.stopPropagation();
-  //   setLikeStatus(!likeStatus);
-  // };
-
-  // 실제 서버와 통신할때 사용할 좋아요 버튼 이벤트
   const patchLikeProject = e => {
     e.stopPropagation();
-    fetch(`${API.MYCAMP_LIKED}/${id}`, {
+    fetch(`${API.MYCAMP_ISLIKED}/${id}`, {
       method: 'PATCH',
       headers: { Authorization: localStorage.getItem('token') },
     })
@@ -44,12 +39,16 @@ function ProductCard({ url, subtitle, title, id, type }) {
   return (
     <Container type={type} onClick={goToDetail}>
       <Thumbnail>
-        <UnLikeIcon onClick={patchLikeProject} className="far fa-heart" />
-        <LikeIcon status={likeStatus} className="fas fa-heart" />
-        <img alt="thumbnail" src={url} />
+        {!isAdminpage && (
+          <>
+            <UnLikeIcon onClick={patchLikeProject} className="far fa-heart" />
+            <LikeIcon status={likeStatus} className="fas fa-heart" />
+          </>
+        )}
+        <img alt="thumbnail" src={data.url} />
       </Thumbnail>
-      <SubTitle>{`${subtitle.brand} - ${subtitle.host}`}</SubTitle>
-      <Title>{title}</Title>
+      <SubTitle>{`${data.subtitle.brand} - ${data.subtitle.host}`}</SubTitle>
+      <Title>{data.title}</Title>
     </Container>
   );
 }

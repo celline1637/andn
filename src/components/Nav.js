@@ -12,6 +12,7 @@ function Nav() {
   const isLogin = localStorage.getItem('token');
   const isAdminpage = location.pathname.includes('admin');
   const isLoginpage = location.pathname.includes('login');
+  const isChallengepage = location.pathname.includes('challenge');
 
   const goToMain = () => {
     history.push('/');
@@ -23,7 +24,7 @@ function Nav() {
   };
 
   return (
-    !(isMypage || isPaypage || isAdminpage) && (
+    !(isMypage || isPaypage || isAdminpage || isChallengepage) && (
       <Container>
         <Logo alt="logo" src="/images/831.svg" onClick={goToMain} />
         {!isLoginpage && (

@@ -13,7 +13,8 @@ export const API = {
   //마이페이지
   MYCAMP_LIST: `${HOST}/campaigns/userlist`,
   MYCAMP_DETAIL: `${HOST}/campaigns/userdetail`,
-  MYCAMP_LIKED: `${HOST}/users/like`,
+  MYCAMP_ISLIKED: `${HOST}/users/like`,
+  MYCAMP_LIKED: `${HOST}/users/likecampaign`,
   CHANGE: `${HOST}/users/password`,
   CHECK_PASSWORD: `${HOST}/users/checkpassword`,
   GET_USERINFO: `${HOST}/users/info`,

@@ -16,6 +16,7 @@ const AdminOrder = lazy(() => import('./pages/admin/AdminOrder'));
 const Change = lazy(() => import('./pages/change/Change'));
 const Password = lazy(() => import('./pages/change/Password'));
 const Like = lazy(() => import('./pages/mypage/Like'));
+const Challenge = lazy(() => import('./pages/challenge/ChallengeMain'));
 
 const Routes = () => {
   return (
@@ -37,6 +38,7 @@ const Routes = () => {
           <Route exact path="/admin_login" component={AdminLogin} />
           <Route exact path="/admin_camp" component={AdminCamp} />
           <Route exact path="/admin_order/:id" component={AdminOrder} />
+          <Route exact path="/challenge" component={Challenge} />
         </Switch>
       </Suspense>
     </Router>

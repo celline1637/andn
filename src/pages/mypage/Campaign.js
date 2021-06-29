@@ -47,14 +47,7 @@ function Campaign() {
       <Wrapper>
         {myCampList &&
           myCampList.map(camp => (
-            <ProductCard
-              id={camp.id}
-              key={camp.id}
-              url={camp.url}
-              subtitle={camp.subtitle}
-              title={camp.title}
-              type="user"
-            />
+            <ProductCard id={camp.id} key={camp.id} data={camp} type="user" />
           ))}
       </Wrapper>
     </>

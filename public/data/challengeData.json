@@ -1,0 +1,54 @@
+{
+  "data": [
+    {
+      "id": 1,
+      "host": {
+        "name": "이승희",
+        "profile": "https://raw.githubusercontent.com/celline1637/1/main/%ED%88%AC%EB%AA%85%EA%B3%B0.png"
+      },
+      "img": ["/images/soap.webp", "/images/bag.webp", "/images/soap.webp"],
+      "desc": " 닥터노아는 과학에 근거해 품질 좋은 제품을 제조할 수 있는 공정을 개발하고, 가격 경쟁력이 있는 오랄케어 제품을 만들기 위해 노력합니다. 그 결과 시중의 많은 대나무 칫솔 중 유일하게 국내에서 직접 생산하게 되었어요.",
+      "tags": ["흙에서흙으로", "닥터노아"]
+    },
+    {
+      "id": 2,
+      "host": {
+        "name": "상희양",
+        "profile": "https://raw.githubusercontent.com/celline1637/1/main/%ED%88%AC%EB%AA%85%EA%B3%B0.png"
+      },
+      "img": ["/images/bag.webp", "/images/soap.webp", "/images/soap.webp"],
+      "desc": " 닥터노아는 과학에 근거해 품질 좋은 제품을 제조할 수 있는 공정을 개발하고, 가격 경쟁력이 있는 오랄케어 제품을 만들기 위해 노력합니다. 그 결과 시중의 많은 대나무 칫솔 중 유일하게 국내에서 직접 생산하게 되었어요.",
+      "tags": ["흙에서흙으로", "닥터노아"]
+    },
+    {
+      "id": 3,
+      "host": {
+        "name": "오원",
+        "profile": "https://raw.githubusercontent.com/celline1637/1/main/%ED%88%AC%EB%AA%85%EA%B3%B0.png"
+      },
+      "img": ["/images/soap.webp", "/images/bag.webp", "/images/soap.webp"],
+      "desc": " 닥터노아는 과학에 근거해 품질 좋은 제품을 제조할 수 있는 공정을 개발하고, 가격 경쟁력이 있는 오랄케어 제품을 만들기 위해 노력합니다. 그 결과 시중의 많은 대나무 칫솔 중 유일하게 국내에서 직접 생산하게 되었어요.",
+      "tags": ["흙에서흙으로", "닥터노아"]
+    },
+    {
+      "id": 4,
+      "host": {
+        "name": "장인성",
+        "profile": "https://raw.githubusercontent.com/celline1637/1/main/%ED%88%AC%EB%AA%85%EA%B3%B0.png"
+      },
+      "img": ["/images/soap.webp", "/images/soap.webp", "/images/soap.webp"],
+      "desc": " 닥터노아는 과학에 근거해 품질 좋은 제품을 제조할 수 있는 공정을 개발하고, 가격 경쟁력이 있는 오랄케어 제품을 만들기 위해 노력합니다. 그 결과 시중의 많은 대나무 칫솔 중 유일하게 국내에서 직접 생산하게 되었어요.",
+      "tags": ["흙에서흙으로", "닥터노아"]
+    },
+    {
+      "id": 1,
+      "host": {
+        "name": "한씨",
+        "profile": "https://raw.githubusercontent.com/celline1637/1/main/%ED%88%AC%EB%AA%85%EA%B3%B0.png"
+      },
+      "img": ["/images/soap.webp", "/images/soap.webp", "/images/soap.webp"],
+      "desc": " 닥터노아는 과학에 근거해 품질 좋은 제품을 제조할 수 있는 공정을 개발하고, 가격 경쟁력이 있는 오랄케어 제품을 만들기 위해 노력합니다. 그 결과 시중의 많은 대나무 칫솔 중 유일하게 국내에서 직접 생산하게 되었어요.",
+      "tags": ["흙에서흙으로", "닥터노아"]
+    }
+  ]
+}
